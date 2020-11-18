@@ -1,11 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Login from './containers/login/login'
 function App() {
   return (
-    <div>
-      <h1>Welcome to BOBL Feedback App</h1>
-    </div>
+    <Login />
   );
 }
 
