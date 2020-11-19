@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react';
+import Navigation from './components/navigation/Navigation'
+
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to BOBL Feedback App</h1>
+    <div >
+      <Navigation/>
     </div>
   );
 }

@@ -1,0 +1,18 @@
+nav{
+    background:#b3d1ff;
+    /* height:5rem */
+}
+.logo{
+    height: 3rem;
+    width: 3rem;
+}
+nav a{
+    text-decoration: none;
+    color: #808080;
+    font-size: small;
+}
+.profile{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1.5rem;
+}
