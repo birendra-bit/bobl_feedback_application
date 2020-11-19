@@ -1,0 +1,21 @@
+nav{
+    background:#b3d1ff;
+    /* height:5rem */
+}
+.logo{
+    height: 2rem;
+    width: 2rem;
+}
+nav a{
+    text-decoration: none;
+    color: #808080;
+    font-size: small;
+}
+.profile{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+}
+a:hover {
+    text-decoration: none;
+}
