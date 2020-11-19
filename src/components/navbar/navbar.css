@@ -1,21 +1,24 @@
-nav{
-    background:#2aa6de;
+nav {
+    background: #2aa6de;
     /* height:5rem */
 }
-.logo{
-    height: 4rem;
+
+.logo {
     width: 4rem;
 }
-nav a{
+
+nav a {
     text-decoration: none;
     color: #808080;
     font-size: larger;
 }
-.profile{
+
+.profile {
     height: 3rem;
     width: 3rem;
     border-radius: 1.5rem;
 }
+
 a:hover {
     text-decoration: none;
 }
