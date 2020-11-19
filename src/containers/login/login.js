@@ -6,8 +6,8 @@ import "./login.css"
 function Login() {
         return (
                 <Container fluid={true} className="loginBackground">
-                        <Row>
-                                <Col md={4} lg={4} sm={4} xs={4}>
+                        <Row className="justify-content-md-center h-100">
+                                <Col md={3} lg={3} sm={12} xs={12} className="my-auto">
                                         <LoginJumbotron />
                                 </Col>
                         </Row>
