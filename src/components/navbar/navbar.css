@@ -1,20 +1,20 @@
 nav{
-    background:#b3d1ff;
+    background:#2aa6de;
     /* height:5rem */
 }
 .logo{
-    height: 2rem;
-    width: 2rem;
+    height: 4rem;
+    width: 4rem;
 }
 nav a{
     text-decoration: none;
     color: #808080;
-    font-size: small;
+    font-size: larger;
 }
 .profile{
-    height: 2rem;
-    width: 2rem;
-    border-radius: 1rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1.5rem;
 }
 a:hover {
     text-decoration: none;

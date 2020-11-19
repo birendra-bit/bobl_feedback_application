@@ -7,24 +7,25 @@ class Navigationbar extends React.Component {
         render() {
                 return (
                         <Navbar collapseOnSelect expand='lg'>
-                                <Navbar.Brand>
+                                &nbsp; &nbsp;
+                                <Navbar.Brand className="mr-auto">
                                         <a href="#">
-                                                <img className="img-thumbnail logo" src="../../../boblogo.png" />
+                                                <img className="logo" src="../../../BOBL.jpg" />
                                         </a>
                                 </Navbar.Brand>
-                                <Button className="navbar-toggler" type="button" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-controls="collapseable" aria-expanded="false" aria-label="Toggle navigation">
+                                <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-controls="collapseable" aria-expanded="false" aria-label="Toggle navigation">
                                         <span className="navbar-toggler-icon"></span>
                                 </Button>
-                                <div className="collapse navbar-collapse" id="navbarSupportedContent" >
-                                        <ul className="navbar-nav ml-auto">
-                                                <li className="nav-item ">
+                                <div className="collapse navbar-collapse align-middle" id="navbarSupportedContent" >
+                                        <ul className="navbar-nav ml-auto ">
+                                                <li className="nav-item mt-2">
                                                         <a className="nav-link" href="#">
-                                                                <span className="text-sm font-weight-bold">Dashboard</span>
+                                                                <span className="font-weight-bold">Dashboard</span>
                                                         </a>
                                                 </li>
-                                                <li className="nav-item ">
+                                                <li className="nav-item mt-2">
                                                         <a className="nav-link" href="#">
-                                                                <span className="text-sm font-weight-bold">Birendra Bhujel</span>
+                                                                <span className="text-md font-weight-bold">Birendra Bhujel</span>
                                                         </a>
                                                 </li>
                                                 <li className="nav-item ">

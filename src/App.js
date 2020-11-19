@@ -6,8 +6,7 @@ import Dashboard from './containers/dashboard/dashboard'
 
 function App() {
   return (
-    <div >
-      {/* <Navigation/> */}
+    <div>
       {/* <Login /> */}
       <Dashboard/>
     </div>
