@@ -1,0 +1,41 @@
+.login-jumbotron {
+  background-color: #ffffff87;
+  padding: 30px 50px 50px 50px;
+}
+
+/* parent div for the logo image */
+.logo-img {
+  text-align: center;
+}
+
+/* div containing each username div and password */
+.form-group {
+  margin-top: 40px;
+}
+
+/* the white box where you write the credentials */
+.form-control {
+  background: transparent;
+  border-bottom: 1px solid #989898;
+  border-radius: 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+/* login-button */
+.login-btn {
+  margin-top: 60px !important;
+  margin: auto 0;
+  border-radius: 50px;
+  background: #28a6de;
+  border: 0;
+  padding: 5px 15px;
+  color: white;
+  transition: all 200ms ease;
+}
+/* login-button on hover */
+.login-btn:hover {
+  color: #cccccc;
+  transition: all 200ms ease;
+}
