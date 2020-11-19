@@ -1,15 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import './App.css';
-import Login from './containers/login/login'
-import Dashboard from './containers/dashboard/dashboard'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './AppRouter'
 
 function App() {
   return (
-    <div>
-      {/* <Login /> */}
-      <Dashboard/>
-    </div>
-    )
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  )
 }
 export default App;

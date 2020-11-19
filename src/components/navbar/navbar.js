@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Form, Nav, NavDropdown, FormControl, Button } from "react-bootstrap";
+import { Navbar, Form, Nav, NavDropdown, FormControl, Button, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css"
 import './navbar.css';
 
@@ -10,7 +10,7 @@ class Navigationbar extends React.Component {
                                 &nbsp; &nbsp;
                                 <Navbar.Brand className="mr-auto">
                                         <a href="#">
-                                                <img className="logo" src="../../../BOBL.jpg" />
+                                                <Image className="logo" src="../../../BOBL.jpg" />
                                         </a>
                                 </Navbar.Brand>
                                 <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-controls="collapseable" aria-expanded="false" aria-label="Toggle navigation">
