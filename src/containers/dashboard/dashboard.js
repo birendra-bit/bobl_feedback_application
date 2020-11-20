@@ -18,14 +18,12 @@ const Dashboard = (props)=>(
                     <Card/>
                     <Card/>
                     <Card/>
+                    <Card/> 
+                    <Card/>
+                    <Card/>
+                    <Card/>
                     <Card/>
                 </Row>
-                {/* <Row>
-                    <Card/>
-                </Row> */}
-                {/* <Row>
-                    <Card/>
-                </Row> */}
             </Col>
             <Col sm={12} md={12} lg={4}></Col>
         </Container>

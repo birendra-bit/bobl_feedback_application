@@ -7,16 +7,16 @@ import Logo from "../../assets/images/BOBLogo.png"
 class Navigationbar extends React.Component {
         render() {
                 return (
-                        <Navbar collapseOnSelect expand='lg'>
+                        <Navbar collapseOnSelect expand='lg' className="nav">
                                 &nbsp; &nbsp;
                                 <Navbar.Brand className="mr-auto">
                                         <a href="#">
                                                 <Image className="logo" src={Logo} />
                                         </a>
                                 </Navbar.Brand>
-                                <Button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-controls="collapseable" aria-expanded="false" aria-label="Toggle navigation">
+                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-controls="collapseable" aria-expanded="false" aria-label="Toggle navigation">
                                         <span className="navbar-toggler-icon"></span>
-                                </Button>
+                                </button>
                                 <div className="collapse navbar-collapse align-middle" id="navbarSupportedContent" >
                                         <ul className="navbar-nav ml-auto ">
                                                 <li className="nav-item mt-2">
