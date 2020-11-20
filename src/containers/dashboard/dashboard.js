@@ -9,8 +9,10 @@ const Dashboard = (props)=>(
     <div>
         <Navigationbar/>
         <Container>
-            <Col sm={12} md={12} lg={10} >
+            <Col sm={12} md={12} lg={8} >
                 <Row >
+                    <Card/>
+                    <Card/>
                     <Card/>
                     <Card/>
                     <Card/>
@@ -25,7 +27,7 @@ const Dashboard = (props)=>(
                     <Card/>
                 </Row> */}
             </Col>
-            {/* <Col sm={12} md={12} lg={4}></Col> */}
+            <Col sm={12} md={12} lg={4}></Col>
         </Container>
         <Footer/>
     </div>
