@@ -84,42 +84,71 @@ class Dashboard extends Component {
           email: "example@bobl.bt",
         },
       ],
-      give_feeds: true,
-      feeds_given_by: false,
-      feeds_given_to: false,
+      giveFeeds: true,
+      feedsGivenBy: false,
+      feedsGivenTo: false,
     };
   }
 
-  feedsGiveHandler = () => {
+  feedsGiveHandler = (args) => {
     this.setState({
-      give_feeds: true,
-      feeds_given_by: false,
-      feeds_given_to: false,
+      giveFeeds: true,
+      feedsGivenBy: false,
+      feedsGivenTo: false,
     });
   };
   feedsGivenByHandler = () => {
     this.setState({
-      give_feeds: false,
-      feeds_given_by: true,
-      feeds_given_to: false,
+      giveFeeds: false,
+      feedsGivenBy: true,
+      feedsGivenTo: false,
     });
   };
   feedsGivenToHandler = () => {
     this.setState({
-      give_feeds: false,
-      feeds_given_by: false,
-      feeds_given_to: true,
+      giveFeeds: false,
+      feedsGivenBy: false,
+      feedsGivenTo: true,
     });
   };
+  feedsToggleHandler = (args) => {
+    switch (args) {
+      case 1:
+        this.setState({
+          giveFeeds: true,
+          feedsGivenBy: false,
+          feedsGivenTo: false,
+        });
+      case 2:
+        this.setState({
+          giveFeeds: false,
+          feedsGivenBy: true,
+          feedsGivenTo: false,
+        });
+      default:
+        this.setState({
+          giveFeeds: false,
+          feedsGivenBy: false,
+          feedsGivenTo: true,
+        });
+    }
+  };
   render() {
-    let cards = this.state.info.map((info, index) => {
+    let giveFeedsCards = this.state.info.map((info, index) => {
       return (
         <Col sm={2} md={2} lg={2} key={index}>
-          <Card info={info} />
+          <Card info={info} btnText="Give Feeds" />
         </Col>
       );
     });
-    let feedback_given_by = <FeedbackGivenBy info={this.state.info} />;
+    let feedsGivenCards = this.state.info.map((info, index) => {
+      return (
+        <Col sm={2} md={2} lg={2} key={index}>
+          <Card info={info} btnText="View Feeds" />
+        </Col>
+      );
+    });
+    let feedGivenBy = <FeedbackGivenBy info={this.state.info} />;
     return (
       <div>
         <Navigationbar />
@@ -128,14 +157,21 @@ class Dashboard extends Component {
           <br />
           <br />
           <Tab
-            give_feeds={this.state.give_feeds} feedsGive={this.feedsGiveHandler}
-            feeds_given_by={this.state.feeds_given_by} feedsGiveBy ={this.feedsGivenByHandler}
-            feeds_given_to={this.state.feeds_given_to} feedsGivenTo = {this.feedsGivenToHandler}
-            feedsToggle={this.feedsToggleHandler}
+            giveFeeds={this.state.giveFeeds}
+            feedsGiveHanlder={this.feedsGiveHandler}
+            feedsGivenBy={this.state.feedsGivenBy}
+            feedsGivenByHandler={this.feedsGivenByHandler}
+            feedsGivenTo={this.state.feedsGivenTo}
+            feedsGivenToHandler={this.feedsGivenToHandler}
+            // feedsToggle={this.feedsToggleHandler}
           />
           <Row>
             <Col sm={12} md={12} lg={12} xs={12}>
-              <Row>{this.state.give_feeds ? cards : feedback_given_by}</Row>
+              <Row>
+                { this.state.giveFeeds ? giveFeedsCards :'' }
+                { this.state.feedsGivenBy ? feedGivenBy : '' }
+                { this.state.feedsGivenTo ? feedsGivenCards : ''}
+              </Row>
             </Col>
             <Col sm={12} md={12} lg={4}></Col>
           </Row>

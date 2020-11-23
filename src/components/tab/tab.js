@@ -6,11 +6,11 @@ const tab = props =>{
     return(
         <div>
             <div className="d-flex">
-                <a className = { props.give_feeds ? "active" : null } onClick={props.feedsGive} href="#">Give Feeds</a>
+                <a className = { props.giveFeeds ? "active" : null } onClick={props.feedsGiveHanlder} href="#">Give Feeds</a>
                 &nbsp;&nbsp; | &nbsp;&nbsp;
-                <a className = { props.feeds_given_by ? "active" : null } onClick={props.feedsGiveBy} href="#">Feeds Given By</a>
+                <a className = { props.feedsGivenBy ? "active" : null } onClick={props.feedsGivenByHandler} href="#">Feeds Given By</a>
                 &nbsp;&nbsp; | &nbsp;&nbsp;
-                <a className = { props.feeds_given_to ? "active" : null } onClick={()=> props.feedsGivenTo} href="#">Feeds Given To</a>
+                <a className = { props.feedsGivenTo ? "active" : null } onClick={props.feedsGivenToHandler} href="#">Feeds Given To</a>
             </div>
             <hr/>
         </div>
