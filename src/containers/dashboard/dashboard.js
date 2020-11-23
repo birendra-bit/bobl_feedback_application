@@ -3,7 +3,7 @@ import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { Container, Col, Row } from "react-bootstrap";
 import Card from "../../components/card/card";
-import FeedbackGiven from "../../components/feedback_given/feedback_given";
+import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
 import Tab from "../../components/tab/tab";
 
 class Dashboard extends Component {
@@ -85,23 +85,32 @@ class Dashboard extends Component {
         },
       ],
       give_feeds: true,
-      feeds_giver: false
+      feeds_given_by: false,
+      feeds_given_to: false,
     };
   }
 
-  viewFeedsHandler = ()=>{
-      this.setState({
-          give_feeds: true,
-          feeds_giver: false
-      })
-  }
-
-  viewFeedsGiverHandler = ()=>{
+  feedsGiveHandler = () => {
     this.setState({
-        give_feeds: false,
-        feeds_giver: true
-    })
-  }
+      give_feeds: true,
+      feeds_given_by: false,
+      feeds_given_to: false,
+    });
+  };
+  feedsGivenByHandler = () => {
+    this.setState({
+      give_feeds: false,
+      feeds_given_by: true,
+      feeds_given_to: false,
+    });
+  };
+  feedsGivenToHandler = () => {
+    this.setState({
+      give_feeds: false,
+      feeds_given_by: false,
+      feeds_given_to: true,
+    });
+  };
   render() {
     let cards = this.state.info.map((info, index) => {
       return (
@@ -110,22 +119,23 @@ class Dashboard extends Component {
         </Col>
       );
     });
-    let feedback_given = <FeedbackGiven info={this.state.info} />;
+    let feedback_given_by = <FeedbackGivenBy info={this.state.info} />;
     return (
       <div>
         <Navigationbar />
         <Container fluid={false}>
-            <br/>
-            <br/>
-            <br/>
-          <Tab give_feeds={this.state.give_feeds} 
-                feeds_giver = {this.state.feeds_giver}
-                viewFeeds = {this.viewFeedsHandler}
-                viewFeedsGiver = { this.viewFeedsGiverHandler}
-                />
+          <br />
+          <br />
+          <br />
+          <Tab
+            give_feeds={this.state.give_feeds} feedsGive={this.feedsGiveHandler}
+            feeds_given_by={this.state.feeds_given_by} feedsGiveBy ={this.feedsGivenByHandler}
+            feeds_given_to={this.state.feeds_given_to} feedsGivenTo = {this.feedsGivenToHandler}
+            feedsToggle={this.feedsToggleHandler}
+          />
           <Row>
             <Col sm={12} md={12} lg={12} xs={12}>
-              <Row>{this.state.give_feeds ? cards : feedback_given}</Row>
+              <Row>{this.state.give_feeds ? cards : feedback_given_by}</Row>
             </Col>
             <Col sm={12} md={12} lg={4}></Col>
           </Row>

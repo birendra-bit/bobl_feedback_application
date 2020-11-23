@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Col, Container, Row } from "react-bootstrap";
 
-const FeedBackGiven = (props) => {
+const feedback_given_by = (props) => {
   let table_head = (
     <thead>
       <tr className="table-dark">
@@ -36,4 +36,4 @@ const FeedBackGiven = (props) => {
   );
 };
 
-export default FeedBackGiven;
+export default feedback_given_by;
