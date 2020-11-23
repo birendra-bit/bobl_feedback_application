@@ -6,16 +6,15 @@ import './card.css'
 
 const Cards =props =>(
     <Card sm={12} md={12} lg={4} className="m-1 text-center pt-1 card" >
-        <Card.Img className="m-auto" style={{ width: '100px',height:'100px'}} src={UserImage}></Card.Img>
+        <Card.Img className="m-auto" style={{ width: '70px',height:'70px'}} src={UserImage}></Card.Img>
         <Card.Body >
-            <Card.Title style={{fontSize:'12px'}}>Name : Tshering Dorji</Card.Title>
+            <Card.Title style={{fontSize:'11px'}}>Name : {props.info.name} </Card.Title>
             <Card.Text style={{fontSize:'10px'}}>
-                Designation: Chief<br/>
-                Department: HR <br/>
-                Contact Number: 17892536<br/>
-                Email: example@bobl.bt
+                Designation:{props.info.designation} <br/>
+                Department: {props.info.department} <br/>
+                Email: {props.info.email}
             </Card.Text>
-            <Button className="btn-primary btn-sm btn-block">Give Feeds</Button>
+            <Button className="btn-primary btn-block" style={{padding:'2px',fontSize:'10px',borderRadius:'50px'}} >Give Feeds</Button>
         </Card.Body>
     </Card>
 )
