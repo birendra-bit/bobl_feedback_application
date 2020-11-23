@@ -14,7 +14,7 @@ const Cards =props =>(
                 Department: {props.info.department} <br/>
                 Email: {props.info.email}
             </Card.Text>
-            <Button className="btn-primary btn-block" style={{padding:'2px',fontSize:'10px',borderRadius:'50px'}} >Give Feeds</Button>
+            <Button className="btn-primary btn-block" style={{padding:'3px',fontSize:'11px',borderRadius:'40px'}} >Give Feeds</Button>
         </Card.Body>
     </Card>
 )
