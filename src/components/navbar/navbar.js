@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
 import Logo from "../../assets/images/BOBLogo.png";
 import UserImage from "../../assets/images/user-male-icon.png";
+import {Link} from 'react-router-dom'
 
 function Navigationbar() {
     const [show, setShow] = useState(false); // show and hide user profile.
@@ -30,9 +31,9 @@ function Navigationbar() {
                 <div className='collapse navbar-collapse align-middle' id='navbarSupportedContent'>
                     <ul className='navbar-nav ml-auto '>
                         <li className='nav-item mt-2' style={{ marginLeft: "20px" }}>
-                            <a className='nav-link' href='.'>
+                            <Link className='nav-link' to='/dashboard'>
                                 <span className='font-weight-bold'>Dashboard</span>
-                            </a>
+                            </Link>
                         </li>
                         <li className='nav-item mt-2' style={{ paddingTop: "10px" }}>
                             <span className='text-md font-weight-bold username' onClick={() => setShow(true)}>

@@ -3,7 +3,7 @@ import Feeds from "../../components/feeds/feeds";
 import { Container, Col, Table, Row } from "react-bootstrap";
 import Navigationbar from "../../components/navbar/navbar";
 
-class FeedBack extends Component {
+class ViewFeedBack extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -87,7 +87,6 @@ class FeedBack extends Component {
               return (
                 <Row key={index}>
                   <Col lg={2}>
-                    {" "}
                     <strong>{x.competency_code}</strong>
                   </Col>
                   <Col lg={10}>
@@ -106,4 +105,4 @@ class FeedBack extends Component {
   }
 }
 
-export default FeedBack;
+export default ViewFeedBack;

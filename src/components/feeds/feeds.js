@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import UL from "./ul";
+import './feeds.css'
+
 
 const feeds = (props) => {
   let ol = (<ol type="A">
@@ -15,7 +16,7 @@ const feeds = (props) => {
           </ol>)
   return (
     <div>
-       <strong>{props.index+1}. </strong><span >{props.data.title}</span>
+       <div className="title"><strong>{props.index+1}. </strong><span >{props.data.title}</span></div>
        {ol}
     </div>
   );
