@@ -7,15 +7,15 @@ const feeds = (props) => {
               {props.data.detail.map((x,i)=>{
                 return <li key={i}>
                   <Row>
-                    <Col lg={8}>{x}</Col>
-                    <Col><span className="badge badge-info">6</span></Col>
+                    <Col lg={10}>{x}</Col>
+                    <Col lg={2}><span className="badge badge-info">6</span></Col>
                   </Row>
                 </li>
               })}
           </ol>)
   return (
     <div>
-       <strong>{props.index+1}</strong> {props.data.title}
+       <strong>{props.index+1}. </strong><span >{props.data.title}</span>
        {ol}
     </div>
   );

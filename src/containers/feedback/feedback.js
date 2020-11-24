@@ -72,7 +72,7 @@ class FeedBack extends Component {
     return (
       <div>
         <Navigationbar />
-        <Container>
+        <Container >
           <Col sm={12} md={12} lg={12} xs={12}>
             <br />
             <span style={{ fontWeight: "bold", color: "#4d79ff" }}>
@@ -86,15 +86,15 @@ class FeedBack extends Component {
             {this.state.data.map((x, index) => {
               return (
                 <Row key={index}>
-                  <Col lg={3}>
+                  <Col lg={2}>
                     {" "}
                     <strong>{x.competency_code}</strong>
                   </Col>
-                  <Col lg={9}>
+                  <Col lg={10}>
                     {x.competency.map((c, i) => {
                       return <Feeds key={i} index={i} data={c} />;
                     })}
-                    <hr />
+                    <hr/>
                   </Col>
                 </Row>
               );
