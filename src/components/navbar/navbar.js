@@ -6,10 +6,9 @@ import Logo from "../../assets/images/BOBLogo.png";
 import UserImage from "../../assets/images/user-male-icon.png";
 
 function Navigationbar() {
-    // this is used to show and hide the modal for user profile.
-    const [show, setShow] = useState(false);
-    // get the user info to fill the user profile modal.
+    const [show, setShow] = useState(false); // show and hide user profile.
     const user_info = {
+        // user info for user profile.
         name: "Birendra",
         designation: "Manager",
         branch: "Thimphu Main Branch",
