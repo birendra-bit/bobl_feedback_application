@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Dashboard from './containers/dashboard/dashboard'
 import Login from './containers/login/login'
+import FeedBack from './containers/feedback/feedback'
 
 
 
@@ -20,6 +21,9 @@ class AppRouter extends Component {
                 </Route>
                 <Route path="/login">
                     <Login />
+                </Route>
+                <Route path="/feedback">
+                    <FeedBack/>
                 </Route>
             </Switch>
         )
