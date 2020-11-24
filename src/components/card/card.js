@@ -11,20 +11,27 @@ const Cards = (props) => (
       src={UserImage}
     ></Card.Img>
     <Card.Body>
-      <Card.Title style={{ fontSize: "11px" }}>
-        {props.info.name}{" "}
-      </Card.Title>
+      <Card.Title style={{ fontSize: "11px" }}>{props.info.name} </Card.Title>
       <Card.Text style={{ fontSize: "10px" }}>
         Designation:{props.info.designation} <br />
         Department: {props.info.department} <br />
         Email: {props.info.email}
       </Card.Text>
-      <Button
-        className="btn-primary btn-block"
-        style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
-      >
-        {props.btnText}
-      </Button>
+      {props.info.feedsGiven ? (
+        <Button
+          className="btn-success btn-block"
+          style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
+        >
+          View Feeds
+        </Button>
+      ) : (
+        <Button
+          className="btn-primary btn-block"
+          style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
+        >
+          Give Feeds
+        </Button>
+      )}
     </Card.Body>
   </Card>
 );

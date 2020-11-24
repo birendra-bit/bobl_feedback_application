@@ -18,6 +18,7 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:true
         },
         {
           name: "abjdls",
@@ -26,6 +27,7 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:false
         },
         {
           name: "abjdls",
@@ -34,6 +36,7 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:true
         },
         {
           name: "abjdls",
@@ -42,6 +45,16 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:false
+        },
+        {
+          name: "abjdls",
+          designation: "Manager",
+          branch: "Thimphu Main Branch",
+          department: "HR",
+          dzongkhag: "Thimphu",
+          feedsGiven:true,
+          email: "example@bobl.bt"
         },
         {
           name: "abjdls",
@@ -50,6 +63,7 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:false
         },
         {
           name: "abjdls",
@@ -58,6 +72,7 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:true
         },
         {
           name: "abjdls",
@@ -66,6 +81,7 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
+          feedsGiven:false
         },
         {
           name: "abjdls",
@@ -74,81 +90,28 @@ class Dashboard extends Component {
           department: "HR",
           dzongkhag: "Thimphu",
           email: "example@bobl.bt",
-        },
-        {
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
+          feedsGiven:true
         },
       ],
       giveFeeds: true,
-      feedsGivenBy: false,
-      feedsGivenTo: false,
+      feedsGiven: false
     };
   }
 
-  feedsGiveHandler = (args) => {
-    this.setState({
-      giveFeeds: true,
-      feedsGivenBy: false,
-      feedsGivenTo: false,
-    });
-  };
-  feedsGivenByHandler = () => {
-    this.setState({
-      giveFeeds: false,
-      feedsGivenBy: true,
-      feedsGivenTo: false,
-    });
-  };
-  feedsGivenToHandler = () => {
-    this.setState({
-      giveFeeds: false,
-      feedsGivenBy: false,
-      feedsGivenTo: true,
-    });
-  };
-  feedsToggleHandler = (args) => {
-    switch (args) {
-      case 1:
-        this.setState({
-          giveFeeds: true,
-          feedsGivenBy: false,
-          feedsGivenTo: false,
-        });
-      case 2:
-        this.setState({
-          giveFeeds: false,
-          feedsGivenBy: true,
-          feedsGivenTo: false,
-        });
-      default:
-        this.setState({
-          giveFeeds: false,
-          feedsGivenBy: false,
-          feedsGivenTo: true,
-        });
-    }
+  feedsToggleHandler = () => {
+    this.setState(preState=>({
+      giveFeeds: !preState.giveFeeds
+    }))
   };
   render() {
-    let giveFeedsCards = this.state.info.map((info, index) => {
+    let cards = this.state.info.map((info, index) => {
       return (
         <Col sm={2} md={2} lg={2} key={index}>
           <Card info={info} btnText="Give Feeds" />
         </Col>
       );
     });
-    let feedsGivenCards = this.state.info.map((info, index) => {
-      return (
-        <Col sm={2} md={2} lg={2} key={index}>
-          <Card info={info} btnText="View Feeds" />
-        </Col>
-      );
-    });
-    let feedGivenBy = <FeedbackGivenBy info={this.state.info} />;
+    let feedsGivenList = <FeedbackGivenBy info={this.state.info} />;
     return (
       <div>
         <Navigationbar />
@@ -158,19 +121,12 @@ class Dashboard extends Component {
           <br />
           <Tab
             giveFeeds={this.state.giveFeeds}
-            feedsGiveHanlder={this.feedsGiveHandler}
-            feedsGivenBy={this.state.feedsGivenBy}
-            feedsGivenByHandler={this.feedsGivenByHandler}
-            feedsGivenTo={this.state.feedsGivenTo}
-            feedsGivenToHandler={this.feedsGivenToHandler}
-            // feedsToggle={this.feedsToggleHandler}
+            feedsToggle={this.feedsToggleHandler}
           />
           <Row>
             <Col sm={12} md={12} lg={12} xs={12}>
               <Row>
-                { this.state.giveFeeds ? giveFeedsCards :'' }
-                { this.state.feedsGivenBy ? feedGivenBy : '' }
-                { this.state.feedsGivenTo ? feedsGivenCards : ''}
+                { this.state.giveFeeds ? cards : feedsGivenList }
               </Row>
             </Col>
             <Col sm={12} md={12} lg={4}></Col>
