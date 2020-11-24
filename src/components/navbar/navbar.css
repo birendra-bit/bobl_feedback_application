@@ -26,8 +26,26 @@ nav a {
 a:hover {
     text-decoration: none;
 }
+
+/* this is for the user name on the navbar */
+.username {
+    color: white;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.user_image {
+    width: 100%
+}
+
+/* this is inside the modal for the user profile. Info for the users */
+.info {
+    color: gray !important;
+}
+
 @media only screen and (max-width: 990px) {
     .profile {
-      display: none;
+        display: none;
     }
-  }
+
+}
