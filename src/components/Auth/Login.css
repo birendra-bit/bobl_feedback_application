@@ -1,6 +1,6 @@
 .login-jumbotron {
   background-color: #ffffff87;
-  padding: 30px 40px 40px 50px;
+  padding: 10px 10px 20px 10px;
 }
 
 /* parent div for the logo image */
@@ -40,4 +40,12 @@
 .login-btn:hover {
   color: #cccccc;
   transition: all 200ms ease;
+}
+.loginBackground {
+  background-image: url("../../assets/images/bob_building.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
