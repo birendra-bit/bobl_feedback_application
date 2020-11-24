@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, Button } from "react-bootstrap";
 import UserImage from "../../assets/images/user-male-icon.png";
 import "./card.css";
