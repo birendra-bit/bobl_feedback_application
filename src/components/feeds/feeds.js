@@ -6,8 +6,9 @@ const feeds = (props) => {
     let tableBody = props.data.map((x,index) =>{
         return (
             <tr key={index}>
-                <td>{x.competency_code}</td>
+                <td rowSpan={x.competency}>{x.competency_code}</td>
             </tr>
+            
         )
     })
   return (
