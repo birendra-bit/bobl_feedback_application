@@ -106,7 +106,7 @@ class Dashboard extends Component {
   render() {
     let cards = this.state.info.map((info, index) => {
       return (
-        <Col sm={2} md={2} lg={2} key={index}>
+        <Col sm={4} md={4} lg={2} key={index}>
           <Card info={info} btnText="Give Feeds" />
         </Col>
       );

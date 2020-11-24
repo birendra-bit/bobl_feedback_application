@@ -1,36 +1,22 @@
 import React from "react";
-import { Row, Col, Table } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import UL from "./ul";
 
 const feeds = (props) => {
-    let tableBody = props.data.map((x,index) =>{
-        return (
-            <tr key={index}>
-                <td rowSpan={x.competency}>{x.competency_code}</td>
-            </tr>
-            
-        )
-    })
+  let ol = (<ol type="A">
+              {props.data.detail.map((x,i)=>{
+                return <li key={i}>
+                  <Row>
+                    <Col lg={8}>{x}</Col>
+                    <Col><span className="badge badge-info">6</span></Col>
+                  </Row>
+                </li>
+              })}
+          </ol>)
   return (
     <div>
-      <br />
-      <span style={{ fontWeight: "bold", color: "#4d79ff" }}>
-        Feedback given to:
-      </span>
-      &nbsp;&nbsp;
-      <span style={{ fontWeight: "bold" }}>
-        Pema Wangmo, HR, Bumthang Branch
-      </span>
-      <hr />
-      <Row>
-        <Col className="overflow-auto">
-          <Table className="table table-bordered">
-            <tbody>
-              {tableBody}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
+       <strong>{props.index+1}</strong> {props.data.title}
+       {ol}
     </div>
   );
 };

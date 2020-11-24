@@ -7,6 +7,7 @@ import { getToken, getUser, removeUserSession, setUserSession } from '../Utils/C
 import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout.js";
+import FeedBack from "../containers/feedback/feedback"
 
 const hist = createBrowserHistory();
 function App() {
@@ -37,8 +38,8 @@ function App() {
             <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/logout" component={Logout} />
+                <Route path="/feedback" component={FeedBack}/>   
                 <PrivateRoute path="/dashboard" component={Dashboard} />
-                    
                 <Redirect to="/login" />
             </Switch>
         </Router>
