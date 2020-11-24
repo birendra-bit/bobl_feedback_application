@@ -1,9 +1,9 @@
 import React from 'react';
-import Navigationbar from '../../components/navbar/navbar'
-import Footer from '../../components/footer/footer'
-import {Container,Col,Row} from 'react-bootstrap'
-import Card from '../../components/card/card'
-
+import Navigationbar from '../../components/navbar/navbar';
+import Footer from '../../components/footer/footer';
+import {Container,Col,Row} from 'react-bootstrap';
+import Card from '../../components/card/card';
+import { getToken } from '../../Utils/Common';
 
 const Dashboard = (props)=>(
     <div>
@@ -28,6 +28,7 @@ const Dashboard = (props)=>(
             <Col sm={12} md={12} lg={4}></Col>
         </Container>
         <Footer/>
+        
     </div>
 )
 
