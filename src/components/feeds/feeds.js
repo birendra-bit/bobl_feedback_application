@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "./feeds.css";
-
+import ScoreBoard from "../score_board/score_board";
 const feeds = (props) => {
     let ol = (
         <ol type='A'>
@@ -13,15 +13,14 @@ const feeds = (props) => {
                                 {x.content}
                                 {x.score ? (
                                     <span className='badge badge-info' style={{ float: "right" }}>
-                                        please rate
+                                        6
                                     </span>
                                 ) : (
-                                    <span className='badge badge-info' style={{ float: "right" }}>
-                                        6
+                                    <span style={{ float: "right" }}>
+                                        <ScoreBoard qid={x.id} class={(x.id, "score")} />
                                     </span>
                                 )}
                             </Col>
-                            {/* <Col lg={2}></Col> */}
                         </Row>
                         <hr />
                     </li>

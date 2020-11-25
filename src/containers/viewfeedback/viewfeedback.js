@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Feeds from "../../components/feeds/feeds";
-import { Container, Col, Table, Row } from "react-bootstrap";
+import { Container, Col, Row, Button } from "react-bootstrap";
 import Navigationbar from "../../components/navbar/navbar";
 
 class ViewFeedBack extends Component {
@@ -14,25 +14,25 @@ class ViewFeedBack extends Component {
                         {
                             title: "To ensure closures and deliver on intended results prudently.",
                             detail: [
-                                { content: "Always conscious about resources against results.", score: 5 },
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q11a" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q11b" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q11c" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q11d" },
                             ],
                         },
                         {
                             title: "To steer and implement changes, and deals with uncertainties.",
                             detail: [
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q12a" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q12b" },
                             ],
                         },
                         {
                             title: "To build organizational capacity and harness individual potentials",
                             detail: [
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q13a" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q13b" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q13c" },
                             ],
                         },
                     ],
@@ -43,20 +43,20 @@ class ViewFeedBack extends Component {
                         {
                             title: "To communicate effectively.",
                             detail: [
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q21a" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q21b" },
                             ],
                         },
                         {
                             title: "To exemplify personal drive and integrity.",
                             detail: [
-                                { content: "Always conscious about resources against results.", score: "" },
-                                { content: "Always conscious about resources against results.", score: "" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q22a" },
+                                { content: "Always conscious about resources against results.", score: "", id: "q22b" },
                             ],
                         },
                         {
                             title: "To cultivate positive and conducive work culture",
-                            detail: [{ content: "Always conscious about resources against results.", score: "" }],
+                            detail: [{ content: "Always conscious about resources against results.", score: "", id: "q23a" }],
                         },
                     ],
                 },
@@ -91,6 +91,7 @@ class ViewFeedBack extends Component {
                                 </React.Fragment>
                             );
                         })}
+                        <Button style={{ background: "#2aa6de", float: "right", marginBottom: "50px" }}>Submit</Button>
                     </Col>
                 </Container>
             </div>
