@@ -41,6 +41,7 @@
   color: #cccccc;
   transition: all 200ms ease;
 }
+
 .loginBackground {
   background-image: url("../../assets/images/bob_building.png");
   background-size: contain;
