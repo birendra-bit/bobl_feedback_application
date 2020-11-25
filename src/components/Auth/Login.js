@@ -23,6 +23,7 @@ function Login(props) {
     }
 
     const handleSubmitClick = (e) => {
+        e.preventDefault();
         const data={
             "usr":state.username,
             "pwd":state.password,
