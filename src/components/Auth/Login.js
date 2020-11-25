@@ -14,6 +14,7 @@ function Login(props) {
     })
 
     const handleChange = (e) => {
+        e.preventDefault();
         const {id , value} = e.target   
         setState(prevState => ({
             ...prevState,
@@ -93,7 +94,7 @@ function Login(props) {
                     type="submit" 
                     className="btn btn-primary"
                     onClick={handleSubmitClick}
-                >Submit</button>
+                >Login</button>
             </form>
             <div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none' }} role="alert">
                 {state.successMessage}
