@@ -6,7 +6,7 @@ import PrivateRoute from "../Utils/PrivateRoute.js";
 import { getToken, getUser, removeUserSession, setUserSession } from '../Utils/Common';
 import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
-import Logout from "./Auth/Logout.js";
+import Logout from "./Auth/Logout";
 import ViewFeedBack from "../containers/viewfeedback/viewfeedback"
 
 const hist = createBrowserHistory();
@@ -38,7 +38,7 @@ function App() {
             <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/logout" component={Logout} />
-                <Route path="/feedback" component={ViewFeedBack}/>   
+                <PrivateRoute path="/feedback/" component={ViewFeedBack}/>   
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Redirect to="/login" />
             </Switch>

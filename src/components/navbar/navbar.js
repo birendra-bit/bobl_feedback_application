@@ -21,9 +21,9 @@ function Navigationbar() {
             <Navbar collapseOnSelect expand='lg' className='nav'>
                 &nbsp; &nbsp;
                 <Navbar.Brand className='mr-auto'>
-                    <a href='./'>
+                    <Link to='/dashboard'>
                         <Image className='logo' src={Logo} />
-                    </a>
+                    </Link>
                 </Navbar.Brand>
                 <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
                     <span className='navbar-toggler-icon'></span>
@@ -31,7 +31,7 @@ function Navigationbar() {
                 <div className='collapse navbar-collapse align-middle' id='navbarSupportedContent'>
                     <ul className='navbar-nav ml-auto '>
                         <li className='nav-item mt-2' style={{ marginLeft: "20px" }}>
-                            <Link className='nav-link' to='/dashboard'>
+                            <Link to='/dashboard' className='nav-link'>
                                 <span className='font-weight-bold'>Dashboard</span>
                             </Link>
                         </li>

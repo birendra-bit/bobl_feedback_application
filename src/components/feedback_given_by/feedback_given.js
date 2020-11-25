@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Table, Col, Container, Row } from "react-bootstrap";
+import { Table, Col} from "react-bootstrap";
+import imgUrl from '../../assets/images/user-male-icon.png'
 
 const feedback_given_by = (props) => {
   let table_head = (
     <thead>
       <tr >
-        <th scope="col">Sl.</th>
+        <th scope="col"></th>
         <th scope="col">Name</th>
         <th scope="col">Designation</th>
         <th scope="col">Branch</th>
@@ -16,8 +17,8 @@ const feedback_given_by = (props) => {
   );
   let table_body = props.info.map((info, index) => {
     return (
-      <tr key={index}>
-        <td scope="row"> {index + 1} </td>
+      <tr key={index} style={{fontSize:'13px'}} >
+        <td scope="row"> <img src={imgUrl} style={{height:'30px',width:'30px', borderRadius:'15px'}}/> </td>
         <td scope="row">{info.name}</td>
         <td scope="row"> {info.designation} </td>
         <td scope="row">{info.branch} </td>

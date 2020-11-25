@@ -5,6 +5,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import Card from "../../components/card/card";
 import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
 import Tab from "../../components/tab/tab";
+import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
 
 class Dashboard extends Component {
   constructor(props = []) {
@@ -12,6 +13,7 @@ class Dashboard extends Component {
     this.state = {
       info: [
         {
+          id:"w121",
           name: "Tshering Dorji Wangchuk",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -21,6 +23,7 @@ class Dashboard extends Component {
           feedsGiven:true
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -30,6 +33,7 @@ class Dashboard extends Component {
           feedsGiven:false
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -39,6 +43,7 @@ class Dashboard extends Component {
           feedsGiven:true
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -48,6 +53,7 @@ class Dashboard extends Component {
           feedsGiven:false
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -57,6 +63,7 @@ class Dashboard extends Component {
           email: "example@bobl.bt"
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -66,6 +73,7 @@ class Dashboard extends Component {
           feedsGiven:false
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -75,6 +83,7 @@ class Dashboard extends Component {
           feedsGiven:true
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -84,6 +93,7 @@ class Dashboard extends Component {
           feedsGiven:false
         },
         {
+          id:"opew",
           name: "abjdls",
           designation: "Manager",
           branch: "Thimphu Main Branch",
@@ -98,11 +108,19 @@ class Dashboard extends Component {
     };
   }
 
-  feedsToggleHandler = () => {
+  //handle toggle
+  giveFeedsToggleHandler = () => {
     this.setState(preState=>({
-      giveFeeds: !preState.giveFeeds
+      giveFeeds: true
+      // feedsGiven: false
     }))
   };
+  feedGivenToggle =()=>{
+    this.setState(preState=>({
+      giveFeeds: false
+      // feedsGiven: true
+    }))
+  }
   render() {
     let cards = this.state.info.map((info, index) => {
       return (
@@ -121,7 +139,8 @@ class Dashboard extends Component {
           <br />
           <Tab
             giveFeeds={this.state.giveFeeds}
-            feedsToggle={this.feedsToggleHandler}
+            giveFeedsToggleHandler={this.giveFeedsToggleHandler}
+            feedGivenToggle = {this.feedGivenToggle}
           />
           <Row>
             <Col sm={12} md={12} lg={12} xs={12}>
