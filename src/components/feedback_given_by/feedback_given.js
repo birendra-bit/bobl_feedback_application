@@ -4,7 +4,7 @@ import { Table, Col, Container, Row } from "react-bootstrap";
 const feedback_given_by = (props) => {
   let table_head = (
     <thead>
-      <tr className="table-dark">
+      <tr >
         <th scope="col">Sl.</th>
         <th scope="col">Name</th>
         <th scope="col">Designation</th>
@@ -28,7 +28,7 @@ const feedback_given_by = (props) => {
   });
   return (
     <Col className="overflow-auto">
-      <Table className="table table-hover overflow-auto">
+      <Table className="table table-hover">
         {table_head}
         <tbody>{table_body}</tbody>
       </Table>
