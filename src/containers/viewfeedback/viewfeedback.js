@@ -72,7 +72,7 @@ class ViewFeedBack extends Component {
     return (
       <div>
         <Navigationbar />
-        <Container >
+        <Container>
           <Col sm={12} md={12} lg={12} xs={12}>
             <br />
             <span style={{ fontWeight: "bold", color: "#4d79ff" }}>
@@ -85,17 +85,20 @@ class ViewFeedBack extends Component {
             <hr />
             {this.state.data.map((x, index) => {
               return (
-                <Row key={index}>
-                  <Col lg={2}>
-                    <strong>{x.competency_code}</strong>
-                  </Col>
-                  <Col lg={10}>
-                    {x.competency.map((c, i) => {
-                      return <Feeds key={i} index={i} data={c} />;
-                    })}
-                    <hr/>
-                  </Col>
-                </Row>
+                <React.Fragment key={index}>
+                  <Row >
+                    <Col lg={2}>
+                      <strong>{x.competency_code}</strong>
+                    </Col>
+                    <Col lg={10}>
+                      {x.competency.map((c, i) => {
+                        return <Feeds key={i} index={i} data={c} />;
+                      })}
+                      {/* <hr/> */}
+                    </Col>
+                  </Row>
+                  <hr />
+                </React.Fragment>
               );
             })}
           </Col>

@@ -7,10 +7,11 @@ const feeds = (props) => {
   let ol = (<ol type="A">
               {props.data.detail.map((x,i)=>{
                 return <li key={i}>
-                  <Row>
-                    <Col lg={10}>{x}</Col>
-                    <Col lg={2}><span className="badge badge-info">6</span></Col>
-                  </Row>
+                    <Row style={{margin:'3px 0'}}>
+                      <Col lg={12}>{x} <span className="badge badge-info" style={{float:'right'}}>6</span></Col>
+                      {/* <Col lg={2}></Col> */}
+                    </Row>
+                    <hr/>
                 </li>
               })}
           </ol>)
