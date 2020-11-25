@@ -17,7 +17,7 @@ const feeds = (props) => {
                                     </span>
                                 ) : (
                                     <span style={{ float: "right" }}>
-                                        <ScoreBoard qid={x.id} class={(x.id, "score")} />
+                                        <ScoreBoard qid={x.id} class={(x.id, "score")} scoreUpdate={props.scoreUpdate} />
                                     </span>
                                 )}
                             </Col>

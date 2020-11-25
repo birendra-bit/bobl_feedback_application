@@ -63,6 +63,20 @@ class ViewFeedBack extends Component {
             ],
         };
     }
+
+    // updates the score on the state
+    scoreUpdate = (id, score) => {
+        this.state.data.map((d) => {
+            return d.competency.map((x) => {
+                return x.detail.map((y) => {
+                    if (y.id === id) {
+                        y.score = score;
+                    }
+                    return true;
+                });
+            });
+        });
+    };
     render() {
         return (
             <div>
@@ -83,7 +97,7 @@ class ViewFeedBack extends Component {
                                         </Col>
                                         <Col lg={10}>
                                             {x.competency.map((c, i) => {
-                                                return <Feeds key={i} index={i} data={c} />;
+                                                return <Feeds key={i} index={i} data={c} scoreUpdate={this.scoreUpdate} />;
                                             })}
                                         </Col>
                                     </Row>
@@ -91,6 +105,7 @@ class ViewFeedBack extends Component {
                                 </React.Fragment>
                             );
                         })}
+                        {/* TODO: need to validate the data and update the database on submit */}
                         <Button style={{ background: "#2aa6de", float: "right", marginBottom: "50px" }}>Submit</Button>
                     </Col>
                 </Container>
