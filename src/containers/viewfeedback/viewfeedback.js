@@ -53,12 +53,11 @@ class ViewFeedBack extends Component {
             });
         });
         if (iscomplete) {
-            //
+            // 
             let data_to_be_posted = {
                 feedback_give_to: this.props.match.params.employee,
                 scores: {},
             };
-            console.log("---->>>>", data_to_be_posted);
             this.state.data.map((d) => {
                 return d.competency.map((x) => {
                     return x.detail.map((y) => {
