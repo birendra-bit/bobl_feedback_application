@@ -69,6 +69,7 @@ class ViewFeedBack extends Component {
     };
   }
   render() {
+    console.log(this.props.match.params.employee)
     return (
       <div>
         <Navigationbar />

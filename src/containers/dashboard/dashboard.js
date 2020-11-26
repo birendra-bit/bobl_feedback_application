@@ -5,104 +5,14 @@ import { Container, Col, Row } from "react-bootstrap";
 import Card from "../../components/card/card";
 import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
 import Tab from "../../components/tab/tab";
-import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+
 
 class Dashboard extends Component {
   constructor(props = []) {
     super(props);
     this.state = {
-      info: [
-        {
-          id:"w121",
-          name: "Tshering Dorji Wangchuk",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:true
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:false
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:true
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:false
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          feedsGiven:true,
-          email: "example@bobl.bt"
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:false
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:true
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:false
-        },
-        {
-          id:"opew",
-          name: "abjdls",
-          designation: "Manager",
-          branch: "Thimphu Main Branch",
-          department: "HR",
-          dzongkhag: "Thimphu",
-          email: "example@bobl.bt",
-          feedsGiven:true
-        },
-      ],
+      giveFeedsData:[],
       giveFeeds: true,
       feedsGiven: false
     };
@@ -112,24 +22,45 @@ class Dashboard extends Component {
   giveFeedsToggleHandler = () => {
     this.setState(preState=>({
       giveFeeds: true
-      // feedsGiven: false
     }))
   };
   feedGivenToggle =()=>{
     this.setState(preState=>({
       giveFeeds: false
-      // feedsGiven: true
     }))
   }
+
+sendGetRequest = async ()=>{
+  const url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
+  const token = sessionStorage.getItem('token')
+  const header ={
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json',
+    'Authorization': "Basic " + token
+  }
+  try{
+    const resp = await axios.get(url+sessionStorage.getItem('user'))
+    this.setState({
+      giveFeedsData:resp.data.message
+    })
+    console.log(this.state.giveFeedsData)
+  }
+  catch (err){
+    console.error(err)
+  }
+}
+  componentDidMount(){
+    this.sendGetRequest()
+  }
   render() {
-    let cards = this.state.info.map((info, index) => {
+    let cards = this.state.giveFeedsData.map((info, index) => {
       return (
-        <Col sm={4} md={4} lg={2} key={index}>
+        <Col sm={4} md={4} lg={3} key={index}>
           <Card info={info} btnText="Give Feeds" />
         </Col>
       );
     });
-    let feedsGivenList = <FeedbackGivenBy info={this.state.info} />;
+    let feedsGivenList = <FeedbackGivenBy info={this.state.giveFeedsData} />;
     return (
       <div>
         <Navigationbar />

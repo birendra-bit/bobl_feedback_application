@@ -12,14 +12,15 @@ const Cards = (props) => (
       src={UserImage}
     ></Card.Img>
     <Card.Body>
-      <Card.Title style={{ fontSize: "11px" }}>{props.info.name} </Card.Title>
+      <Card.Title style={{ fontSize: "11px" }}>{props.info.employee_name} </Card.Title>
       <Card.Text style={{ fontSize: "10px" }}>
         Designation:{props.info.designation} <br />
         Department: {props.info.department} <br />
+        Branch: {props.info.branch}
         Email: {props.info.email}
       </Card.Text>
       {props.info.feedsGiven ? (
-        <Link to={`/feedback/id=${props.id}`}>
+        <Link to={`/feedback/${props.info.employee}`}>
           <Button
             className="btn-success btn-block"
             style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
@@ -28,7 +29,7 @@ const Cards = (props) => (
           </Button>
         </Link>
       ) : (
-        <Link to={`/feedback/id=${props.info.id}`}>
+        <Link to={`/feedback/${props.info.employee}`}>
           <Button
             className="btn-primary btn-block"
             style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
