@@ -1,14 +1,19 @@
 import React, { Component, setState } from "react";
-import AlertModal from "../../components/alert_modal/alert_modal";
 import Feeds from "../../components/feeds/feeds";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Container, Col, Row, Button, Jumbotron } from "react-bootstrap";
 import Navigationbar from "../../components/navbar/navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import "./viewfeedback.css";
+import { $ } from "jquery";
+import { useParams } from "react-router-dom";
 
 class ViewFeedBack extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            show: false,
             user_completed: true,
             data: [
                 {
@@ -67,12 +72,13 @@ class ViewFeedBack extends Component {
         };
     }
 
-    // componentDidMount() {
-    //     axios.get("/api/method/erpnext.feedback_api.get_feedback_employee?user=" + sessionStorage.getItem("user")).then((res) => {
-    //         const persons = res.data;
-    //         console.log(persons);
-    //     });
-    // }
+    componentDidMount() {
+        // axios.get("/api/method/erpnext.feedback_api.get_feedback_employee?user=" + sessionStorage.getItem("user")).then((res) => {
+        //     const persons = res.data;
+        //     console.log(persons);
+        // });
+       
+    }
 
     // updates the score on the state
     scoreUpdate = (id, score) => {
@@ -88,6 +94,7 @@ class ViewFeedBack extends Component {
         });
     };
 
+    // validate if the all the questions have been answered
     validateAndUpdate = () => {
         let iscomplete = true;
         this.state.data.map((d) => {
@@ -102,6 +109,8 @@ class ViewFeedBack extends Component {
         if (iscomplete) {
             console.log("hello");
         } else {
+            alert("please complete all the answer");
+            $(".show_alert").css("display", "none");
         }
     };
 
@@ -109,36 +118,52 @@ class ViewFeedBack extends Component {
         return (
             <div>
                 <Navigationbar />
-                <Container>
-                    <Col sm={12} md={12} lg={12} xs={12}>
-                        <br />
-                        <span style={{ fontWeight: "bold", color: "#4d79ff" }}>Feedback given to:</span>
-                        &nbsp;&nbsp;
-                        <span style={{ fontWeight: "bold" }}>Pema Wangmo, HR, Bumthang Branch</span>
-                        <hr />
-                        {this.state.data.map((x, index) => {
-                            return (
-                                <React.Fragment key={index}>
-                                    <Row>
-                                        <Col lg={2}>
-                                            <strong>{x.competency_code}</strong>
-                                        </Col>
-                                        <Col lg={10}>
-                                            {x.competency.map((c, i) => {
-                                                return <Feeds key={i} index={i} data={c} scoreUpdate={this.scoreUpdate} />;
-                                            })}
-                                        </Col>
-                                    </Row>
-                                    <hr />
-                                </React.Fragment>
-                            );
-                        })}
-                        {/* TODO: make the alert model appear if the questions are imcomplete */}
-                        <AlertModal className='alert_modal' />
-                        <Button style={{ background: "#2aa6de", float: "right", marginBottom: "50px" }} onClick={() => this.validateAndUpdate()}>
-                            Submit
-                        </Button>
+                <Row className='show_alert'>
+                    <Col md={12} lg={12} sm={12} xs={12}>
+                        <Jumbotron id='alert_jumbotron'>
+                            <h1>
+                                Incomplete <FontAwesomeIcon icon={faThumbsDown} style={{ fontSize: "25px", color: "#007bff" }} />
+                            </h1>
+                            <hr />
+                            <h5 style={{ marginBottom: "50px" }}>Please answer all the questions!</h5>
+                            <p>
+                                <Button variant='primary' className='close_button'>
+                                    close
+                                </Button>
+                            </p>
+                        </Jumbotron>
                     </Col>
+                </Row>
+                <Container>
+                    <Row>
+                        <Col sm={12} md={12} lg={12} xs={12}>
+                            <br />
+                            <span style={{ fontWeight: "bold", color: "#4d79ff" }}>Feedback given to:</span>
+                            &nbsp;&nbsp;
+                            <span style={{ fontWeight: "bold" }}>Pema Wangmo, HR, Bumthang Branch</span>
+                            <hr />
+                            {this.state.data.map((x, index) => {
+                                return (
+                                    <React.Fragment key={index}>
+                                        <Row>
+                                            <Col lg={2}>
+                                                <strong>{x.competency_code}</strong>
+                                            </Col>
+                                            <Col lg={10}>
+                                                {x.competency.map((c, i) => {
+                                                    return <Feeds key={i} index={i} data={c} scoreUpdate={this.scoreUpdate} />;
+                                                })}
+                                            </Col>
+                                        </Row>
+                                        <hr />
+                                    </React.Fragment>
+                                );
+                            })}
+                            <Button style={{ background: "#2aa6de", float: "right", marginBottom: "50px" }} onClick={() => this.validateAndUpdate()}>
+                                Submit
+                            </Button>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
         );
