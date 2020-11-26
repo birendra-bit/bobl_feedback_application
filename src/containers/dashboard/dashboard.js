@@ -15,7 +15,8 @@ class Dashboard extends Component {
       giveFeedsData:[],
       reciveFeedsData:[],
       giveFeeds: true,
-      feedsGiven: false
+      feedsGiven: false,
+      userDeatil:{}
     };
   }
 
@@ -31,6 +32,7 @@ class Dashboard extends Component {
     }))
   }
 
+//get give feedback data
 getGiveFeedsData = async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
@@ -43,6 +45,8 @@ getGiveFeedsData = async ()=>{
     alert('something went wrong',err)
   }
 }
+
+//get Receive feeds data
 getReciveFeedsData =async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
   try{
@@ -56,9 +60,25 @@ getReciveFeedsData =async ()=>{
     alert('something went wrong',err)
   }
 }
+
+getUserDetail = async ()=>{
+  let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
+  try{
+    let resp = await axios.get(url+sessionStorage.getItem('user'))
+    console.log(resp)
+    this.setState({
+      userDeatil:resp.data.message[0]
+    })
+    console.log(this.state.userDeatil)
+  }
+  catch (err){
+    alert('something went wrong',err)
+  }
+}
   componentDidMount(){
     this.getGiveFeedsData()
     this.getReciveFeedsData()
+    this.getUserDetail()
   }
   render() {
     let cards = this.state.giveFeedsData.map((info, index) => {
@@ -71,7 +91,7 @@ getReciveFeedsData =async ()=>{
     let feedsGivenList = <FeedbackGivenBy info={this.state.giveFeedsData} />;
     return (
       <div>
-        <Navigationbar />
+        <Navigationbar userDetail = {this.state.userDeatil}/>
         <Container fluid={false}>
           <br />
           <br />

@@ -5,22 +5,17 @@ import "./navbar.css";
 import Logo from "../../assets/images/BOBLogo.png";
 import UserImage from "../../assets/images/user-male-icon.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 
-function Navigationbar() {
+function Navigationbar(props) {
   const [show, setShow] = useState(false); // show and hide user profile.
   const [user_info, set_user_info] = useState({})
-    let url =`/api/method/erpnext.feedback_api.user_detail?user=`
-    let userDetail = axios.get(url+ sessionStorage.getItem('user')).then(res =>{
-      console.log(res)
-    }).catch(err=>{
-      alert('something went wrong')
-    })
-
-    // console.log(userDetail)
-    // set_user_info(userDetail)
- 
+    // let url =`/api/method/erpnext.feedback_api.user_detail?user=`
+    // let userDetail = axios.get(url+ sessionStorage.getItem('user')).then(res =>{
+    //   console.log(res)
+    // }).catch(err=>{
+    //   alert('something went wrong')
+    // })
    
   return (
     <React.Fragment>
@@ -76,22 +71,22 @@ function Navigationbar() {
         <Modal.Body style={{ padding: "20px" }}>
           <Row>
             <Col md={5} lg={5} sm={5} xs={5}>
-              <img src={UserImage} alt="user" className="user_image" />
+              <img src={props.userDetail.image} alt="user" className="user_image" />
             </Col>
             <Col md={7} lg={7} sm={7} xs={7} style={{ marginTop: "20px" }}>
               <p>
-                <span className="info"> Name:  </span> {user_info.name}
+                <span className="info"> Name: </span>{props.userDetail.employee_name} 
               </p>
               <p>
                 <span className="info"> Designation: </span>
-                {user_info.designation}
+                {props.userDetail.designation}
               </p>
               <p>
                 <span className="info"> Department: </span>{" "}
-                {user_info.department}
+                {props.userDetail.department}
               </p>
               <p>
-                <span className="info"> Branch: </span> {user_info.branch}
+                <span className="info"> Branch: </span> {props.userDetail.branch}
               </p>
             </Col>
           </Row>

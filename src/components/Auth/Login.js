@@ -41,7 +41,7 @@ function Login(props) {
                             successMessage: "Login successful. Redirecting to home page..",
                             failedMessage: null,
                         }));
-                        setUserSession(resp.data.api_key, resp.data.api_secret, resp.data.login_id);
+                        setUserSession(resp.data.api_key, resp.data.api_secret, resp.data.login_id, resp.data.full_name);
                         redirectToHome();
                         props.showError(null);
                     })
