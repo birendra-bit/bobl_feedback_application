@@ -1,0 +1,23 @@
+.score {
+    border: solid 1px black;
+    padding: 0px 5px;
+    font-size: large;
+    text-align: center;
+    cursor: pointer;
+    transition: all 100ms ease;
+    font-family: sans-serif;
+    margin: 0 2px;
+    float: left;
+    border-radius: 50%;
+    font-size: smaller;
+}
+
+.score:hover {
+    background-color: #2ade7c;
+    transition: all 100ms ease;
+    color: white;
+}
+
+.score:checked {
+    background: red;
+}
