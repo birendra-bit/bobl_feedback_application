@@ -13,6 +13,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       giveFeedsData:[],
+      reciveFeedsData:[],
       giveFeeds: true,
       feedsGiven: false
     };
@@ -30,27 +31,34 @@ class Dashboard extends Component {
     }))
   }
 
-sendGetRequest = async ()=>{
-  const url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
-  const token = sessionStorage.getItem('token')
-  const header ={
-    'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'application/json',
-    'Authorization': "Basic " + token
-  }
+getGiveFeedsData = async ()=>{
+  let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
-    const resp = await axios.get(url+sessionStorage.getItem('user'))
+    let resp = await axios.get(url+sessionStorage.getItem('user'))
     this.setState({
       giveFeedsData:resp.data.message
     })
-    console.log(this.state.giveFeedsData)
   }
   catch (err){
-    console.error(err)
+    alert('something went wrong',err)
+  }
+}
+getReciveFeedsData =async ()=>{
+  let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
+  try{
+    let resp = await axios.get(url+sessionStorage.getItem('user'))
+    console.log(resp)
+    this.setState({
+      reciveFeedsData:resp.data.message
+    })
+  }
+  catch (err){
+    alert('something went wrong',err)
   }
 }
   componentDidMount(){
-    this.sendGetRequest()
+    this.getGiveFeedsData()
+    this.getReciveFeedsData()
   }
   render() {
     let cards = this.state.giveFeedsData.map((info, index) => {

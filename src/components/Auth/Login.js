@@ -39,12 +39,13 @@ function Login(props) {
             setState((prevState) => ({
               ...prevState,
               successMessage: "Login successful. Redirecting to home page..",
-              failedMessage: null,
+              failedMessage: null
             }));
             setUserSession(
               resp.data.api_key,
               resp.data.api_secret,
-              resp.data.login_id
+              resp.data.login_id,
+              resp.data.full_name
             );
             redirectToHome();
             props.showError(null);

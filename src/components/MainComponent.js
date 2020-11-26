@@ -19,7 +19,7 @@ function App() {
     axios.get("/api/method/frappe.auth.get_loggedin_user_details").then(res=>{      
       if(res.status === 200){
         if(res.data.login_id === getUser()){
-          setUserSession(res.data.api_key, res.data.api_secret, res.data.login_id);
+          setUserSession(res.data.api_key, res.data.api_secret, res.data.login_id, res.data.full_name);
         }
         else{
             removeUserSession();

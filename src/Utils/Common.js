@@ -16,10 +16,12 @@ export const getUser = () => {
   export const removeUserSession = () => {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
+    sessionStorage.removeItem('fullName');
   }
    
   // set the token and user from the session storage
-  export const setUserSession = (token, secret, user) => {
+  export const setUserSession = (token, secret, user, fullName) => {
     sessionStorage.setItem('token', token+":"+secret);
     sessionStorage.setItem('user',user);
+    sessionStorage.setItem('fullName',fullName);
   }

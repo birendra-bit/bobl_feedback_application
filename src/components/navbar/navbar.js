@@ -5,17 +5,23 @@ import "./navbar.css";
 import Logo from "../../assets/images/BOBLogo.png";
 import UserImage from "../../assets/images/user-male-icon.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 function Navigationbar() {
   const [show, setShow] = useState(false); // show and hide user profile.
-  const user_info = {
-    // user info for user profile.
-    name: "Birendra",
-    designation: "Manager",
-    branch: "Thimphu Main Branch",
-    department: "HR",
-  };
+  const [user_info, set_user_info] = useState({})
+    let url =`/api/method/erpnext.feedback_api.user_detail?user=`
+    let userDetail = axios.get(url+ sessionStorage.getItem('user')).then(res =>{
+      console.log(res)
+    }).catch(err=>{
+      alert('something went wrong')
+    })
 
+    // console.log(userDetail)
+    // set_user_info(userDetail)
+ 
+   
   return (
     <React.Fragment>
       <Navbar collapseOnSelect expand="lg" className="nav">
@@ -51,7 +57,7 @@ function Navigationbar() {
                 className="text-md font-weight-bold username"
                 onClick={() => setShow(true)}
               >
-                {sessionStorage.getItem("user")}
+                {sessionStorage.getItem("fullName")}
               </span>
             </li>
             <li className="nav-item username">
@@ -74,7 +80,7 @@ function Navigationbar() {
             </Col>
             <Col md={7} lg={7} sm={7} xs={7} style={{ marginTop: "20px" }}>
               <p>
-                <span className="info"> Name: </span> {user_info.name}
+                <span className="info"> Name:  </span> {user_info.name}
               </p>
               <p>
                 <span className="info"> Designation: </span>
