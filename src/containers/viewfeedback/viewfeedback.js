@@ -1,12 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, setState } from "react";
+import AlertModal from "../../components/alert_modal/alert_modal";
 import Feeds from "../../components/feeds/feeds";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import Navigationbar from "../../components/navbar/navbar";
+import axios from "axios";
 
 class ViewFeedBack extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user_completed: true,
             data: [
                 {
                     competency_code: "CD3: Delivery003",
@@ -64,6 +67,13 @@ class ViewFeedBack extends Component {
         };
     }
 
+    // componentDidMount() {
+    //     axios.get("/api/method/erpnext.feedback_api.get_feedback_employee?user=" + sessionStorage.getItem("user")).then((res) => {
+    //         const persons = res.data;
+    //         console.log(persons);
+    //     });
+    // }
+
     // updates the score on the state
     scoreUpdate = (id, score) => {
         this.state.data.map((d) => {
@@ -77,6 +87,24 @@ class ViewFeedBack extends Component {
             });
         });
     };
+
+    validateAndUpdate = () => {
+        let iscomplete = true;
+        this.state.data.map((d) => {
+            return d.competency.map((x) => {
+                return x.detail.map((y) => {
+                    if (!y.score) {
+                        iscomplete = false;
+                    }
+                });
+            });
+        });
+        if (iscomplete) {
+            console.log("hello");
+        } else {
+        }
+    };
+
     render() {
         return (
             <div>
@@ -105,8 +133,11 @@ class ViewFeedBack extends Component {
                                 </React.Fragment>
                             );
                         })}
-                        {/* TODO: need to validate the data and update the database on submit */}
-                        <Button style={{ background: "#2aa6de", float: "right", marginBottom: "50px" }}>Submit</Button>
+                        {/* TODO: make the alert model appear if the questions are imcomplete */}
+                        <AlertModal className='alert_modal' />
+                        <Button style={{ background: "#2aa6de", float: "right", marginBottom: "50px" }} onClick={() => this.validateAndUpdate()}>
+                            Submit
+                        </Button>
                     </Col>
                 </Container>
             </div>
