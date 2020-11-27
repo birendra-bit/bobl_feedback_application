@@ -14,7 +14,10 @@
     margin: 20px auto 10px auto;
     width: 7rem;
 }
-
+input:hover::placeholder {
+    color: #28a6de;
+    transition: ease 300ms all;
+}
 /* div containing each username div and password */
 .form-group {
     margin-top: 50px;
@@ -43,14 +46,29 @@
     background: #28a6de;
     border: 0;
     padding: 5px 15px;
-    color: white;
+    /* color: white !important; */
     transition: all 200ms ease;
     border-radius: 50px;
 }
-
-/* login-button on hover */
-.login-btn:hover {
-    color: #ffffff;
+.login-btn span {
     transition: all 200ms ease;
-    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+}
+.login-btn span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+    z-index: 1000;
+}
+.login-btn:hover span {
+    padding-right: 25px;
+}
+
+.login-btn:hover span:after {
+    opacity: 1;
+    right: 0;
 }

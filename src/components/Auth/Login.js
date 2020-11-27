@@ -76,7 +76,7 @@ function Login(props) {
                     <img src={Logo} alt='BOB logo' className='login-logo' />
                     <form>
                         <div className='form-group text-left'>
-                            <input type='text' className='form-control' id='username' placeholder='&#xF007; &nbsp; Username' value={state.username} onChange={handleChange} style={{ fontFamily: "Arial, FontAwesome" }} />
+                            <input type='text' className='form-control' id='username' placeholder='&#xF007; Username' value={state.username} onChange={handleChange} style={{ fontFamily: "Arial, FontAwesome" }} />
                         </div>
 
                         <div className='form-group text-left'>
@@ -84,7 +84,7 @@ function Login(props) {
                         </div>
                         <div className='form-check'></div>
                         <button type='submit' className='login-btn' onClick={handleSubmitClick}>
-                            Login
+                            <span style={{ color: "white" }}> Login </span>
                         </button>
                     </form>
                     <div className='alert alert-success mt-2' style={{ display: state.successMessage ? "block" : "none" }} role='alert'>
