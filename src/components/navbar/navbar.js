@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function Navigationbar(props) {
   const [show, setShow] = useState(false); // show and hide user profile.
   const [user_info, set_user_info] = useState({})
-      
+      console.log(props.userDetail.image)
   return (
     <React.Fragment>
       <Navbar collapseOnSelect expand="lg" className="nav">
@@ -53,7 +53,7 @@ function Navigationbar(props) {
               <img
                 alt=""
                 className="profile"
-                src={`api`+props.userDetail.image}
+                src={'http://192.168.70.38'+props.userDetail.image}
                 onClick={() => setShow(true)}
               />
             </li>
@@ -65,7 +65,7 @@ function Navigationbar(props) {
         <Modal.Body style={{ padding: "20px" }}>
           <Row>
             <Col md={5} lg={5} sm={5} xs={5}>
-              <img src={'api'+props.userDetail.image} alt="user" className="user_image" />
+              <img src={'http://192.168.70.38'+ props.userDetail.image} alt="user" className="user_image" />
             </Col>
             <Col md={7} lg={7} sm={7} xs={7} style={{ marginTop: "20px" }}>
               <p>

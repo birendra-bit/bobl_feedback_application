@@ -110,11 +110,12 @@ class ViewFeeds extends Component {
                     src={UserImage}
                   ></Card.Img>
                   <Card.Body>
-                    <Card.Title style={{ fontSize: "11px" }}>
+                    <Card.Title style={{ fontSize: "12px" }}>
                       Pema Wangmo
                     </Card.Title>
-                    <Card.Text style={{ fontSize: "10px" }}>
-                      HR, Bumthang Branch
+                    <Card.Text style={{ fontSize: "12px" }}>
+                    Designation: HR<br/>
+                    Branch: Bumthang Branch
                     </Card.Text>
                   </Card.Body>
                 </Card>

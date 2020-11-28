@@ -9,7 +9,7 @@ const Cards = (props) => (
     <Card.Img
       className="m-auto"
       style={{ width: "70px", height: "70px" }}
-      src={UserImage}
+      src={ UserImage}
     ></Card.Img>
     <Card.Body>
       <Card.Title style={{ fontSize: "11px" }}>{props.info.employee_name} </Card.Title>
