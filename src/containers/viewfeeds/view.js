@@ -34,6 +34,7 @@ class ViewFeeds extends Component {
             childIndex: 0,
           }));
     } else {
+      console.log(this.state.data)
       this.setState({
         isAllSubmitted: true,
       });
@@ -48,19 +49,24 @@ class ViewFeeds extends Component {
   };
   // update score on click
   scoreUpdate = (id, score) => {
-    this.state.data.map((d) => {
-      return d.competency.map((x) => {
-        return x.detail.map((y) => {
-          if (y.id === id) {
-            y.score = score;
-          }
-          return true;
-        });
-      });
-    });
+    let i = this.state.index
+    let j = this.state.childIndex
+    this.state.data[i].competency[j].detail.map(x=>{
+      if (x.id === id) {
+        x.score = score;
+      }
+    })
+    // this.state.data.map((d) => {
+    //   return d.competency.map((x) => {
+    //     return x.detail.map((y) => {
+    //       if (y.id === id) {
+    //         y.score = score;
+    //       }
+    //       return true;
+    //     });
+    //   });
+    // });
   };
-  //submit data
-  submitHandler = () => {};
   getQuestions = async () => {
     try {
       let res = await axios.get(
@@ -104,8 +110,8 @@ class ViewFeeds extends Component {
                   <Col lg={12}>
                     {!this.state.isAllSubmitted ? (
                       <div>
-                        <div>
-                          {this.state.data[this.state.index].corporate_ds}
+                        <div className="m-5 text-center font-weight-bold">
+                          <h3>{this.state.data[this.state.index].corporate_ds}</h3>
                         </div>
                         <View
                           data={
@@ -116,6 +122,7 @@ class ViewFeeds extends Component {
                           incrementIndex={this.incrementIndexHandler}
                           laztId={this.state.lastDataId}
                           scoreUpdate ={this.scoreUpdate}
+                          index={this.state.childIndex}
                         />
                       </div>
                     ) : (
