@@ -40,7 +40,7 @@ function Login(props) {
                         console.log(resp);
                         setState((prevState) => ({
                             ...prevState,
-                            successMessage: "Login successful. Redirecting to home page..",
+                            successMessage: "Login successful. Redirecting to home page.",
                             failedMessage: null,
                         }));
                         setUserSession(resp.data.api_key, resp.data.api_secret, resp.data.login_id);
@@ -56,7 +56,7 @@ function Login(props) {
                 setState((prevState) => ({
                     ...prevState,
                     successMessage: null,
-                    failedMessage: "Login Unsuccessful. Try Again..",
+                    failedMessage: "Login Unsuccessful. Try Again.",
                 }));
             });
     };
@@ -71,9 +71,11 @@ function Login(props) {
 
     return (
         <Container fluid={true} className='loginBackground'>
-            <Row className='justify-content-center h-100 login-jumbotron'>
-                <Col className='card my-auto' md={6} lg={3} sm={10} xs={10}>
-                    <img src={Logo} alt='BOB logo' className='login-logo' />
+            <Row className='justify-content-center login-jumbotron'>
+                <Col className='my-auto' md={6} lg={3} sm={10} xs={10}>
+                    <div style={{ textAlign: "center", marginBottom: "20px" }}>
+                        <img src={Logo} alt='BOB logo' className='login-logo' />
+                    </div>
                     <form>
                         <div className='form-group text-left'>
                             <input type='text' className='form-control' id='username' placeholder='&#xF007; Username' value={state.username} onChange={handleChange} style={{ fontFamily: "Arial, FontAwesome" }} />
@@ -84,13 +86,13 @@ function Login(props) {
                         </div>
                         <div className='form-check'></div>
                         <button type='submit' className='login-btn' onClick={handleSubmitClick}>
-                            <span style={{ color: "white" }}> Login </span>
+                            Login
                         </button>
                     </form>
-                    <div className='alert alert-success mt-2' style={{ display: state.successMessage ? "block" : "none" }} role='alert'>
+                    <div className='alert alert-success mt-2 login-message' style={{ display: state.successMessage ? "block" : "none" }} role='alert'>
                         {state.successMessage}
                     </div>
-                    <div className='alert alert-danger mt-2' style={{ display: state.failedMessage ? "block" : "none" }} role='alert'>
+                    <div className='alert alert-danger mt-2 login-message' style={{ display: state.failedMessage ? "block" : "none" }} role='alert'>
                         {state.failedMessage}
                     </div>
                 </Col>

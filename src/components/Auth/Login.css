@@ -8,67 +8,50 @@
     height: 100vh;
 }
 
+/* div that contains all the login inputs */
+.login-jumbotron {
+    height: 85% !important;
+}
+
 /*logo image */
 .login-logo {
-    text-align: center;
-    margin: 20px auto 10px auto;
     width: 7rem;
 }
+
+/* placeholder in the input */
 input:hover::placeholder {
     color: #28a6de;
     transition: ease 300ms all;
 }
-/* div containing each username div and password */
-.form-group {
-    margin-top: 50px;
-}
 
-/* the white box where you write the credentials */
+/* The white box where you write the credentials */
 .form-control {
-    background: transparent;
+    padding: 20px 20px !important;
+    background: #ffffff8a !important;
     border-bottom: 1px solid #989898;
-    border-radius: 0 !important;
+    border-radius: 50px !important;
     border-top: 0 !important;
     border-right: 0 !important;
     border-left: 0 !important;
 }
 
-/* this is the jumbotron card */
-.card {
-    text-align: center;
-}
-
 /* login-button */
 .login-btn {
-    margin: 30px auto;
+    /* margin: 30px auto; */
+    width: 100%;
     background: #28a6de;
-    border: 0;
+    border-radius: 50px;
     padding: 5px 15px;
     transition: all 300ms ease;
+    border: none;
+    color: white;
 }
 .login-btn:hover {
+    background: #2486b1;
+    letter-spacing: 1px;
+}
+/* error or the success message */
+.login-message {
     border-radius: 50px;
-}
-.login-btn span {
-    transition: all 200ms ease;
-    display: inline-block;
-    position: relative;
-}
-.login-btn span:after {
-    content: "\00bb";
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -10px;
-    transition: 0.5s;
-    z-index: 1000;
-    border: none;
-}
-.login-btn:hover span {
-    padding-right: 25px;
-}
-
-.login-btn:hover span:after {
-    opacity: 1;
-    right: 0;
+    border: 2px solid #d4d4d4;
 }
