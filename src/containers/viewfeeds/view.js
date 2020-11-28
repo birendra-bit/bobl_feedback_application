@@ -4,8 +4,7 @@ import View from "../../components/view/view";
 import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
-import ViewContent from '../../components/view/viewcontent'
-
+import ViewContent from "../../components/view/viewcontent";
 
 class ViewFeeds extends Component {
   constructor(props) {
@@ -14,36 +13,52 @@ class ViewFeeds extends Component {
       userDeatil: {},
       index: -1,
       data: [],
-      childIndex:0
+      childIndex: 0,
+      lastDataId: "",
+      isAllSubmitted: false,
     };
   }
   //increment index to display next data
-  incrementIndexHandler = () => {
-    let pIndex = this.state.index
-    let cIndex = this.state.childIndex
-    let cLength = this.state.data[pIndex].competency.length
-    // console.log(pIndex, cIndex)
-    console.log(this.state.data)
-    cIndex < cLength - 1 ? 
-      this.setState((prevState) => ({
-        childIndex : ++prevState.childIndex
-      })) :
-      this.setState((prevState) => ({
-        index : prevState.index + 1,
-        childIndex: 0
-      }))
-    console.log(this.state.index, this.state.childIndex)
-    // console.log(this.state.index,this.state.childIndex,this.state.data[pIndex].competency[cIndex].length)
+  incrementIndexHandler = (args) => {
+    if (args === "next") {
+      let pIndex = this.state.index;
+      let cIndex = this.state.childIndex;
+      let cLength = this.state.data[pIndex].competency.length;
 
+      cIndex < cLength - 1
+        ? this.setState((prevState) => ({
+            childIndex: ++prevState.childIndex,
+          }))
+        : this.setState((prevState) => ({
+            index: prevState.index + 1,
+            childIndex: 0,
+          }));
+    } else {
+      this.setState({
+        isAllSubmitted: true,
+      });
+    }
   };
   //decrement index to display previous data
   decrementIndexHandler = () => {
     this.setState((prevState) => ({
       childIndex: 0,
-      index: prevState.index - 1
+      index: prevState.index - 1,
     }));
   };
-
+  // update score on click
+  scoreUpdate = (id, score) => {
+    this.state.data.map((d) => {
+      return d.competency.map((x) => {
+        return x.detail.map((y) => {
+          if (y.id === id) {
+            y.score = score;
+          }
+          return true;
+        });
+      });
+    });
+  };
   //submit data
   submitHandler = () => {};
   getQuestions = async () => {
@@ -52,8 +67,12 @@ class ViewFeeds extends Component {
         "/api/method/erpnext.feedback_api.get_competency"
       );
       this.setState({ data: res.data.message, index: 0 });
-
-      // console.log('state : ',this.state.data[0].corporate_ds)
+      let i = this.state.data.length - 1;
+      let j = this.state.data[i].competency.length - 1;
+      let laztId = this.state.data[i].competency[j].detail[0].id;
+      this.setState({
+        lastDataId: laztId,
+      });
     } catch (err) {
       alert("something went wrong", err);
     }
@@ -83,48 +102,25 @@ class ViewFeeds extends Component {
               <Col sm={12} md={12} lg={12} xs={12}>
                 <Row>
                   <Col lg={12}>
-                    <div>{this.state.data[this.state.index].corporate_ds}</div>
-                    {
-                      // this.state.index < this.state.data.length ?
-                       <View data={this.state.data[this.state.index].competency[this.state.childIndex]} />
-                      //  :<ViewContent/>
-                    }
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    {this.state.index > 0 ? (
-                      <Button
-                        className="btn-primary"
-                        onClick={this.decrementIndexHandler}
-                      >
-                        Previous
-                      </Button>
+                    {!this.state.isAllSubmitted ? (
+                      <div>
+                        <div>
+                          {this.state.data[this.state.index].corporate_ds}
+                        </div>
+                        <View
+                          data={
+                            this.state.data[this.state.index].competency[
+                              this.state.childIndex
+                            ]
+                          }
+                          incrementIndex={this.incrementIndexHandler}
+                          laztId={this.state.lastDataId}
+                          scoreUpdate ={this.scoreUpdate}
+                        />
+                      </div>
                     ) : (
-                      ""
+                      <ViewContent />
                     )}
-                    {  this.state.index < this.state.data.length ? (
-                      <Button
-                        className="btn-primary"
-                        onClick={this.incrementIndexHandler}
-                        style={{ float: "right" }}
-                      >
-                        Next
-                      </Button>
-                    ) : (
-                      ""
-                    )}
-                    {/* {this.state.childIndex === this.state.data.length - 1 ? (
-                      <Button
-                        className="btn-primary"
-                        onClick={this.submitHandler}
-                        style={{ float: "right" }}
-                      >
-                        Submit
-                      </Button>
-                    ) : (
-                      ""
-                    )} */}
                   </Col>
                 </Row>
               </Col>
