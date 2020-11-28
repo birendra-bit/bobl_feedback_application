@@ -4,7 +4,7 @@ import "./Login.css";
 import { withRouter } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 import { setUserSession, getToken } from "../../Utils/Common";
-import Logo from "../../assets/images/login-bob-logo-1.png";
+import Logo from "../../assets/images/login-bob-logo.png";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 function Login(props) {
