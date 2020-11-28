@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import View from "../../components/view/view";
 import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import ViewContent from "../../components/view/viewcontent";
+import UserImage from "../../assets/images/user-male-icon.png"
+
 
 class ViewFeeds extends Component {
   constructor(props) {
@@ -34,7 +36,7 @@ class ViewFeeds extends Component {
             childIndex: 0,
           }));
     } else {
-      console.log(this.state.data)
+      console.log(this.state.data);
       this.setState({
         isAllSubmitted: true,
       });
@@ -49,23 +51,13 @@ class ViewFeeds extends Component {
   };
   // update score on click
   scoreUpdate = (id, score) => {
-    let i = this.state.index
-    let j = this.state.childIndex
-    this.state.data[i].competency[j].detail.map(x=>{
+    let i = this.state.index;
+    let j = this.state.childIndex;
+    this.state.data[i].competency[j].detail.map((x) => {
       if (x.id === id) {
         x.score = score;
       }
-    })
-    // this.state.data.map((d) => {
-    //   return d.competency.map((x) => {
-    //     return x.detail.map((y) => {
-    //       if (y.id === id) {
-    //         y.score = score;
-    //       }
-    //       return true;
-    //     });
-    //   });
-    // });
+    });
   };
   getQuestions = async () => {
     try {
@@ -102,16 +94,40 @@ class ViewFeeds extends Component {
     return (
       <React.Fragment>
         <Navigationbar userDetail={this.state.userDeatil} />
-        <Container>
+        <Container fluid={true}>
           {this.state.index >= 0 ? (
             <Row>
-              <Col sm={12} md={12} lg={12} xs={12}>
+              <Col xs={12} sm={12} md={12} lg={2}>
+                <Card
+                  sm={12}
+                  md={12}
+                  lg={4}
+                  className="mt-5 text-center pt-1"
+                >
+                  <Card.Img
+                    className="m-auto"
+                    style={{ width: "70px", height: "70px" }}
+                    src={UserImage}
+                  ></Card.Img>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: "11px" }}>
+                      Pema Wangmo
+                    </Card.Title>
+                    <Card.Text style={{ fontSize: "10px" }}>
+                      HR, Bumthang Branch
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col xs={12} sm={12} md={12} lg={10}>
                 <Row>
                   <Col lg={12}>
                     {!this.state.isAllSubmitted ? (
                       <div>
-                        <div className="m-5 text-center font-weight-bold">
-                          <h3>{this.state.data[this.state.index].corporate_ds}</h3>
+                        <div className="m-2 text-center font-weight-bold">
+                          <h3>
+                            {this.state.data[this.state.index].corporate_ds}
+                          </h3>
                         </div>
                         <View
                           data={
@@ -121,7 +137,7 @@ class ViewFeeds extends Component {
                           }
                           incrementIndex={this.incrementIndexHandler}
                           laztId={this.state.lastDataId}
-                          scoreUpdate ={this.scoreUpdate}
+                          scoreUpdate={this.scoreUpdate}
                           index={this.state.childIndex}
                         />
                       </div>
