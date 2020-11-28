@@ -60,7 +60,7 @@ getReciveFeedsData =async ()=>{
     alert('something went wrong',err)
   }
 }
-
+//get user details
 getUserDetail = async ()=>{
   let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
   try{

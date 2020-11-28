@@ -29,7 +29,7 @@ const Cards = (props) => (
           </Button>
         </Link>
       ) : (
-        <Link to={`/feedback/${props.info.employee}`}>
+        <Link to={`/view/${props.info.employee}`}>
           <Button
             className="btn-primary btn-block"
             style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
