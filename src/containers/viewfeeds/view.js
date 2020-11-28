@@ -94,6 +94,8 @@ class ViewFeeds extends Component {
     return (
       <React.Fragment>
         <Navigationbar userDetail={this.state.userDeatil} />
+        <br/>
+        <br/>
         <Container fluid={true}>
           {this.state.index >= 0 ? (
             <Row>
