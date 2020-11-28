@@ -45,6 +45,7 @@ input:hover::placeholder {
     transition: all 300ms ease;
     border: none;
     color: white;
+    outline: none;
 }
 .login-btn:hover {
     background: #2486b1;
@@ -54,4 +55,7 @@ input:hover::placeholder {
 .login-message {
     border-radius: 50px !important;
     border: none;
+}
+*:focus {
+    outline: 0 !important;
 }
