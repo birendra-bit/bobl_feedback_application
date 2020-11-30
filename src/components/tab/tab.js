@@ -10,14 +10,14 @@ const tab = (props) => {
           className={props.giveFeeds ? "active" : null}
           onClick={props.giveFeedsToggleHandler}
         >
-          Give Feeds
+          Give Feeds &#10146;
         </span>
         &nbsp;&nbsp; | &nbsp;&nbsp;
         <span
           className={props.giveFeeds ? null : "active"}
           onClick={props.feedGivenToggle}
         >
-          Feeds Given By
+          Feeds Given By &#10146;
         </span>
       </div>
       <hr />

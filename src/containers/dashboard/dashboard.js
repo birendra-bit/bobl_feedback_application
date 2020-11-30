@@ -37,7 +37,6 @@ getGiveFeedsData = async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log('data: ',resp)
     this.setState({
       giveFeedsData:resp.data.message
     })
@@ -52,6 +51,7 @@ getReciveFeedsData =async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
+    console.log(resp)
     this.setState({
       reciveFeedsData:resp.data.message
     })
@@ -65,7 +65,6 @@ getUserDetail = async ()=>{
   let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log(resp)
     this.setState({
       userDeatil:resp.data.message[0]
     })
@@ -87,13 +86,11 @@ getUserDetail = async ()=>{
         </Col>
       );
     });
-    let feedsGivenList = <FeedbackGivenBy info={this.state.giveFeedsData} />;
+    let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
     return (
       <div>
         <Navigationbar userDetail = {this.state.userDeatil}/>
         <Container fluid={false}>
-          <br />
-          <br />
           <br />
           <Tab
             giveFeeds={this.state.giveFeeds}

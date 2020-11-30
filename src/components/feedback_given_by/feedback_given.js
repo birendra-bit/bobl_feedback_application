@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { Table, Col} from "react-bootstrap";
-import imgUrl from '../../assets/images/user-male-icon.png'
+import { Table, Col } from "react-bootstrap";
+import imgUrlMale from "../../assets/images/user-male-icon.png";
+import imgUrlFemale from "../../assets/images/female-user.jpeg";
+
 
 const feedback_given_by = (props) => {
   let table_head = (
     <thead>
-      <tr >
+      <tr>
+        <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col">Name</th>
         <th scope="col">Designation</th>
@@ -18,14 +21,35 @@ const feedback_given_by = (props) => {
   );
   let table_body = props.info.map((info, index) => {
     return (
-      <tr key={index} style={{fontSize:'13px'}} >
-        <td scope="row"> <img src={'http://192.168.70.38'+ info.image} style={{height:'30px',width:'30px', borderRadius:'15px'}}/> </td>
+      <tr key={index} style={{ fontSize: "13px" }}>
+        <td scope="row">{index + 1}</td>
+        <td scope="row">
+          {" "}
+          <img
+            src={
+              info.image
+                ? "http://192.168.70.38" + info.image
+                : info.gender === "Male"
+                ? imgUrlMale
+                : imgUrlFemale
+            }
+            style={{ height: "30px", width: "30px", borderRadius: "15px" }}
+          />{" "}
+        </td>
         <td scope="row">{info.employee_name}</td>
         <td scope="row"> {info.designation} </td>
         <td scope="row">{info.branch} </td>
         <td scope="row"> {info.department} </td>
         <td scope="row"> {info.email} </td>
-    <td scope="row">{info.status}</td>
+        <td scope="row">
+          {info.status === "Received" ? (
+            <span style={{ fontWeight: "bolder", color: "green" }}>
+              &#10003;
+            </span>
+          ) : (
+            <span style={{ fontWeight: "bolder", color: "red" }}>&#10007;</span>
+          )}
+        </td>
       </tr>
     );
   });
@@ -35,6 +59,15 @@ const feedback_given_by = (props) => {
         {table_head}
         <tbody>{table_body}</tbody>
       </Table>
+      <span>
+        Received:{" "}
+        <span style={{ fontWeight: "bolder", color: "green" }}>&#10003;</span>{" "}
+      </span>
+      &nbsp;&nbsp;
+      <span>
+        Pending:{" "}
+        <span style={{ fontWeight: "bolder", color: "red" }}>&#10007;</span>
+      </span>
     </Col>
   );
 };

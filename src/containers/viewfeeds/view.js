@@ -98,7 +98,7 @@ class ViewFeeds extends Component {
       <React.Fragment>
         <Navigationbar userDetail={this.state.userDeatil} />
         <br />
-        <br />
+        {/* <br /> */}
         <Container>
           {this.state.index >= 0 ? (
             <Row>
@@ -107,7 +107,7 @@ class ViewFeeds extends Component {
                   <Col lg={12}>
                     {!this.state.isAllSubmitted ? (
                       <div>
-                        <div className="m-2 text-center font-weight-bold">
+                        <div className="m-1 text-center font-weight-bold">
                           <h3>
                             {this.state.data[this.state.index].corporate_ds}
                           </h3>
@@ -134,7 +134,7 @@ class ViewFeeds extends Component {
               </Col>
               {!this.state.isAllSubmitted ? (
                 <Col xs={12} sm={12} md={12} lg={2}>
-                  <Card
+                  <Card border="secondary"
                     sm={12}
                     md={12}
                     lg={4}
