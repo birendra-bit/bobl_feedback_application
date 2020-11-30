@@ -120,7 +120,7 @@ class ViewFeeds extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navigationbar userDetail={this.state.userDeatil} />
+                <Navigationbar />
                 <br />
                 <br />
                 <Container>

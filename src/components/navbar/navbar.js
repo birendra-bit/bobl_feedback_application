@@ -5,7 +5,6 @@ import "./navbar.css";
 import Logo from "../../assets/images/navbar-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { render } from "react-dom";
 
 class Navigationbar extends Component {
     constructor(props = []) {
