@@ -15,8 +15,7 @@ const Cards = (props) => (
       <Card.Title style={{ fontSize: "11px" }}>{props.info.employee_name} </Card.Title>
       <Card.Text style={{ fontSize: "10px" }}>
         Designation:{props.info.designation} <br />
-        Department: {props.info.department} <br />
-        Branch: {props.info.branch}
+        Branch: {props.info.branch}<br/>
         Email: {props.info.email}
       </Card.Text>
       {props.info.feedsGiven ? (
