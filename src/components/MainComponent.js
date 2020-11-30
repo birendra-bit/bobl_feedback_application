@@ -8,6 +8,7 @@ import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout";
 import ViewFeedBack from "../containers/viewfeedback/viewfeedback"
+import ViewFeeds from "../containers/viewfeeds/view"
 
 const hist = createBrowserHistory();
 function App() {
@@ -38,7 +39,8 @@ function App() {
             <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/logout" component={Logout} />
-                <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>   
+                {/* <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>  */}
+                <PrivateRoute exact path="/view/:employee" component={ViewFeeds}/>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Redirect to="/login" />
             </Switch>

@@ -37,6 +37,7 @@ getGiveFeedsData = async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
+    console.log(resp)
     this.setState({
       giveFeedsData:resp.data.message
     })
@@ -51,7 +52,6 @@ getReciveFeedsData =async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log(resp)
     this.setState({
       reciveFeedsData:resp.data.message
     })
@@ -60,7 +60,7 @@ getReciveFeedsData =async ()=>{
     alert('something went wrong',err)
   }
 }
-
+//get user details
 getUserDetail = async ()=>{
   let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
   try{
@@ -69,7 +69,6 @@ getUserDetail = async ()=>{
     this.setState({
       userDeatil:resp.data.message[0]
     })
-    console.log(this.state.userDeatil)
   }
   catch (err){
     alert('something went wrong',err)

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "./viewfeedback.css";
-import { $ } from "jquery";
+
 
 class ViewFeedBack extends Component {
   constructor(props) {
