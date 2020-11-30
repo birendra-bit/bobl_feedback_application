@@ -4,6 +4,8 @@ import "./Login.css";
 import { withRouter } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 import { setUserSession, getToken } from "../../Utils/Common";
+import Logo from "../../assets/images/login-bob-logo.png";
+import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 function Login(props) {
     const [state, setState] = useState({
@@ -38,7 +40,7 @@ function Login(props) {
                         console.log(resp);
                         setState((prevState) => ({
                             ...prevState,
-                            successMessage: "Login successful. Redirecting to home page..",
+                            successMessage: "Login successful. Redirecting to home page.",
                             failedMessage: null,
                         }));
                         setUserSession(resp.data.api_key, resp.data.api_secret, resp.data.login_id);
@@ -54,7 +56,7 @@ function Login(props) {
                 setState((prevState) => ({
                     ...prevState,
                     successMessage: null,
-                    failedMessage: "Login Unsuccessful. Try Again..",
+                    failedMessage: "Login Unsuccessful. Try Again.",
                 }));
             });
     };
@@ -69,29 +71,29 @@ function Login(props) {
 
     return (
         <Container fluid={true} className='loginBackground'>
-            <Row className='justify-content-md-center h-100'>
-                <Col md={3} lg={3} sm={12} xs={12} className='my-auto'>
-                    <div className='card col-12 col-md-9'>
-                        <form>
-                            <div className='form-group text-left'>
-                                <label htmlFor='exampleInputEmail1'>Username</label>
-                                <input type='text' className='form-control' id='username' placeholder='Username' value={state.username} onChange={handleChange} />
-                            </div>
-                            <div className='form-group text-left'>
-                                <label htmlFor='exampleInputPassword1'>Password</label>
-                                <input type='password' className='form-control' id='password' placeholder='Password' value={state.password} onChange={handleChange} />
-                            </div>
-                            <div className='form-check'></div>
-                            <button type='submit' className='btn btn-primary' onClick={handleSubmitClick}>
-                                Login
-                            </button>
-                        </form>
-                        <div className='alert alert-success mt-2' style={{ display: state.successMessage ? "block" : "none" }} role='alert'>
-                            {state.successMessage}
+            <Row className='justify-content-center login-jumbotron'>
+                <Col className='my-auto' md={6} lg={3} sm={10} xs={10}>
+                    <div style={{ textAlign: "center", marginBottom: "20px" }}>
+                        <img src={Logo} alt='BOB logo' className='login-logo' />
+                    </div>
+                    <form>
+                        <div className='form-group text-left'>
+                            <input type='text' className='form-control' id='username' placeholder='&#xF007; Username' value={state.username} onChange={handleChange} style={{ fontFamily: "Arial, FontAwesome" }} />
                         </div>
-                        <div className='alert alert-danger mt-2' style={{ display: state.failedMessage ? "block" : "none" }} role='alert'>
-                            {state.failedMessage}
+
+                        <div className='form-group text-left'>
+                            <input type='password' className='form-control' id='password' placeholder='&#xF13E; &nbsp; Password' value={state.password} onChange={handleChange} style={{ fontFamily: "Arial, FontAwesome" }} />
                         </div>
+                        <div className='form-check'></div>
+                        <button type='submit' className='login-btn' onClick={handleSubmitClick}>
+                            Login
+                        </button>
+                    </form>
+                    <div className='alert alert-success mt-2 login-message' style={{ display: state.successMessage ? "block" : "none" }} role='alert'>
+                        {state.successMessage}
+                    </div>
+                    <div className='alert alert-danger mt-2 login-message' style={{ display: state.failedMessage ? "block" : "none" }} role='alert'>
+                        {state.failedMessage}
                     </div>
                 </Col>
             </Row>

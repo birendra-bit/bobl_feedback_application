@@ -53,7 +53,7 @@ class ViewFeedBack extends Component {
             });
         });
         if (iscomplete) {
-            // 
+            //
             let data_to_be_posted = {
                 feedback_give_to: this.props.match.params.employee,
                 scores: {},
@@ -66,6 +66,7 @@ class ViewFeedBack extends Component {
                     });
                 });
             });
+            console.log("--->", data_to_be_posted);
         } else {
             // TODO: NEED TO ACTUALLY MAKE IT A MODAL
             alert("please complete all the answer");

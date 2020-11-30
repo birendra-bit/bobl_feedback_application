@@ -7,6 +7,10 @@
     /* height:5rem */
 }
 
+.navbar-logo-container {
+    margin-left: 50px
+}
+
 .logo {
     width: 5rem;
 }
@@ -46,6 +50,10 @@ a:hover {
 @media only screen and (max-width: 990px) {
     .profile {
         display: none;
+    }
+
+    .navbar-logo-container {
+        margin-left: 0
     }
 
 }
