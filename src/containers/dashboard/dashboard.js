@@ -37,7 +37,7 @@ getGiveFeedsData = async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log(resp)
+    console.log('data: ',resp)
     this.setState({
       giveFeedsData:resp.data.message
     })

@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 const Cards = (props) => (
   <Card sm={12} md={12} lg={4} className="m-1 text-center pt-1 card">
     <Card.Img
-      className="m-auto"
-      style={{ width: "70px", height: "70px" }}
-      src={ UserImage}
-    ></Card.Img>
+      
+      style={{ width: "90px", height: "90px", borderRadius:'50%', margin:'15px auto 0px auto' }}
+      src={ 'http://192.168.70.38' + props.info.image}
+    />
     <Card.Body>
       <Card.Title style={{ fontSize: "11px" }}>{props.info.employee_name} </Card.Title>
       <Card.Text style={{ fontSize: "10px" }}>
