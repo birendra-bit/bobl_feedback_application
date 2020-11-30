@@ -96,32 +96,9 @@ class ViewFeeds extends Component {
         <Navigationbar userDetail={this.state.userDeatil} />
         <br/>
         <br/>
-        <Container fluid={true}>
+        <Container>
           {this.state.index >= 0 ? (
             <Row>
-              <Col xs={12} sm={12} md={12} lg={2}>
-                <Card
-                  sm={12}
-                  md={12}
-                  lg={4}
-                  className="mt-5 text-center pt-1"
-                >
-                  <Card.Img
-                    className="m-auto"
-                    style={{ width: "70px", height: "70px" }}
-                    src={UserImage}
-                  ></Card.Img>
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "12px" }}>
-                      Pema Wangmo
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "12px" }}>
-                    Designation: HR<br/>
-                    Branch: Bumthang Branch
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
               <Col xs={12} sm={12} md={12} lg={10}>
                 <Row>
                   <Col lg={12}>
@@ -149,6 +126,29 @@ class ViewFeeds extends Component {
                     )}
                   </Col>
                 </Row>
+              </Col>
+              <Col xs={12} sm={12} md={12} lg={2}>
+                <Card
+                  sm={12}
+                  md={12}
+                  lg={4}
+                  className="mt-5 text-center pt-1"
+                >
+                  <Card.Img
+                    className="m-auto"
+                    style={{ width: "70px", height: "70px" }}
+                    src={UserImage}
+                  ></Card.Img>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: "12px" }}>
+                      Pema Wangmo
+                    </Card.Title>
+                    <Card.Text style={{ fontSize: "12px" }}>
+                    Designation: HR<br/>
+                    Branch: Bumthang Branch
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
               </Col>
             </Row>
           ) : (

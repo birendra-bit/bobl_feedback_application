@@ -25,7 +25,7 @@ const feedback_given_by = (props) => {
         <td scope="row">{info.branch} </td>
         <td scope="row"> {info.department} </td>
         <td scope="row"> {info.email} </td>
-        <td scope="row">Received</td>
+    <td scope="row">{info.status}</td>
       </tr>
     );
   });
