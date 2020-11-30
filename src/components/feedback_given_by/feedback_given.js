@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Table, Col } from "react-bootstrap";
 import imgUrlMale from "../../assets/images/user-male-icon.png";
 import imgUrlFemale from "../../assets/images/female-user.jpeg";
-
+import Pagination from '../pagination/pagination'
 
 const feedback_given_by = (props) => {
   let table_head = (
@@ -68,6 +68,7 @@ const feedback_given_by = (props) => {
         Pending:{" "}
         <span style={{ fontWeight: "bolder", color: "red" }}>&#10007;</span>
       </span>
+      <Pagination/>
     </Col>
   );
 };
