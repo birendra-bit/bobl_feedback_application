@@ -4,7 +4,7 @@ import "./feeds.css";
 import ScoreBoard from "../score_board/score_board";
 const feeds = (props) => {
     let ol = (
-        <ol type='A'>
+        <ol style={{ listStyleType: "none" }}>
             {props.data.detail.map((x, i) => {
                 return (
                     <li key={i}>
