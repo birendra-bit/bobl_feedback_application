@@ -21,15 +21,12 @@ class Navigationbar extends Component {
         let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
         try {
             let resp = await axios.get(url + sessionStorage.getItem("user"));
-            console.log(resp);
             this.setState({
                 userDetail: resp.data.message[0],
             });
         } catch (err) {
             alert("something went wrong", err);
         }
-        // console.log("====>", this.state.userDeatil);
-        console.log("====>", this.state.userDetail.image);
     };
     render() {
         return (
