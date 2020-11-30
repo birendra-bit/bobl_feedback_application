@@ -3,7 +3,6 @@ import { Navbar, Button, Image, Modal, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
 import Logo from "../../assets/images/navbar-logo.png";
-import UserImage from "../../assets/images/user-male-icon.png";
 import { Link } from "react-router-dom";
 
 

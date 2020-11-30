@@ -69,7 +69,6 @@ class ViewFeedBack extends Component {
             iscomplete = false;
           }
         });
-<<<<<<< HEAD
       });
     });
     if (iscomplete) {
@@ -91,28 +90,6 @@ class ViewFeedBack extends Component {
       alert("please complete all the answer");
     }
   };
-=======
-        if (iscomplete) {
-            //
-            let data_to_be_posted = {
-                feedback_give_to: this.props.match.params.employee,
-                scores: {},
-            };
-            this.state.data.map((d) => {
-                return d.competency.map((x) => {
-                    return x.detail.map((y) => {
-                        data_to_be_posted.scores[y.id] = y.score;
-                        // NEED TO SEND THE DATA TO POST API
-                    });
-                });
-            });
-            console.log("--->", data_to_be_posted);
-        } else {
-            // TODO: NEED TO ACTUALLY MAKE IT A MODAL
-            alert("please complete all the answer");
-        }
-    };
->>>>>>> 119cfacad670a3fe4fb6e44c3b3bd9f53d67377f
 
   render() {
     return (
