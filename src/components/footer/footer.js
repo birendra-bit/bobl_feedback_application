@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
-import Logo from "../../assets/images/login-bob-logo.png";
+import Logo from "../../assets/images/navbar-logo.png";
 import { Col } from "react-bootstrap";
 
 const Footer = (props) => (
@@ -11,7 +11,8 @@ const Footer = (props) => (
         <br />
         <footer className='footer text-center font-weight-bold'>
             <Col md={12} lg={12} sm={12} xs={12}>
-                Copyright © 2020 Bank of Bhutan. All rights reserved. <img src={Logo} className='footer-logo' />
+                <img src={Logo} className='footer-logo' alt='footer-logo' />
+                <p style={{ marginBottom: "0", fontSize: "10px" }}>Copyright © 2020 Bank of Bhutan All rights reserved.</p>
             </Col>
         </footer>
     </React.Fragment>
