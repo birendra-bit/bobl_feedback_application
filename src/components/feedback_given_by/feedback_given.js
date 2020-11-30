@@ -11,7 +11,8 @@ const feedback_given_by = (props) => {
         <th scope="col">Designation</th>
         <th scope="col">Branch</th>
         <th scope="col">Department</th>
-        <th scope="col">Dzongkhag</th>
+        <th scope="col">Email</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
   );
@@ -19,11 +20,12 @@ const feedback_given_by = (props) => {
     return (
       <tr key={index} style={{fontSize:'13px'}} >
         <td scope="row"> <img src={imgUrl} style={{height:'30px',width:'30px', borderRadius:'15px'}}/> </td>
-        <td scope="row">{info.name}</td>
+        <td scope="row">{info.employee_name}</td>
         <td scope="row"> {info.designation} </td>
         <td scope="row">{info.branch} </td>
         <td scope="row"> {info.department} </td>
-        <td scope="row">{info.dzongkhag}</td>
+        <td scope="row"> {info.email} </td>
+        <td scope="row">Received</td>
       </tr>
     );
   });

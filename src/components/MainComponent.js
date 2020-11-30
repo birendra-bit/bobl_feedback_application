@@ -8,6 +8,7 @@ import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout";
 import ViewFeedBack from "../containers/viewfeedback/viewfeedback"
+import ViewFeeds from "../containers/viewfeeds/view"
 
 const hist = createBrowserHistory();
 function App() {
@@ -19,7 +20,7 @@ function App() {
     axios.get("/api/method/frappe.auth.get_loggedin_user_details").then(res=>{      
       if(res.status === 200){
         if(res.data.login_id === getUser()){
-          setUserSession(res.data.api_key, res.data.api_secret, res.data.login_id);
+          setUserSession(res.data.api_key, res.data.api_secret, res.data.login_id, res.data.full_name);
         }
         else{
             removeUserSession();
@@ -38,7 +39,8 @@ function App() {
             <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/logout" component={Logout} />
-                <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>   
+                {/* <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>  */}
+                <PrivateRoute exact path="/view/:employee" component={ViewFeeds}/>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Redirect to="/login" />
             </Switch>

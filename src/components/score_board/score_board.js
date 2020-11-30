@@ -5,7 +5,6 @@ import $ from "jquery";
 
 function Score(props) {
     function handleChange(id) {
-        console.log(id);
         $("." + props.qid).css("background", "transparent");
         $("." + props.qid).css("color", "black");
         $("#" + id).css("background", "#28a745");

@@ -13,8 +13,10 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       giveFeedsData:[],
+      reciveFeedsData:[],
       giveFeeds: true,
-      feedsGiven: false
+      feedsGiven: false,
+      userDeatil:{}
     };
   }
 
@@ -30,27 +32,52 @@ class Dashboard extends Component {
     }))
   }
 
-sendGetRequest = async ()=>{
-  const url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
-  const token = sessionStorage.getItem('token')
-  const header ={
-    'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'application/json',
-    'Authorization': "Basic " + token
-  }
+//get give feedback data
+getGiveFeedsData = async ()=>{
+  let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
-    const resp = await axios.get(url+sessionStorage.getItem('user'))
+    let resp = await axios.get(url+sessionStorage.getItem('user'))
+    console.log('data: ',resp)
     this.setState({
       giveFeedsData:resp.data.message
     })
-    console.log(this.state.giveFeedsData)
   }
   catch (err){
-    console.error(err)
+    alert('something went wrong',err)
+  }
+}
+
+//get Receive feeds data
+getReciveFeedsData =async ()=>{
+  let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
+  try{
+    let resp = await axios.get(url+sessionStorage.getItem('user'))
+    this.setState({
+      reciveFeedsData:resp.data.message
+    })
+  }
+  catch (err){
+    alert('something went wrong',err)
+  }
+}
+//get user details
+getUserDetail = async ()=>{
+  let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
+  try{
+    let resp = await axios.get(url+sessionStorage.getItem('user'))
+    console.log(resp)
+    this.setState({
+      userDeatil:resp.data.message[0]
+    })
+  }
+  catch (err){
+    alert('something went wrong',err)
   }
 }
   componentDidMount(){
-    this.sendGetRequest()
+    this.getGiveFeedsData()
+    this.getReciveFeedsData()
+    this.getUserDetail()
   }
   render() {
     let cards = this.state.giveFeedsData.map((info, index) => {
@@ -63,7 +90,7 @@ sendGetRequest = async ()=>{
     let feedsGivenList = <FeedbackGivenBy info={this.state.giveFeedsData} />;
     return (
       <div>
-        <Navigationbar />
+        <Navigationbar userDetail = {this.state.userDeatil}/>
         <Container fluid={false}>
           <br />
           <br />
