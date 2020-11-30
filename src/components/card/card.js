@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import UserImage from "../../assets/images/user-male-icon.png";
 import "./card.css";
 import { Link } from "react-router-dom";
+
 
 const Cards = (props) => (
   <Card sm={12} md={12} lg={4} className="m-1 text-center pt-1 card">

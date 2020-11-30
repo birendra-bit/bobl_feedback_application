@@ -3,6 +3,7 @@ span{
     font-weight: bold;
     font-size:15px;
     color: #808080;
+    cursor: pointer;
 }
 .active{
     color: blue;

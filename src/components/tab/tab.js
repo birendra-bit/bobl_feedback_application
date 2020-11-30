@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const tab = (props) => {
   return (
     <div>
-      <div className="d-flex">
+      <div className="d-flex tab">
         <span
           className={props.giveFeeds ? "active" : null}
           onClick={props.giveFeedsToggleHandler}

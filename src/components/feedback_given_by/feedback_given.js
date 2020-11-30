@@ -19,7 +19,7 @@ const feedback_given_by = (props) => {
   let table_body = props.info.map((info, index) => {
     return (
       <tr key={index} style={{fontSize:'13px'}} >
-        <td scope="row"> <img src={imgUrl} style={{height:'30px',width:'30px', borderRadius:'15px'}}/> </td>
+        <td scope="row"> <img src={'http://192.168.70.38'+ info.image} style={{height:'30px',width:'30px', borderRadius:'15px'}}/> </td>
         <td scope="row">{info.employee_name}</td>
         <td scope="row"> {info.designation} </td>
         <td scope="row">{info.branch} </td>
