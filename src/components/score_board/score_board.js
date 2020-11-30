@@ -10,9 +10,9 @@ function Score(props) {
         $("." + props.qid).css("color", "black");
         $("#" + id).css("background", "#28a745");
         $("#" + id).css("color", "white");
-        $("#" + id).addClass("active");
     }
     let class_name = props.qid + " score";
+    console.log("this is the class name: =>", class_name);
     return (
         <React.Fragment>
             <p

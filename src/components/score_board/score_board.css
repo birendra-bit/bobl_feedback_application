@@ -17,7 +17,3 @@
     transition: all 100ms ease;
     color: white;
 }
-
-.score:checked {
-    background: red;
-}
