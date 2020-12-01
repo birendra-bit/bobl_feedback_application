@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import View from "../../components/view/view";
+import View from "../../components/view/givefeedback";
 import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";

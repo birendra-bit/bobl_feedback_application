@@ -7,9 +7,7 @@ import { getToken, getUser, removeUserSession, setUserSession } from "../Utils/C
 import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout";
-import ViewFeeds from "../containers/viewfeeds/view"
 import Navigation from "../components/navbar/navbar"
-// import ViewFeedBack from "../containers/viewfeedback/viewfeedback";
 import GiveFeeds from "../containers/givefeeds/givefeeds";
 
 const hist = createBrowserHistory();
