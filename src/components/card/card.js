@@ -4,6 +4,10 @@ import "./card.css";
 import { Link } from "react-router-dom";
 import imgUrlMale from "../../assets/images/user-male-icon.png";
 import imgUrlFemale from "../../assets/images/female-user.jpeg";
+import Red from "../../assets/images/red.png";
+import Green from "../../assets/images/green.png";
+import Blue from "../../assets/images/blue.png";
+import Brown from "../../assets/images/brown.png";
 
 const Cards = (props) => (
     <Card sm={12} md={12} lg={4} className='m-1 text-center pt-1 card'>
@@ -19,12 +23,16 @@ const Cards = (props) => (
         <Card.Body>
             <Card.Title style={{ fontSize: "11px" }}>{props.info.employee_name} </Card.Title>
             <Card.Text style={{ fontSize: "10px" }}>
-                Designation:{props.info.designation} <br />
-                Department:{props.info.department}
+                <img src={Red} className='color-bio-info' alt='designation' />
+                {props.info.designation} <br />
+                <img src={Green} className='color-bio-info' alt='' />
+                {props.info.department}
                 <br />
-                Branch: {props.info.branch}
+                <img src={Blue} className='color-bio-info' alt='red-color' />
+                {props.info.branch}
                 <br />
-                Email: {props.info.email}
+                <img src={Brown} className='color-bio-info' alt='red-color' />
+                {props.info.email}
             </Card.Text>
             {props.info.status === "Pending" ? (
                 <Link to={`/feedback/${props.info.employee}`}>
