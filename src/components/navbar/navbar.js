@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 function Navigationbar(props) {
   const [show, setShow] = useState(false); // show and hide user profile.
   const [user_info, set_user_info] = useState({})
-      console.log(props.userDetail.image)
   return (
     <React.Fragment>
       <Navbar collapseOnSelect expand="lg" className="nav">

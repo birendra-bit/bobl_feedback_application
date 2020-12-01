@@ -22,33 +22,33 @@ class Dashboard extends Component {
 
   //handle toggle
   giveFeedsToggleHandler = () => {
-    this.setState(preState=>({
+    this.setState({
       giveFeeds: true
-    }))
+    })
   };
   feedGivenToggle =()=>{
-    this.setState(preState=>({
+    this.setState({
       giveFeeds: false
-    }))
+    })
   }
 
 //get give feedback data
-getGiveFeedsData = async ()=>{
+getGiveFeedsUserData = async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log('data: ',resp)
+    console.log(resp)
     this.setState({
       giveFeedsData:resp.data.message
     })
   }
   catch (err){
-    alert('something went wrong',err)
+    console.error(err)
   }
 }
 
 //get Receive feeds data
-getReciveFeedsData =async ()=>{
+getReciveFeedsUserData =async ()=>{
   let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
@@ -57,7 +57,7 @@ getReciveFeedsData =async ()=>{
     })
   }
   catch (err){
-    alert('something went wrong',err)
+    console.error(err)
   }
 }
 //get user details
@@ -65,18 +65,17 @@ getUserDetail = async ()=>{
   let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
   try{
     let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log(resp)
     this.setState({
       userDeatil:resp.data.message[0]
     })
   }
   catch (err){
-    alert('something went wrong',err)
+    console.error(err)
   }
 }
   componentDidMount(){
-    this.getGiveFeedsData()
-    this.getReciveFeedsData()
+    this.getGiveFeedsUserData()
+    this.getReciveFeedsUserData()
     this.getUserDetail()
   }
   render() {
@@ -87,13 +86,11 @@ getUserDetail = async ()=>{
         </Col>
       );
     });
-    let feedsGivenList = <FeedbackGivenBy info={this.state.giveFeedsData} />;
+    let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
     return (
       <div>
         <Navigationbar userDetail = {this.state.userDeatil}/>
         <Container fluid={false}>
-          <br />
-          <br />
           <br />
           <Tab
             giveFeeds={this.state.giveFeeds}
