@@ -74,7 +74,7 @@ class ViewFeeds extends Component {
             "Content-Type": "application/json",
         };
         try {
-            const resp = await axios.post("/api/resource/Feedback", data_to_be_posted, header);
+            await axios.post("/api/resource/Feedback", data_to_be_posted, header);
         } catch (err) {
             console.error(err);
         }
