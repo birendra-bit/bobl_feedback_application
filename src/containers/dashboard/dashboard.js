@@ -7,86 +7,75 @@ import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
 import Tab from "../../components/tab/tab";
 import axios from "axios";
 
-class Dashboard extends Component {
-    constructor(props = []) {
-        super(props);
-        this.state = {
-            giveFeedsData: [],
-            reciveFeedsData: [],
-            giveFeeds: true,
-            feedsGiven: false,
-        };
-    }
 
-    //handle toggle
-    giveFeedsToggleHandler = () => {
-        this.setState((preState) => ({
-            giveFeeds: true,
-        }));
+
+class Dashboard extends Component {
+  constructor(props = []) {
+    super(props);
+    this.state = {
+      giveFeedsData: [],
+      reciveFeedsData: [],
+      giveFeeds: true,
+      feedsGiven: false
     };
-    feedGivenToggle = () => {
-        this.setState((preState) => ({
-            giveFeeds: false,
-        }));
-    };
+  }
 
   //handle toggle
   giveFeedsToggleHandler = () => {
     this.setState({
-      giveFeeds: true
-    })
+      giveFeeds: true,
+    });
   };
-  feedGivenToggle =()=>{
-    this.setState({
-      giveFeeds: false
-    })
-  }
+  feedGivenToggle = () => {
+    this.setState((preState) => ({
+      giveFeeds: false,
+    }));
+  };
 
-//get give feedback data
-getGiveFeedsUserData = async ()=>{
-  let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`
-  try{
-    let resp = await axios.get(url+sessionStorage.getItem('user'))
-    console.log(resp)
+  //handle toggle
+  giveFeedsToggleHandler = () => {
     this.setState({
-      giveFeedsData:resp.data.message
-    })
-  }
-  catch (err){
-    console.error(err)
-  }
-}
+      giveFeeds: true,
+    });
+  };
+  feedGivenToggle = () => {
+    this.setState({
+      giveFeeds: false,
+    });
+  };
 
-//get Receive feeds data
-getReciveFeedsUserData =async ()=>{
-  let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`
-  try{
-    let resp = await axios.get(url+sessionStorage.getItem('user'))
-    this.setState({
-      reciveFeedsData:resp.data.message
-    })
-  }
-  catch (err){
-    console.error(err)
-  }
-}
-//get user details
-getUserDetail = async ()=>{
-  let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
-  try{
-    let resp = await axios.get(url+sessionStorage.getItem('user'))
-    this.setState({
-      userDeatil:resp.data.message[0]
-    })
-  }
-  catch (err){
-    console.error(err)
-  }
-}
-  componentDidMount(){
-    this.getGiveFeedsUserData()
-    this.getReciveFeedsUserData()
-    this.getUserDetail()
+  //get give feedback data
+  getGiveFeedsUserData = async () => {
+    let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`;
+    try {
+      let resp = await axios.get(url + sessionStorage.getItem("user"));
+      if (resp.data.message !== "No Data") {
+        this.setState({
+          giveFeedsData: resp.data.message
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  //get Receive feeds data
+  getReciveFeedsUserData = async () => {
+    let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`;
+    try {
+      let resp = await axios.get(url + sessionStorage.getItem("user"));
+      if (resp.data.message !== "No Data") {
+        this.setState({
+          reciveFeedsData: resp.data.message
+        });
+      } 
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  componentDidMount() {
+    this.getGiveFeedsUserData();
+    this.getReciveFeedsUserData();
   }
   render() {
     let cards = this.state.giveFeedsData.map((info, index) => {
@@ -97,27 +86,28 @@ getUserDetail = async ()=>{
       );
     });
     let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
+
     return (
-      <div>
-        <Navigationbar userDetail = {this.state.userDeatil}/>
+      <React.Fragment>
+        <Navigationbar />
         <Container fluid={false}>
           <br />
-          <Tab
-            giveFeeds={this.state.giveFeeds}
-            giveFeedsToggleHandler={this.giveFeedsToggleHandler}
-            feedGivenToggle = {this.feedGivenToggle}
-          />
-          <Row>
-            <Col sm={12} md={12} lg={12} xs={12}>
-              <Row>
-                { this.state.giveFeeds ? cards : feedsGivenList }
-              </Row>
-            </Col>
-            <Col sm={12} md={12} lg={4}></Col>
-          </Row>
+          <React.Fragment>
+            <Tab
+              giveFeeds={this.state.giveFeeds}
+              giveFeedsToggleHandler={this.giveFeedsToggleHandler}
+              feedGivenToggle={this.feedGivenToggle}
+            />
+            <Row>
+              <Col sm={12} md={12} lg={12} xs={12}>
+                <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
+              </Col>
+              <Col sm={12} md={12} lg={4}></Col>
+            </Row>
+          </React.Fragment>
         </Container>
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

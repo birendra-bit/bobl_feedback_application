@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import View from "../../components/view/view";
+import View from "../../components/view/givefeedback";
 import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
@@ -78,25 +78,13 @@ class ViewFeeds extends Component {
       alert("something went wrong", err);
     }
   };
-  getUserDetail = async () => {
-    let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
-    try {
-      let resp = await axios.get(url + sessionStorage.getItem("user"));
-      this.setState({
-        userDeatil: resp.data.message[0],
-      });
-    } catch (err) {
-      alert("something went wrong", err);
-    }
-  };
   componentDidMount() {
     this.getQuestions();
-    this.getUserDetail();
   }
   render() {
     return (
       <React.Fragment>
-        <Navigationbar userDetail={this.state.userDeatil} />
+        <Navigationbar/>
         <br />
         {/* <br /> */}
         <Container>
