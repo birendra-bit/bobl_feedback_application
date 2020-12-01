@@ -11,18 +11,16 @@ import Green from "../../assets/images/green.png";
 import Blue from "../../assets/images/blue.png";
 import Brown from "../../assets/images/brown.png";
 
-
-
 class Dashboard extends Component {
-  constructor(props = []) {
-    super(props);
-    this.state = {
-      giveFeedsData: [],
-      reciveFeedsData: [],
-      giveFeeds: true,
-      feedsGiven: false
-    };
-  }
+    constructor(props = []) {
+        super(props);
+        this.state = {
+            giveFeedsData: [],
+            reciveFeedsData: [],
+            giveFeeds: true,
+            feedsGiven: false,
+        };
+    }
 
     //handle toggle
     giveFeedsToggleHandler = () => {
@@ -87,6 +85,29 @@ class Dashboard extends Component {
                 </Col>
             );
         });
+        let label = (
+            <React.Fragment>
+                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
+                    <img src={Red} alt='designation' style={{ width: "10px" }} />
+                    &nbsp;&nbsp;Designation
+                </span>
+                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
+                    &nbsp;
+                    <img src={Green} alt='designation' style={{ width: "10px" }} />
+                    &nbsp;&nbsp;Department
+                </span>
+                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
+                    &nbsp;
+                    <img src={Blue} alt='designation' style={{ width: "10px" }} />
+                    &nbsp;&nbsp;Branch
+                </span>
+                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
+                    &nbsp;
+                    <img src={Brown} alt='designation' style={{ width: "10px" }} />
+                    &nbsp;&nbsp;Email
+                </span>
+            </React.Fragment>
+        );
         let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
         return (
             <div>
@@ -97,34 +118,23 @@ class Dashboard extends Component {
                     <Row>
                         <Col sm={12} md={12} lg={12} xs={12}>
                             <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
+                            <Row>
+                                <Col md={12} xs={12} lg={12}>
+                                    <br />
+                                    <br />
+                                    <hr />
+                                </Col>
+
+                                <Col md={12} xs={12} lg={12}>
+                                    {this.state.giveFeeds ? label : ""}
+                                </Col>
+                                <Col md={12} xs={12} lg={12}>
+                                    <hr />
+                                </Col>
+                            </Row>
                         </Col>
                         <Col sm={12} md={12} lg={4}></Col>
                     </Row>
-                    <br />
-                    <br />
-                    <hr />
-                    <Row>
-                        <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                            <img src={Red} alt='designation' style={{ width: "10px" }} />
-                            &nbsp;&nbsp;Designation
-                        </span>
-                        <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                            &nbsp;
-                            <img src={Green} alt='designation' style={{ width: "10px" }} />
-                            &nbsp;&nbsp;Department
-                        </span>
-                        <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                            &nbsp;
-                            <img src={Blue} alt='designation' style={{ width: "10px" }} />
-                            &nbsp;&nbsp;Branch
-                        </span>
-                        <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                            &nbsp;
-                            <img src={Brown} alt='designation' style={{ width: "10px" }} />
-                            &nbsp;&nbsp;Email
-                        </span>
-                    </Row>
-                    <hr />
                 </Container>
                 <Footer />
             </div>
