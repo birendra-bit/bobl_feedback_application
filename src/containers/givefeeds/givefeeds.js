@@ -6,7 +6,6 @@ import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import ViewContent from "../../components/view/viewcontent";
 import UserImage from "../../assets/images/user-male-icon.png";
-import $ from "jquery";
 
 class ViewFeeds extends Component {
     constructor(props) {
@@ -76,7 +75,6 @@ class ViewFeeds extends Component {
         };
         try {
             const resp = await axios.post("/api/resource/Feedback", data_to_be_posted, header);
-            console.log(resp.data);
         } catch (err) {
             console.error(err);
         }

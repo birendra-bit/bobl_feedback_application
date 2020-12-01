@@ -1,29 +1,34 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./score_board.css";
 import $ from "jquery";
 
 function Score(props) {
-    // function clearMarkings() {
-    //     $("." + props.qid).css("background", "transparent");
-    //     $("." + props.qid).css("color", "black");
-    // };
+    useEffect(() => {
+        $(".score").css("background", "transparent");
+        $(".score").css("color", "black");
+        props.data_info.detail.map((d) => {
+            if (d.score !== "") {
+                let id = d.id + d.score;
+                $("#" + id).css("background", "#28a745");
+                $("#" + id).css("color", "white");
+            }
+        });
+    });
 
     function handleChange(id) {
-        console.log("props qid ---->", id);
         $("." + props.qid).css("background", "transparent");
         $("." + props.qid).css("color", "black");
         $("#" + id).css("background", "#28a745");
         $("#" + id).css("color", "white");
     }
     let class_name = props.qid + " score";
-    console.log("this is the class name: =>", class_name);
     return (
         <React.Fragment>
             <p
                 className={class_name}
-                id={props.qid + "one"}
+                id={props.qid + "1"}
                 onClick={() => {
-                    handleChange(props.qid + "one");
+                    handleChange(props.qid + "1");
                     props.scoreUpdate(props.qid, 1);
                 }}
             >
@@ -31,9 +36,9 @@ function Score(props) {
             </p>
             <p
                 className={class_name}
-                id={props.qid + "two"}
+                id={props.qid + "2"}
                 onClick={() => {
-                    handleChange(props.qid + "two");
+                    handleChange(props.qid + "2");
                     props.scoreUpdate(props.qid, 2);
                 }}
             >
@@ -41,9 +46,9 @@ function Score(props) {
             </p>
             <p
                 className={class_name}
-                id={props.qid + "three"}
+                id={props.qid + "3"}
                 onClick={() => {
-                    handleChange(props.qid + "three");
+                    handleChange(props.qid + "3");
                     props.scoreUpdate(props.qid, 3);
                 }}
             >
@@ -51,9 +56,9 @@ function Score(props) {
             </p>
             <p
                 className={class_name}
-                id={props.qid + "four"}
+                id={props.qid + "4"}
                 onClick={() => {
-                    handleChange(props.qid + "four");
+                    handleChange(props.qid + "4");
                     props.scoreUpdate(props.qid, 4);
                 }}
             >
@@ -61,9 +66,9 @@ function Score(props) {
             </p>
             <p
                 className={class_name}
-                id={props.qid + "five"}
+                id={props.qid + "5"}
                 onClick={() => {
-                    handleChange(props.qid + "five");
+                    handleChange(props.qid + "5");
                     props.scoreUpdate(props.qid, 5);
                 }}
             >
