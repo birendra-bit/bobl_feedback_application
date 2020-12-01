@@ -44,11 +44,11 @@ const Cards = (props) => {
                         </Button>
                     </Link>
                 ) : (
-                    <Link to={`/view/${info.employee}`}>
-                        <Button className='btn-success btn-block' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}>
+                    // <Link to={`/view/${info.employee}`}>
+                        <Button disabled={true} className='btn-success btn-block' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}>
                             View Feeds
                         </Button>
-                    </Link>
+                    // </Link>
                 )}
             </Card.Body>
         </Card>
