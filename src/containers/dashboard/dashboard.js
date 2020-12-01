@@ -10,6 +10,8 @@ import Red from "../../assets/images/red.png";
 import Green from "../../assets/images/green.png";
 import Blue from "../../assets/images/blue.png";
 import Brown from "../../assets/images/brown.png";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 class Dashboard extends Component {
   constructor(props = []) {
@@ -19,6 +21,7 @@ class Dashboard extends Component {
       reciveFeedsData: [],
       giveFeeds: true,
       feedsGiven: false,
+      loader: true,
     };
   }
 
@@ -43,11 +46,16 @@ class Dashboard extends Component {
         this.setState({
           giveFeedsData: resp.data.message,
         });
+        this.loaderHandler()
     } catch (err) {
       console.error(err);
     }
   };
-
+loaderHandler = ()=>{
+  this.setState({
+    loader: false
+  })
+}
   //get Receive feeds data
   getReciveFeedsUserData = async () => {
     let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`;
@@ -61,22 +69,11 @@ class Dashboard extends Component {
       console.error(err);
     }
   };
-  //get user details
-  getUserDetail = async () => {
-    let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
-    try {
-      let resp = await axios.get(url + sessionStorage.getItem("user"));
-      this.setState({
-        userDeatil: resp.data.message[0],
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
   componentDidMount() {
     this.getGiveFeedsUserData();
     this.getReciveFeedsUserData();
-    this.getUserDetail();
+    // setTimeout(this.loaderHandler,2000)
   }
   render() {
     let cards = this.state.giveFeedsData.map((info, index) => {
@@ -112,7 +109,7 @@ class Dashboard extends Component {
     let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
     return (
       <React.Fragment>
-        <Navigationbar userDetail={this.state.userDeatil} />
+        <Navigationbar />
         <Container fluid={false}>
           <br />
           <Tab
@@ -121,24 +118,34 @@ class Dashboard extends Component {
             feedGivenToggle={this.feedGivenToggle}
           />
           <Row>
-            <Col sm={12} md={12} lg={12} xs={12}>
-              <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
-              <Row>
-                <Col md={12} xs={12} lg={12}>
-                  <br />
-                  <br />
-                  <hr />
-                </Col>
+            {this.state.loader ? (
+              <Col>
+                <div className="loader">
+                  <Loader type="Circles" color="#00BFFF" height={80} width={80} />
+                </div>
+              </Col>
+            ) : (
+              <React.Fragment>
+                <Col sm={12} md={12} lg={12} xs={12}>
+                  <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
+                  <Row>
+                    <Col md={12} xs={12} lg={12}>
+                      <br />
+                      <br />
+                      <hr />
+                    </Col>
 
-                <Col md={12} xs={12} lg={12}>
-                  {this.state.giveFeeds ? label : ""}
+                    <Col md={12} xs={12} lg={12}>
+                      {this.state.giveFeeds ? label : ""}
+                    </Col>
+                    <Col md={12} xs={12} lg={12}>
+                      <hr />
+                    </Col>
+                  </Row>
                 </Col>
-                <Col md={12} xs={12} lg={12}>
-                  <hr />
-                </Col>
-              </Row>
-            </Col>
-            <Col sm={12} md={12} lg={4}></Col>
+                <Col sm={12} md={12} lg={4}></Col>
+              </React.Fragment>
+            )}
           </Row>
         </Container>
         <Footer />

@@ -28,7 +28,7 @@ const GiveFeeds = (props) => {
                 <Card.Body>
                     <Card.Title className='title'>
                         <strong>{props.index + 1}. </strong>
-                        <span>{props.data.title}</span>
+                        <strong>{props.data.title}</strong>
                     </Card.Title>
                     {list}
                     {(props.pIndex === 0) & (props.index === 0) ? (
