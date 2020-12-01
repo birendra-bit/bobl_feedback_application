@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import React from "react";
 import "./score_board.css";
 import $ from "jquery";
 
 function Score(props) {
     function handleChange(id) {
+        // console.log(props);
+        // console.log("props qid ---->", props.qid);
         $("." + props.qid).css("background", "transparent");
         $("." + props.qid).css("color", "black");
         $("#" + id).css("background", "#28a745");

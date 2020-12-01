@@ -7,18 +7,28 @@ import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
 import Tab from "../../components/tab/tab";
 import axios from "axios";
 
-
 class Dashboard extends Component {
-  constructor(props = []) {
-    super(props);
-    this.state = {
-      giveFeedsData:[],
-      reciveFeedsData:[],
-      giveFeeds: true,
-      feedsGiven: false,
-      userDeatil:{}
+    constructor(props = []) {
+        super(props);
+        this.state = {
+            giveFeedsData: [],
+            reciveFeedsData: [],
+            giveFeeds: true,
+            feedsGiven: false,
+        };
+    }
+
+    //handle toggle
+    giveFeedsToggleHandler = () => {
+        this.setState((preState) => ({
+            giveFeeds: true,
+        }));
     };
-  }
+    feedGivenToggle = () => {
+        this.setState((preState) => ({
+            giveFeeds: false,
+        }));
+    };
 
   //handle toggle
   giveFeedsToggleHandler = () => {
