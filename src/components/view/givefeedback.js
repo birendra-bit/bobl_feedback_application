@@ -25,7 +25,7 @@ const GiveFeeds = (props) => {
     return (
         <React.Fragment>
             <Card border='secondary'>
-                <Card.Body style={{ border: "red 5px dashed" }}>
+                <Card.Body>
                     <Card.Title className='title'>
                         <strong>{props.index + 1}. </strong>
                         <span>{props.data.title}</span>
