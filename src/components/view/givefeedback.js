@@ -12,7 +12,7 @@ const GiveFeeds = (props) => {
                             <Col lg={10}>{x.content}</Col>
                             <Col lg={2}>
                                 <span style={{ float: "right" }}>
-                                    <ScoreBoard qid={x.id} className={(x.id, "score")} scoreUpdate={props.scoreUpdate} />
+                                    <ScoreBoard qid={x.id} className={x.id} scoreUpdate={props.scoreUpdate} />
                                 </span>
                             </Col>
                         </Row>
