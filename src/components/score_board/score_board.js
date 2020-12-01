@@ -1,8 +1,13 @@
-import React from "react";
+import React, { Component, useEffect } from "react";
 import "./score_board.css";
 import $ from "jquery";
 
 function Score(props) {
+    useEffect(() => {
+        $("." + props.qid).css("background", "transparent");
+        $("." + props.qid).css("color", "black");
+    });
+
     function handleChange(id) {
         console.log(props);
         console.log("props qid ---->", id);
