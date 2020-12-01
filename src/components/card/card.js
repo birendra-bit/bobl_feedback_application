@@ -33,17 +33,8 @@ const Cards = (props) => (
         <br />
         Email: {props.info.email}
       </Card.Text>
-      {props.info.feedsGiven ? (
-        <Link to={`/feedback/${props.info.employee}`}>
-          <Button
-            className="btn-success btn-block"
-            style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
-          >
-            View Feeds
-          </Button>
-        </Link>
-      ) : (
-        <Link to={`/view/${props.info.employee}`}>
+      {props.info.status === "Pending" ? (
+         <Link to={`/view/${props.info.employee}`}>
           <Button
             className="btn-primary btn-block"
             style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
@@ -51,6 +42,15 @@ const Cards = (props) => (
             Give Feeds
           </Button>
         </Link>
+      ) : (
+        <Link to={`/feedback/${props.info.employee}`}>
+        <Button
+          className="btn-success btn-block"
+          style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}
+        >
+          View Feeds
+        </Button>
+      </Link>
       )}
     </Card.Body>
   </Card>

@@ -99,7 +99,7 @@ class ViewFeeds extends Component {
                 lastDataId: laztId,
             });
         } catch (err) {
-            alert("something went wrong", err);
+            console.error(err)
         }
     };
     getUserDetail = async () => {
@@ -110,7 +110,8 @@ class ViewFeeds extends Component {
                 userDeatil: resp.data.message[0],
             });
         } catch (err) {
-            alert("something went wrong", err);
+            console.error(err)
+            // alert("something went wrong", err);
         }
     };
     componentDidMount() {
