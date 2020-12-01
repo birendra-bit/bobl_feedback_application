@@ -11,28 +11,18 @@ import Green from "../../assets/images/green.png";
 import Blue from "../../assets/images/blue.png";
 import Brown from "../../assets/images/brown.png";
 
-class Dashboard extends Component {
-    constructor(props = []) {
-        super(props);
-        this.state = {
-            giveFeedsData: [],
-            reciveFeedsData: [],
-            giveFeeds: true,
-            feedsGiven: false,
-        };
-    }
 
-    //handle toggle
-    giveFeedsToggleHandler = () => {
-        this.setState((preState) => ({
-            giveFeeds: true,
-        }));
+
+class Dashboard extends Component {
+  constructor(props = []) {
+    super(props);
+    this.state = {
+      giveFeedsData: [],
+      reciveFeedsData: [],
+      giveFeeds: true,
+      feedsGiven: false
     };
-    feedGivenToggle = () => {
-        this.setState((preState) => ({
-            giveFeeds: false,
-        }));
-    };
+  }
 
     //handle toggle
     giveFeedsToggleHandler = () => {

@@ -59,3 +59,9 @@ input:hover::placeholder {
 *:focus {
     outline: 0 !important;
 }
+.loader{
+    position: fixed;
+    z-index: 1000;
+    top: 45%;
+    left: 45%;
+}
