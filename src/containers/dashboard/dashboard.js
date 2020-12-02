@@ -85,6 +85,9 @@ class Dashboard extends Component {
         });
         let label = (
             <React.Fragment>
+                <br />
+                <br />
+                <hr />
                 <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
                     <img src={Red} alt='designation' style={{ width: "10px" }} />
                     &nbsp;&nbsp;Designation
@@ -104,6 +107,7 @@ class Dashboard extends Component {
                     <img src={Brown} alt='designation' style={{ width: "10px" }} />
                     &nbsp;&nbsp;Email
                 </span>
+                <hr />
             </React.Fragment>
         );
         let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
@@ -126,20 +130,11 @@ class Dashboard extends Component {
                                     <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
                                     <Row>
                                         <Col md={12} xs={12} lg={12}>
-                                            <br />
-                                            <br />
-                                            <hr />
-                                        </Col>
-
-                                        <Col md={12} xs={12} lg={12}>
                                             {this.state.giveFeeds ? label : ""}
                                         </Col>
-                                        <Col md={12} xs={12} lg={12}>
-                                            <hr />
-                                        </Col>
+                                        <Col md={12} xs={12} lg={12}></Col>
                                     </Row>
                                 </Col>
-                                <Col sm={12} md={12} lg={4}></Col>
                             </React.Fragment>
                         )}
                     </Row>
