@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import "./card.css";
 import { Link } from "react-router-dom";
 import imgUrlMale from "../../assets/images/user-male-icon.png";
-import imgUrlFemale from "../../assets/images/female-user.png";
+import imgUrlFemale from "../../assets/images/female-user.jpeg";
 import Red from "../../assets/images/red.png";
 import Green from "../../assets/images/green.png";
 import Blue from "../../assets/images/blue.png";
