@@ -97,7 +97,7 @@ const table = (props) => {
       ) : (
         ""
       )}
-      {endIndex <= lastIndex ? (
+      {endIndex < lastIndex ? (
         <Button
           className="btn-sm"
           onClick={incrementIndex}
