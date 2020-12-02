@@ -1,12 +1,3 @@
-span {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-    color: white;
-    cursor: pointer;
-
-}
-
 .tab-span {
     background: gray;
     padding: 5px 10px;
@@ -24,6 +15,8 @@ span {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     transition: all ease-out 200ms;
+    color: white;
+    cursor: pointer;
 }
 
 #view-span {
@@ -31,6 +24,8 @@ span {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     transition: all ease-out 200ms;
+    color: white;
+    cursor: pointer;
 }
 
 #tab-hr {
