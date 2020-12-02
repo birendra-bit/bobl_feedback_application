@@ -1,9 +1,8 @@
 .user-card {
-    height: 350px;
+    height: 300px;
     color: #004c9c;
     transition: all 200ms ease-in;
-    box-shadow: 6px 6px 21px #cececeb0,
-        -6px -6px 21px #cececeb0;
+    box-shadow: 6px 6px 21px #cececeb0, -6px -6px 21px #cececeb0;
     border: 1px solid #cececeb0 !important;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
