@@ -1,6 +1,62 @@
-.card-title {
-    background: #cececeb0;
-    padding: 15px 0 10px 30px;
+/* parent div containing the questionnaire */
+.questionnaire-card {
+    border: 1px solid #cececeb0 !important;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    box-shadow: 6px 6px 21px #cececeb0,
+        -6px -6px 21px #e2e2e2b0;
+    margin-top: 30px;
+}
+
+/* CD titles  */
+.questionnaire-title {
+    background: #cececeb0;
+    padding: 15px 0 10px 30px;
+    color: #004c9c;
+    transition: all 200ms ease-in;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+/* the category within the CDs */
+.competency-category {
+    padding-left: 50px;
+}
+
+/* the questions under the specific category */
+.questionnaire-detail {
+    padding-left: 50px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+/* next and submit button */
+.questionnaire-next-submit {
+    margin: 20px 35px;
+}
+
+/* previous button */
+.questionnaire-previous {
+    margin: 20px 60px;
+}
+
+@media only screen and (max-width: 700px) {
+    .card-title {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .competency-category {
+        padding-left: 15px;
+    }
+
+    .questionnaire-detail {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .questionnaire-previous {
+        margin: 20px 20px;
+    }
+
 }
