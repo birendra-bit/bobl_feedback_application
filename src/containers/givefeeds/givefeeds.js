@@ -147,7 +147,6 @@ class ViewFeeds extends Component {
                             </span>
                             &nbsp;&nbsp;
                             <span style={{ color: "#929292" }}>
-                                {" "}
                                 <i>{this.props.match.params.name},</i>
                             </span>
                             &nbsp;&nbsp;
