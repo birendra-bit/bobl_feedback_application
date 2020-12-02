@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import ScoreBoard from "../score_board/score_board";
-import "./givefeedback.css";
+
 const GiveFeeds = (props) => {
     let list = (
         <ul type='none' className='p-0'>
@@ -24,32 +24,26 @@ const GiveFeeds = (props) => {
     );
     return (
         <React.Fragment>
-            <Card className='questionnaire-card'>
+            <Card border='secondary'>
                 <Card.Body>
-                    <Card.Title className='questionnaire-title'>
-                        <h3>{props.header}</h3>
+                    <Card.Title className='title'>
+                        <strong>{props.index + 1}. </strong>
+                        <strong>{props.data.title}</strong>
                     </Card.Title>
-
-                    <div className='competency-category'>
-                        <h5>
-                            {props.index + 1}. {props.data.title}
-                        </h5>
-                    </div>
-
-                    <div className='questionnaire-detail'> {list} </div>
+                    {list}
                     {(props.pIndex === 0) & (props.index === 0) ? (
                         ""
                     ) : (
-                        <Button className='btn-secondary btn-sm questionnaire-previous' onClick={props.decrementIndex} style={{ float: "left" }}>
+                        <Button className='btn-primary btn-sm' onClick={props.decrementIndex} style={{ float: "left" }}>
                             Previous
                         </Button>
                     )}
                     {props.data.detail[0].id !== props.laztId ? (
-                        <Button className='btn-primary btn-sm questionnaire-next-submit' onClick={() => props.incrementIndex("next")} style={{ float: "right" }}>
+                        <Button className='btn-primary btn-sm' onClick={() => props.incrementIndex("next")} style={{ float: "right" }}>
                             Next
                         </Button>
                     ) : (
-                        <Button className='btn-danger btn-sm questionnaire-next-submit ' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
+                        <Button className='btn-primary btn-sm' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
                             Submit
                         </Button>
                     )}
