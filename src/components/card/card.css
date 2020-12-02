@@ -2,7 +2,19 @@
     color: #004c9c;
     transition: all 200ms ease-in;
     height: 350px;
-    box-shadow: 6px 6px 21px #eaeaea, -6px -6px 21px #ffffff;
+    box-shadow: 6px 6px 21px #cececeb0,
+        -6px -6px 21px #cececeb0;
+    border: 1px solid #cececeb0 !important;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+/* 
+this is needed to remove the padding from the card body 
+so that the inside elements can be styled separately. 
+*/
+.card-body {
+    padding: 0 !important;
 }
 
 /* increase the button size when hovering on the card  */
@@ -10,6 +22,7 @@
     box-shadow: 6px 6px 21px #e4e4e4, -6px -6px 21px #f1f1f1;
     transition: all 200ms ease-out;
 }
+
 /* increase the button size when hovering on the card  */
 .user-card:hover .view-give-feed-btn {
     transform: scale(1.05);
@@ -38,6 +51,7 @@
         transition: all 200ms ease-in;
         height: auto;
     }
+
     .view-give-feed-btn {
         position: relative !important;
         left: 35px;

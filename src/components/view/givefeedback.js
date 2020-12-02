@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import ScoreBoard from "../score_board/score_board";
-
+import "./givefeedback.css";
 const GiveFeeds = (props) => {
     let list = (
         <ul type='none' className='p-0'>
@@ -26,10 +26,13 @@ const GiveFeeds = (props) => {
         <React.Fragment>
             <Card border='secondary'>
                 <Card.Body>
-                    <Card.Title className='title'>
-                        <strong>{props.index + 1}. </strong>
-                        <strong>{props.data.title}</strong>
+                    <Card.Title className=''>
+                        <h3>{props.header}</h3>
                     </Card.Title>
+
+                    <strong>{props.index + 1}. </strong>
+                    <strong>{props.data.title}</strong>
+
                     {list}
                     {(props.pIndex === 0) & (props.index === 0) ? (
                         ""
@@ -43,7 +46,7 @@ const GiveFeeds = (props) => {
                             Next
                         </Button>
                     ) : (
-                        <Button className='btn-primary btn-sm' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
+                        <Button className='btn-danger btn-sm' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
                             Submit
                         </Button>
                     )}
