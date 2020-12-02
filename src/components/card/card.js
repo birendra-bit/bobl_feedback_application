@@ -26,7 +26,7 @@ const Cards = (props) => {
                 src={info.image ? "http://192.168.70.38" + info.image : info.gender === "Male" ? imgUrlMale : imgUrlFemale}
             />
             <Card.Body id='card-body'>
-                <Card.Title style={{ fontSize: "15px" }}>{info.employee_name} </Card.Title>
+                <Card.Title style={{ fontSize: "15px", marginTop: "10px" }}>{info.employee_name} </Card.Title>
                 <Card.Text style={{ fontSize: "12px" }}>
                     <img src={Red} className='color-bio-info' alt='designation' />
                     <span className='card-bio-label'>{info.designation} </span>
