@@ -5,7 +5,6 @@ import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import ViewContent from "../../components/view/viewcontent";
-import UserImage from "../../assets/images/user-male-icon.png";
 
 class ViewFeeds extends Component {
     constructor(props) {
@@ -139,19 +138,36 @@ class ViewFeeds extends Component {
             <React.Fragment>
                 <Navigationbar userDetail={this.state.userDeatil} />
                 <br />
-                {/* <br /> */}
                 <Container>
+                    <hr />
+                    {!this.state.isAllSubmitted ? (
+                        <p style={{ marginLeft: "20px" }}>
+                            <span style={{ fontSize: "large", color: "#7b7b7b" }}>
+                                <b>Giving Feedback to: </b>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span style={{ color: "#929292" }}>
+                                {" "}
+                                <i>{this.props.match.params.name},</i>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span style={{ color: "#929292" }}>
+                                <i>{this.props.match.params.designation}</i>
+                            </span>
+                        </p>
+                    ) : (
+                        ""
+                    )}
+                    <hr />
+
                     {this.state.index >= 0 ? (
                         <Row>
-                            <Col xs={12} sm={12} md={12} lg={10}>
+                            <Col xs={12} sm={12} md={12} lg={12}>
                                 <Row>
                                     <Col lg={12}>
                                         {!this.state.isAllSubmitted ? (
                                             <div>
-                                                <div className='m-1 text-center font-weight-bold'>
-                                                    <h3>{this.state.data[this.state.index].corporate_ds}</h3>
-                                                </div>
-                                                <View data={this.state.data[this.state.index].competency[this.state.childIndex]} incrementIndex={this.incrementIndexHandler} decrementIndex={this.decrementIndexHandler} laztId={this.state.lastDataId} scoreUpdate={this.scoreUpdate} index={this.state.childIndex} pIndex={this.state.index} />
+                                                <View header={this.state.data[this.state.index].corporate_ds} data={this.state.data[this.state.index].competency[this.state.childIndex]} incrementIndex={this.incrementIndexHandler} decrementIndex={this.decrementIndexHandler} laztId={this.state.lastDataId} scoreUpdate={this.scoreUpdate} index={this.state.childIndex} pIndex={this.state.index} />
                                             </div>
                                         ) : (
                                             <ViewContent />
@@ -159,23 +175,6 @@ class ViewFeeds extends Component {
                                     </Col>
                                 </Row>
                             </Col>
-                            {!this.state.isAllSubmitted ? (
-                                <Col xs={12} sm={12} md={12} lg={2}>
-                                    <Card border='secondary' sm={12} md={12} lg={4} className='mt-5 text-center pt-1'>
-                                        <Card.Img className='m-auto' style={{ width: "70px", height: "70px" }} src={UserImage}></Card.Img>
-                                        <Card.Body>
-                                            <Card.Title style={{ fontSize: "12px" }}>Pema Wangmo</Card.Title>
-                                            <Card.Text style={{ fontSize: "12px" }}>
-                                                Designation: HR
-                                                <br />
-                                                Branch: Bumthang Branch
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ) : (
-                                ""
-                            )}
                         </Row>
                     ) : (
                         ""
