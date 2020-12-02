@@ -6,6 +6,11 @@
 }
 
 /* increase the button size when hovering on the card  */
+.user-card:hover {
+    box-shadow: 6px 6px 21px #e4e4e4, -6px -6px 21px #f1f1f1;
+    transition: all 200ms ease-out;
+}
+/* increase the button size when hovering on the card  */
 .user-card:hover .view-give-feed-btn {
     transform: scale(1.05);
     transition: all 200ms ease-out;
