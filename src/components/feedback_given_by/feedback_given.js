@@ -1,67 +1,69 @@
+import { data } from "jquery";
 import React, { Component } from "react";
-import { Table, Col } from "react-bootstrap";
-import imgUrlMale from "../../assets/images/user-male-icon.png";
-import imgUrlFemale from "../../assets/images/female-user.jpeg";
+import { Col } from "react-bootstrap";
+import Table from "./table";
 // import Pagination from '../pagination/pagination'
 
-const feedback_given_by = (props) => {
-  if ( !props.info.length)
-    return <strong>No Data To Display</strong>
-  let table_head = (
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        {/* <th scope="col">Designation</th> */}
-        <th scope="col">Branch</th>
-        <th scope="col">Department</th>
-        <th scope="col">Email</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-  );
-  let table_body = props.info.map((info, index) => {
-    return (
-      <tr key={index} style={{ fontSize: "13px" }}>
-        <td scope="row">{index + 1}</td>
-        <td scope="row">
-          {" "}
-          <img
-            src={
-              info.image
-                ? "http://192.168.70.38" + info.image
-                : info.gender === "Male"
-                ? imgUrlMale
-                : imgUrlFemale
-            }
-            style={{ height: "30px", width: "30px", borderRadius: "15px" }}
-          />{" "}
-        </td>
-        <td scope="row"><strong>{info.employee_name}</strong><br/>{'('+info.designation+')'}</td>
-        {/* <td scope="row">  </td> */}
-        <td scope="row">{info.branch} </td>
-        <td scope="row"> {info.department} </td>
-        <td scope="row"> {info.email} </td>
-        <td scope="row">
-          {info.status === "Received" ? (
-            <span className="badge badge-success" style={{fontSize:"12px", color:"#ffffff"}}>Received</span>
-          ) : (
-            <span className="badge badge-warning" style={{fontSize:"12px", color:"#ffffff"}}>Pending</span>
-          )}
-        </td>
-      </tr>
-    );
-  });
-  return (
-    <Col className="overflow-auto">
-      <Table className="table table-hover">
-        {table_head}
-        <tbody>{table_body}</tbody>
-      </Table>
-      {/* <Pagination/> */}
-    </Col>
-  );
-};
+class FeedbackReceivedList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      info: props.info,
+      initialIndex: 0,
+      endIndex: props.info.length - 1 > 10 ? 10 : props.info.length - 1,
+      data: props.info
+    };
+  }
+  // increment index to display next page
+  incrementIndexHandler = () => {
+    this.setState((prevState) => ({
+      initialIndex: prevState.endIndex,
+      endIndex:
+        prevState.endIndex + 10 < prevState.lastIndex
+          ? prevState.endIndex + 10
+          : prevState.lastIndex
+    }));
+  };
 
-export default feedback_given_by;
+  // decrement index to display previous page
+  decrementIndexHandler = () => {
+    this.setState(prevState=>({
+      initialIndex: prevState.initialIndex - 10,
+      endIndex: prevState.endIndex - 10
+    }))
+  };
+
+  // sort data based on status
+  sortDataHandler = (key)=>{
+    if(key === 'Status')
+      return this.setState(prevState=>({
+        data: prevState.info,
+        initialIndex:0,
+        endIndex: prevState.info.length - 1 > 10 ? 10 : prevState.info.length - 1
+      }))
+    this.setState(prevState=>({
+      data: prevState.info.filter(o=> o.status === key ),
+      initialIndex:0
+    }))
+  }
+ 
+ 
+  render() {
+   
+    return (
+      <Col className="overflow-auto">
+        <Table
+          info={this.state.data.slice(this.state.initialIndex, this.state.endIndex)}
+          incrementIndex={this.incrementIndexHandler}
+          decrementIndex={this.decrementIndexHandler}
+          sortData={this.sortDataHandler}
+          initialIndex={this.state.initialIndex}
+          endIndex={ this.state.data.length - 1 }
+          lastIndex={this.state.data.length - 1 }
+        />
+      </Col>
+    );
+  }
+}
+
+export default FeedbackReceivedList;
