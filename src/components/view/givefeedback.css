@@ -8,7 +8,7 @@
     margin-top: 30px;
 }
 
-/* CD titles  */
+/* CD(s) titles  */
 .questionnaire-title {
     background: #cececeb0;
     padding: 15px 0 10px 30px;
@@ -20,6 +20,7 @@
 
 /* the category within the CDs */
 .competency-category {
+    margin: 25px 0;
     padding-left: 50px;
 }
 

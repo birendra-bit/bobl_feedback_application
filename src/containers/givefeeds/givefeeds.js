@@ -146,9 +146,14 @@ class ViewFeeds extends Component {
                                 <b>Giving Feedback to: </b>
                             </span>
                             &nbsp;&nbsp;
-                            <span style={{ color: "#929292" }}> {this.props.match.params.name},</span>
+                            <span style={{ color: "#929292" }}>
+                                {" "}
+                                <i>{this.props.match.params.name},</i>
+                            </span>
                             &nbsp;&nbsp;
-                            <span style={{ color: "#929292" }}>{this.props.match.params.designation}</span>
+                            <span style={{ color: "#929292" }}>
+                                <i>{this.props.match.params.designation}</i>
+                            </span>
                         </p>
                     ) : (
                         ""
