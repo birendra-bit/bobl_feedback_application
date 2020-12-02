@@ -1,5 +1,13 @@
 .card {
     color: #004c9c;
+    transition: all 200ms ease-in;
+}
+
+.card:hover {
+    box-shadow: 6px 6px 21px #cfcfcf,
+        -6px -6px 21px #ffffff;
+    transform: scale(1.01);
+    transition: all 200ms ease-out;
 }
 
 .card-person-bio {

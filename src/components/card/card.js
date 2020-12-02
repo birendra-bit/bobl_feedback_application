@@ -24,8 +24,8 @@ const Cards = (props) => {
                 src={info.image ? "http://192.168.70.38" + info.image : info.gender === "Male" ? imgUrlMale : imgUrlFemale}
             />
             <Card.Body>
-                <Card.Title style={{ fontSize: "11px" }}>{info.employee_name} </Card.Title>
-                <Card.Text style={{ fontSize: "10px" }}>
+                <Card.Title style={{ fontSize: "15px" }}>{info.employee_name} </Card.Title>
+                <Card.Text style={{ fontSize: "12px" }}>
                     <img src={Red} className='color-bio-info' alt='designation' />
                     {info.designation} <br />
                     <img src={Green} className='color-bio-info' alt='' />
@@ -45,9 +45,9 @@ const Cards = (props) => {
                     </Link>
                 ) : (
                     // <Link to={`/view/${info.employee}`}>
-                        <Button disabled={true} className='btn-success btn-block' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}>
-                            View Feeds
-                        </Button>
+                    <Button disabled={true} className='btn-success btn-block' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}>
+                        View Feeds
+                    </Button>
                     // </Link>
                 )}
             </Card.Body>
