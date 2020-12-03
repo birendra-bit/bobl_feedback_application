@@ -1,6 +1,6 @@
-/*  */
+/* This is the container that has the score in circles. */
 .scoreboard-parent-div {
-    float: right
+    float: right;
 }
 
 /* parent div containing the questionnaire */
