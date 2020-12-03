@@ -4,10 +4,6 @@ import "./card.css";
 import { Link } from "react-router-dom";
 import imgUrlMale from "../../assets/images/user-male-icon.png";
 import imgUrlFemale from "../../assets/images/female-user.jpeg";
-import Red from "../../assets/images/red.png";
-import Green from "../../assets/images/green.png";
-import Blue from "../../assets/images/blue.png";
-import Brown from "../../assets/images/brown.png";
 
 const Cards = (props) => {
     const { info } = props;
@@ -28,16 +24,12 @@ const Cards = (props) => {
             <Card.Body id='card-body'>
                 <Card.Title style={{ fontSize: "15px", marginTop: "10px" }}>{info.employee_name} </Card.Title>
                 <Card.Text style={{ fontSize: "12px" }}>
-                    <img src={Red} className='color-bio-info' alt='designation' />
                     <span className='card-bio-label'>{info.designation} </span>
                     <br />
-                    <img src={Green} className='color-bio-info' alt='' />
                     <span className='card-bio-label'>{info.department}</span>
                     <br />
-                    <img src={Blue} className='color-bio-info' alt='red-color' />
                     <span className='card-bio-label'>{info.branch}</span>
                     <br />
-                    <img src={Brown} className='color-bio-info' alt='red-color' />
                     <span className='card-bio-label'>{info.email}</span>
                 </Card.Text>
                 {info.status === "Pending" ? (
