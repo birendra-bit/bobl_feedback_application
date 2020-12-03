@@ -8,9 +8,9 @@ import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout";
 import GiveFeeds from "../containers/givefeeds/givefeeds";
-
-
 const hist = createBrowserHistory();
+
+
 function App() {
     useEffect(() => {
         const token = getToken();
