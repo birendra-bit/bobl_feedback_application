@@ -1,15 +1,65 @@
-.card {
+.user-card {
+    height: 330px;
     color: #004c9c;
+    transition: all 200ms ease-in;
+    box-shadow: 6px 6px 21px #e4e4e4,
+        -6px -6px 21px #f1f1f1;
+    border: 1px solid #cececeb0 !important;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: 30px !important;
+
 }
 
-.card-person-bio {
-    color: #949494;
-    font-size: 10px;
+/* 
+this is needed to remove the padding from the card body 
+so that the inside elements can be styled separately. 
+*/
+.card-body {
+    padding: 0 !important;
 }
 
+/* increase the button size when hovering on the card  */
+.user-card:hover {
+
+    box-shadow: 6px 6px 21px #cececeb0,
+        -6px -6px 21px #cececeb0;
+    transition: all 200ms ease-out;
+}
+
+/* increase the button size when hovering on the card  */
+.user-card:hover .view-give-feed-btn {
+    transform: scale(1.05);
+    transition: all 200ms ease-out;
+}
+
+/* this is the small colored circled beside the info on the card. */
 .color-bio-info {
     width: 5px;
-    /* float: left; */
     margin-top: -2px;
-    margin-right: 4px
+    margin-right: 4px;
+}
+
+/* button to either give or view feedback */
+.view-give-feed-btn {
+    position: relative !important;
+    left: 20px;
+    width: 80% !important;
+    bottom: 0;
+    transition: all 200ms ease-in;
+}
+
+@media only screen and (max-width: 700px) {
+    .card {
+        color: #004c9c;
+        transition: all 200ms ease-in;
+        height: auto;
+    }
+
+    .view-give-feed-btn {
+        position: relative !important;
+        left: 35px;
+        width: 80% !important;
+        margin-bottom: 20px
+    }
 }
