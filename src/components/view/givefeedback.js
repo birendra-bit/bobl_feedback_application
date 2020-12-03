@@ -9,9 +9,11 @@ const GiveFeeds = (props) => {
                 return (
                     <li key={i}>
                         <Row style={{ margin: "3px 0" }}>
-                            <Col lg={10}>{x.content}</Col>
-                            <Col lg={2}>
-                                <span style={{ float: "right" }}>
+                            <Col lg={9} md={9} sm={9} xs={12}>
+                                {x.content}
+                            </Col>
+                            <Col lg={3} md={3} sm={3} xs={12}>
+                                <span className='scoreboard-parent-div' style={{ float: "right" }}>
                                     <ScoreBoard qid={x.id} data_info={props.data} className={(x.id, "score")} scoreUpdate={props.scoreUpdate} />
                                 </span>
                             </Col>

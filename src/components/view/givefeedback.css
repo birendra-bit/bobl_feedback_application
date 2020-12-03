@@ -1,3 +1,8 @@
+/* This is the container that has the score in circles. */
+.scoreboard-parent-div {
+    float: right;
+}
+
 /* parent div containing the questionnaire */
 .questionnaire-card {
     border: 1px solid #cececeb0 !important;
@@ -60,4 +65,8 @@
         margin: 20px 20px;
     }
 
+    .scoreboard-parent-div {
+        float: left !important;
+        margin-top: 20px;
+    }
 }

@@ -6,10 +6,6 @@ import Card from "../../components/card/card";
 import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
 import Tab from "../../components/tab/tab";
 import axios from "axios";
-import Red from "../../assets/images/red.png";
-import Green from "../../assets/images/green.png";
-import Blue from "../../assets/images/blue.png";
-import Brown from "../../assets/images/brown.png";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
@@ -83,33 +79,7 @@ class Dashboard extends Component {
                 </Col>
             );
         });
-        let label = (
-            <React.Fragment>
-                <br />
-                <br />
-                <hr />
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    <img src={Red} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Designation
-                </span>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    &nbsp;
-                    <img src={Green} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Department
-                </span>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    &nbsp;
-                    <img src={Blue} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Branch
-                </span>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    &nbsp;
-                    <img src={Brown} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Email
-                </span>
-                <hr />
-            </React.Fragment>
-        );
+
         let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
         return (
             <React.Fragment>
@@ -128,12 +98,6 @@ class Dashboard extends Component {
                             <React.Fragment>
                                 <Col sm={12} md={12} lg={12} xs={12}>
                                     <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
-                                    <Row>
-                                        <Col md={12} xs={12} lg={12}>
-                                            {this.state.giveFeeds ? label : ""}
-                                        </Col>
-                                        <Col md={12} xs={12} lg={12}></Col>
-                                    </Row>
                                 </Col>
                             </React.Fragment>
                         )}
