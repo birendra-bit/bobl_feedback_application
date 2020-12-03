@@ -40,7 +40,6 @@ function App() {
                         {/* <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>  */}
                         <PrivateRoute exact path='/feedback/:employee/:name/:designation' component={GiveFeeds} />
                         <PrivateRoute exact path='/dashboard' component={Dashboard} />
-                        <PrivateRoute exact path='/view_content' component={viewContent} />
                         <Redirect to='/login' />
                         {/* <Redirect component={NotFoundPage}/> */}
                     </Switch>
