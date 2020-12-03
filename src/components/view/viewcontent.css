@@ -1,0 +1,13 @@
+.feedback-given-success-message {
+    padding: 100px 30px 30px 30px;
+    text-align: center;
+    background-color: #f7f7f7bf;
+    border: 1px solid #efefef;
+    box-shadow: 6px 6px 21px #e4e4e4,
+        -6px -6px 21px #f1f1f1;
+
+}
+
+.check-image-success {
+    width: 100px;
+}
