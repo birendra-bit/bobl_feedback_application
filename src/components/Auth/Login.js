@@ -26,7 +26,7 @@ function Login(props) {
             [id]: value,
         }));
     };
-
+    
     const handleSubmitClick = (e) => {
         e.preventDefault();
         const data = {
@@ -55,6 +55,10 @@ function Login(props) {
                     })
                     .catch(function (error) {
                         console.log(error);
+                        setState((prevState) => ({
+                            ...prevState,
+                            loader: false,
+                        }));
                     });
             })
             .catch(function (error) {
@@ -63,6 +67,7 @@ function Login(props) {
                     ...prevState,
                     successMessage: null,
                     failedMessage: "Login Unsuccessful. Try Again.",
+                    loader: false,
                 }));
             });
     };
