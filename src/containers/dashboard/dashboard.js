@@ -3,7 +3,7 @@ import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { Container, Col, Row } from "react-bootstrap";
 import Card from "../../components/card/card";
-import FeedbackGivenBy from "../../components/feedback_given_by/feedback_given";
+import FeedbackReceiveList from "../../components/feedback_receive_list/feedbackReceiveList";
 import Tab from "../../components/tab/tab";
 import axios from "axios";
 import Red from "../../assets/images/red.png";
@@ -106,7 +106,7 @@ class Dashboard extends Component {
                 </span>
             </React.Fragment>
         );
-        let feedsGivenList = <FeedbackGivenBy info={this.state.reciveFeedsData} />;
+        let feedsGivenList = <FeedbackReceiveList info={this.state.reciveFeedsData} />;
         return (
             <React.Fragment>
                 <Navigationbar />
