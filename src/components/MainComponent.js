@@ -7,8 +7,9 @@ import { getToken, getUser, removeUserSession, setUserSession } from "../Utils/C
 import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout";
-import Navigation from "../components/navbar/navbar";
 import GiveFeeds from "../containers/givefeeds/givefeeds";
+import NotFoundPage from '../containers/notfoundpage'
+
 
 const hist = createBrowserHistory();
 function App() {
@@ -41,6 +42,7 @@ function App() {
                         <PrivateRoute exact path='/feedback/:employee/:name/:designation' component={GiveFeeds} />
                         <PrivateRoute exact path='/dashboard' component={Dashboard} />
                         <Redirect to='/login' />
+                        {/* <Redirect component={NotFoundPage}/> */}
                     </Switch>
                 </Router>
             </BrowserRouter>

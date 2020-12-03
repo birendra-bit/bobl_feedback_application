@@ -13,6 +13,8 @@ import Brown from "../../assets/images/brown.png";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
+
+
 class Dashboard extends Component {
     constructor(props = []) {
         super(props);
@@ -22,6 +24,8 @@ class Dashboard extends Component {
             giveFeeds: true,
             feedsGiven: false,
             loader: true,
+            err:'',
+            res:''
         };
     }
 
