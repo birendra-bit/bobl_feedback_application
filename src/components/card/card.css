@@ -29,7 +29,7 @@ so that the inside elements can be styled separately.
 
 /* increase the button size when hovering on the card  */
 .user-card:hover .view-give-feed-btn {
-    transform: scale(1.05);
+    transform: scale(1.01);
     transition: all 200ms ease-out;
 }
 

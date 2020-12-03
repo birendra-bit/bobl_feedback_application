@@ -59,7 +59,6 @@ class Navigationbar extends Component {
                                     <span style={{ fontSize: "small", color: "#133f65" }}> {this.state.userDetail.employee_name} </span>
                                 </span>
                             </li>
-
                             <li className='nav-item username'>
                                 {/* need to get the image from the session rather than from the state. */}
                                 <img alt='' className='profile' src={this.state.userDetail.image ? "http://192.168.70.38" + this.state.userDetail.image : ""} onClick={this.showModal} />

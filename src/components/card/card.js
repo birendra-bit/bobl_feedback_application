@@ -4,6 +4,8 @@ import "./card.css";
 import { Link } from "react-router-dom";
 import imgUrlMale from "../../assets/images/user-male-icon.png";
 import imgUrlFemale from "../../assets/images/female-user.jpeg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Cards = (props) => {
     const { info } = props;
@@ -40,8 +42,8 @@ const Cards = (props) => {
                     </Link>
                 ) : (
                     // <Link to={`/view/${info.employee}`}>
-                    <Button disabled={true} className='btn-success btn-block view-give-feed-btn' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}>
-                        View Feeds
+                    <Button disabled={true} className='btn-success btn-block view-give-feed-btn' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px", cursor: "not-allowed" }}>
+                        Feedback Provided <FontAwesomeIcon icon={faCheckCircle} />
                     </Button>
                     // </Link>
                 )}
