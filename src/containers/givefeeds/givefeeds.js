@@ -5,6 +5,7 @@ import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import ViewContent from "../../components/view/viewcontent";
+import Review from "../../components/review/review";
 
 class ViewFeeds extends Component {
     constructor(props) {
@@ -136,7 +137,7 @@ class ViewFeeds extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navigationbar userDetail={this.state.userDeatil} />
+                {console.log("this is the data: ", this.state.data)}
                 <br />
                 <Container>
                     <hr />
@@ -169,7 +170,9 @@ class ViewFeeds extends Component {
                                                 <View header={this.state.data[this.state.index].corporate_ds} data={this.state.data[this.state.index].competency[this.state.childIndex]} incrementIndex={this.incrementIndexHandler} decrementIndex={this.decrementIndexHandler} laztId={this.state.lastDataId} scoreUpdate={this.scoreUpdate} index={this.state.childIndex} pIndex={this.state.index} />
                                             </div>
                                         ) : (
-                                            <ViewContent />
+                                            <Review data={this.state.data} scoreUpdate={this.scoreUpdate} incrementIndex={this.incrementIndexHandler} />
+                                            // TODO: INSTEAD OF VIEWVONTENT, MAKE IT REVIEW CONTENT AND THEN UNDER REVIEW CONTENT, PUT THE VIEW CONTENT AFTER SUBMIT.
+                                            // <ViewContent />
                                         )}
                                     </Col>
                                 </Row>
