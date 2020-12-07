@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Col, Row, Container, Button } from "react-bootstrap";
-import Navigationbar from "../../components/navbar/navbar";
 import ScoreBoard from "../score_board/score_board";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
