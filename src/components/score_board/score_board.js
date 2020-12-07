@@ -4,12 +4,15 @@ import $ from "jquery";
 
 function Score(props) {
     useEffect(() => {
-        $(".score").css("background", "transparent");
-        $(".score").css("color", "black");
+        // the following has to be in a condition in order to check where it is being called from.
+        // It can be called from view/give_feeds OR review/review
+        props.review_or_feed ? $(".score").css("background", "transparent") : console.log();
+        props.review_or_feed ? $(".score").css("color", "black") : console.log();
+
         props.data_info.detail.map((d) => {
             if (d.score !== "") {
                 let id = d.id + d.score;
-                $("#" + id).css("background", "#28a745");
+                $("#" + id).css("background", "#28a745 ");
                 $("#" + id).css("color", "white");
             }
         });

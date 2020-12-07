@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import View from "../../components/view/givefeedback";
 import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import ViewContent from "../../components/view/viewcontent";
+import Review from "../../components/review/review";
 
 class ViewFeeds extends Component {
     constructor(props) {
@@ -16,7 +17,8 @@ class ViewFeeds extends Component {
             childIndex: 0,
             lastDataId: "",
             isAllSubmitted: false,
-            showDescription: false
+            showDescription: false,
+            isAllReviewed: false,
         };
     }
     //increment index to display next data
@@ -34,37 +36,42 @@ class ViewFeeds extends Component {
                       index: prevState.index + 1,
                       childIndex: 0,
                   }));
-        } else {
-            let data_to_be_posted = {
-                recipient: this.props.match.params.employee,
-                docstatus: 1,
-                item: [],
-            };
-
+        } else if (args === "review") {
             let iscomplete = true;
             this.state.data.map((d) => {
                 return d.competency.map((x) => {
                     return x.detail.map((y) => {
                         if (!y.score) {
                             iscomplete = false;
-                            return;
-                        } else {
-                            let qId_and_score = { detail_code: "", rating: "" };
-                            qId_and_score.detail_code = y.id;
-                            qId_and_score.rating = y.score;
-                            data_to_be_posted.item.push(qId_and_score);
+                            return iscomplete;
                         }
                     });
                 });
             });
-
             if (iscomplete === false) {
-                alert("not completed");
+                alert("The questions are not completed");
             } else {
-                // given all Qs are answered post to database
-                console.log("about to update the data");
-                this.updateData(data_to_be_posted);
+                this.setState({
+                    isAllReviewed: true,
+                });
             }
+        } else {
+            let data_to_be_posted = {
+                recipient: this.props.match.params.employee,
+                docstatus: 1,
+                item: [],
+            };
+            this.state.data.map((d) => {
+                return d.competency.map((x) => {
+                    return x.detail.map((y) => {
+                        let qId_and_score = { detail_code: "", rating: "" };
+                        qId_and_score.detail_code = y.id;
+                        qId_and_score.rating = y.score;
+                        data_to_be_posted.item.push(qId_and_score);
+                    });
+                });
+            });
+            this.updateData(data_to_be_posted);
         }
     };
 
@@ -78,6 +85,7 @@ class ViewFeeds extends Component {
         } catch (err) {
             console.error(err);
         }
+
         // Display the success message after all the data is submnimtted
         this.setState({
             isAllSubmitted: true,
@@ -137,38 +145,42 @@ class ViewFeeds extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navigationbar showDescription={this.state.showDescription}/>
+                <Navigationbar />
                 <br />
                 <Container>
-                    <hr />
-                    {!this.state.isAllSubmitted ? (
-                        <p style={{ marginLeft: "20px" }}>
-                            <span style={{ fontSize: "large", color: "#7b7b7b" }}>
-                                <b>Giving Feedback to: </b>
-                            </span>
-                            &nbsp;&nbsp;
-                            <span style={{ color: "#929292" }}>
-                                <i>{this.props.match.params.name},</i>
-                            </span>
-                            &nbsp;&nbsp;
-                            <span style={{ color: "#929292" }}>
-                                <i>{this.props.match.params.designation}</i>
-                            </span>
-                        </p>
+                    {!this.state.isAllReviewed ? (
+                        <React.Fragment>
+                            <hr />
+                            <p style={{ marginLeft: "20px" }}>
+                                <span style={{ fontSize: "large", color: "#7b7b7b" }}>
+                                    <b>Giving Feedback to: </b>
+                                </span>
+                                &nbsp;&nbsp;
+                                <span style={{ color: "#929292" }}>
+                                    <i>{this.props.match.params.name},</i>
+                                </span>
+                                &nbsp;&nbsp;
+                                <span style={{ color: "#929292" }}>
+                                    <i>{this.props.match.params.designation}</i>
+                                </span>
+                            </p>
+                            <hr />
+                        </React.Fragment>
                     ) : (
                         ""
                     )}
-                    <hr />
 
                     {this.state.index >= 0 ? (
                         <Row>
                             <Col xs={12} sm={12} md={12} lg={12}>
                                 <Row>
                                     <Col lg={12}>
-                                        {!this.state.isAllSubmitted ? (
+                                        {!this.state.isAllReviewed ? (
                                             <div>
                                                 <View header={this.state.data[this.state.index].corporate_ds} data={this.state.data[this.state.index].competency[this.state.childIndex]} incrementIndex={this.incrementIndexHandler} decrementIndex={this.decrementIndexHandler} laztId={this.state.lastDataId} scoreUpdate={this.scoreUpdate} index={this.state.childIndex} pIndex={this.state.index} />
                                             </div>
+                                        ) : !this.state.isAllSubmitted ? (
+                                            <Review data={this.state.data} scoreUpdate={this.scoreUpdate} incrementIndex={this.incrementIndexHandler} />
                                         ) : (
                                             <ViewContent />
                                         )}

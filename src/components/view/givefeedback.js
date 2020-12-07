@@ -14,7 +14,7 @@ const GiveFeeds = (props) => {
                             </Col>
                             <Col lg={3} md={3} sm={3} xs={12}>
                                 <span className='scoreboard-parent-div' style={{ float: "right" }}>
-                                    <ScoreBoard qid={x.id} data_info={props.data} className={(x.id, "score")} scoreUpdate={props.scoreUpdate} />
+                                    <ScoreBoard qid={x.id} data_info={props.data} className={(x.id, "score")} scoreUpdate={props.scoreUpdate} review_or_feed={true} />
                                 </span>
                             </Col>
                         </Row>
@@ -51,8 +51,8 @@ const GiveFeeds = (props) => {
                             Next
                         </Button>
                     ) : (
-                        <Button className='btn-danger btn-sm questionnaire-next-submit ' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
-                            Submit
+                        <Button className='btn-warning btn-sm questionnaire-next-submit ' onClick={() => props.incrementIndex("review")} style={{ float: "right" }}>
+                            Review
                         </Button>
                     )}
                 </Card.Body>
