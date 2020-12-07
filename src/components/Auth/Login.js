@@ -50,6 +50,7 @@ function Login(props) {
                             loader: false,
                         }));
                         setUserSession(resp.data.api_key, resp.data.api_secret, resp.data.login_id);
+                        localStorage.setItem('showDescription',true)
                         redirectToHome();
                         props.showError(null);
                     })

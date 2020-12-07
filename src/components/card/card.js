@@ -7,6 +7,7 @@ import imgUrlFemale from "../../assets/images/female-user.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
+
 const Cards = (props) => {
     const { info } = props;
     if (!info) return <strong>No Data to Display</strong>;
@@ -37,7 +38,7 @@ const Cards = (props) => {
                 {info.status === "Pending" ? (
                     <Link to={`/feedback/${info.employee}/${info.employee_name}/${info.designation}`}>
                         <Button className='btn-primary btn-block view-give-feed-btn' style={{ padding: "3px", fontSize: "11px", borderRadius: "40px" }}>
-                            Give Feeds
+                            Give Feedback
                         </Button>
                     </Link>
                 ) : (

@@ -16,6 +16,7 @@ class ViewFeeds extends Component {
             childIndex: 0,
             lastDataId: "",
             isAllSubmitted: false,
+            showDescription: false
         };
     }
     //increment index to display next data
@@ -136,7 +137,7 @@ class ViewFeeds extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navigationbar userDetail={this.state.userDeatil} />
+                <Navigationbar showDescription={this.state.showDescription}/>
                 <br />
                 <Container>
                     <hr />

@@ -37,11 +37,9 @@ function App() {
                     <Switch>
                         <Route exact path='/login' component={Login} />
                         <Route exact path='/logout' component={Logout} />
-                        {/* <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>  */}
                         <PrivateRoute exact path='/feedback/:employee/:name/:designation' component={GiveFeeds} />
                         <PrivateRoute exact path='/dashboard' component={Dashboard} />
                         <Redirect to='/login' />
-                        {/* <Redirect component={NotFoundPage}/> */}
                     </Switch>
                 </Router>
             </BrowserRouter>
