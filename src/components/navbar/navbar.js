@@ -5,13 +5,17 @@ import "./navbar.css";
 import Logo from "../../assets/images/navbar-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faInfo } from "@fortawesome/free-solid-svg-icons";
+
+
 
 class Navigationbar extends Component {
-  constructor(props = []) {
+  constructor(props=[]) {
     super(props);
     this.state = {
       show: false,
-      userDetail: {},
+      userDetail: {}
     };
   }
   showModal = () => {
@@ -26,9 +30,10 @@ class Navigationbar extends Component {
         userDetail: resp.data.message[0],
       });
     } catch (err) {
-        console.error(err)
+      console.error(err);
     }
   };
+ 
   componentDidMount() {
     this.showUser();
   }
@@ -58,17 +63,23 @@ class Navigationbar extends Component {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav ml-auto ">
-              <li className="nav-item mt-2" style={{ marginLeft: "20px" }}>
+              <li className="nav-item mt-2" style={{ marginLeft: "30px" }}>
                 <Link to="/dashboard" className="nav-link">
-                  <span className="font-weight-bold">Dashboard</span>
+                  <FontAwesomeIcon icon={faHome} /> &nbsp;
+                  <span className="font-weight-bold" style={{ color: "white" }}>
+                    Dashboard
+                  </span>
                 </Link>
               </li>
+            
               <li className="nav-item mt-2" style={{ paddingTop: "10px" }}>
                 <span
                   className="text-md font-weight-bold username"
                   onClick={this.showModal}
                 >
-                  {this.state.userDetail.employee_name}
+                  <span style={{ fontSize: "small", color: "#133f65" }}>
+                    {this.state.userDetail.employee_name}
+                  </span>
                 </span>
               </li>
               <li className="nav-item username">
@@ -76,7 +87,11 @@ class Navigationbar extends Component {
                 <img
                   alt=""
                   className="profile"
-                  src={ this.state.userDetail.image ? "http://192.168.70.38" + this.state.userDetail.image : ""}
+                  src={
+                    this.state.userDetail.image
+                      ? "http://192.168.70.38" + this.state.userDetail.image
+                      : ""
+                  }
                   onClick={this.showModal}
                 />
               </li>

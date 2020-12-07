@@ -7,10 +7,10 @@ import { getToken, getUser, removeUserSession, setUserSession } from "../Utils/C
 import Login from "./Auth/Login";
 import Dashboard from "../containers/dashboard/dashboard";
 import Logout from "./Auth/Logout";
-import Navigation from "../components/navbar/navbar";
 import GiveFeeds from "../containers/givefeeds/givefeeds";
-
 const hist = createBrowserHistory();
+
+
 function App() {
     useEffect(() => {
         const token = getToken();
@@ -37,7 +37,6 @@ function App() {
                     <Switch>
                         <Route exact path='/login' component={Login} />
                         <Route exact path='/logout' component={Logout} />
-                        {/* <PrivateRoute exact path="/feedback/:employee" component={ViewFeedBack}/>  */}
                         <PrivateRoute exact path='/feedback/:employee/:name/:designation' component={GiveFeeds} />
                         <PrivateRoute exact path='/dashboard' component={Dashboard} />
                         <Redirect to='/login' />

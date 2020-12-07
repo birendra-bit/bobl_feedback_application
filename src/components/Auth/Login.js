@@ -26,7 +26,7 @@ function Login(props) {
             [id]: value,
         }));
     };
-
+    
     const handleSubmitClick = (e) => {
         e.preventDefault();
         const data = {
@@ -50,11 +50,16 @@ function Login(props) {
                             loader: false,
                         }));
                         setUserSession(resp.data.api_key, resp.data.api_secret, resp.data.login_id);
+                        localStorage.setItem('showDescription',true)
                         redirectToHome();
                         props.showError(null);
                     })
                     .catch(function (error) {
                         console.log(error);
+                        setState((prevState) => ({
+                            ...prevState,
+                            loader: false,
+                        }));
                     });
             })
             .catch(function (error) {
@@ -63,6 +68,7 @@ function Login(props) {
                     ...prevState,
                     successMessage: null,
                     failedMessage: "Login Unsuccessful. Try Again.",
+                    loader: false,
                 }));
             });
     };

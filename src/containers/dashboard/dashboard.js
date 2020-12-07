@@ -6,148 +6,151 @@ import Card from "../../components/card/card";
 import FeedbackReceiveList from "../../components/feedback_receive_list/feedbackReceiveList";
 import Tab from "../../components/tab/tab";
 import axios from "axios";
-import Red from "../../assets/images/red.png";
-import Green from "../../assets/images/green.png";
-import Blue from "../../assets/images/blue.png";
-import Brown from "../../assets/images/brown.png";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import  Description from '../../components/description/description'
 
 class Dashboard extends Component {
-    constructor(props = []) {
-        super(props);
-        this.state = {
-            giveFeedsData: [],
-            reciveFeedsData: [],
-            giveFeeds: true,
-            feedsGiven: false,
-            loader: true,
-        };
+  constructor(props = []) {
+    super(props);
+    this.state = {
+      giveFeedsData: [],
+      reciveFeedsData: [],
+      giveFeeds: false,
+      feedsGiven: false,
+      loader: true,
+      showDescription: true,
+      description: []
+    };
+  }
+
+  //handle toggle
+  giveFeedsToggleHandler = () => {
+    this.setState({
+      giveFeeds: true,
+    });
+  };
+  feedGivenToggle = () => {
+    this.setState({
+      giveFeeds: false,
+    });
+  };
+
+  //tab switcher
+  tabSwitcherHandler = (args) => {
+
+    let bool_arr = ["giveFeeds", "feedsGiven", "showDescription"];
+    bool_arr.map((x) => {
+      if (x === args) {
+        this.setState({
+          [x]: true
+        });
+      } else {
+        this.setState({
+          [x]: false
+        });
+      }
+    });
+  };
+  //get details of feeds
+  getDescription = async () => {
+    try {
+      let res = await axios.get(
+        "/api/method/erpnext.feedback_api.get_competency"
+      );
+      this.setState({
+        description: res.data.message,
+      });
+    } catch (err) {
+      console.error("err ", err);
     }
-
-    //handle toggle
-    giveFeedsToggleHandler = () => {
+  };
+  //get give feedback data
+  getGiveFeedsUserData = async () => {
+    let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`;
+    try {
+      let resp = await axios.get(url + sessionStorage.getItem("user"));
+      if (resp.data.message !== "No Data")
         this.setState({
-            giveFeeds: true,
+          giveFeedsData: resp.data.message,
         });
-    };
-    feedGivenToggle = () => {
-        this.setState({
-            giveFeeds: false,
-        });
-    };
-
-    //get give feedback data
-    getGiveFeedsUserData = async () => {
-        let url = `/api/method/erpnext.feedback_api.get_feedback_provide?user=`;
-        try {
-            let resp = await axios.get(url + sessionStorage.getItem("user"));
-            if (resp.data.message !== "No Data")
-                this.setState({
-                    giveFeedsData: resp.data.message,
-                });
-            this.loaderHandler();
-        } catch (err) {
-            console.error(err);
-        }
-    };
-    loaderHandler = () => {
-        this.setState({
-            loader: false,
-        });
-    };
-    //get Receive feeds data
-    getReciveFeedsUserData = async () => {
-        let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`;
-        try {
-            let resp = await axios.get(url + sessionStorage.getItem("user"));
-            if (resp.data.message !== "No Data")
-                this.setState({
-                    reciveFeedsData: resp.data.message,
-                });
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    componentDidMount() {
-        this.getGiveFeedsUserData();
-        this.getReciveFeedsUserData();
-        // setTimeout(this.loaderHandler,2000)
+      this.loaderHandler();
+    } catch (err) {
+      console.error(err);
     }
-    render() {
-        let cards = this.state.giveFeedsData.map((info, index) => {
-            return (
-                <Col sm={4} md={4} lg={3} key={index}>
-                    <Card info={info} btnText='Give Feeds' />
+  };
+  loaderHandler = () => {
+    this.setState({
+      loader: false,
+    });
+  };
+  //get Receive feeds data
+  getReciveFeedsUserData = async () => {
+    let url = `/api/method/erpnext.feedback_api.get_feedback_receive?user=`;
+    try {
+      let resp = await axios.get(url + sessionStorage.getItem("user"));
+      if (resp.data.message !== "No Data")
+        this.setState({
+          reciveFeedsData: resp.data.message,
+        });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  componentDidMount() {
+    this.getGiveFeedsUserData();
+    this.getReciveFeedsUserData();
+    this.getDescription()
+  }
+  render() {
+    let cards = this.state.giveFeedsData.map((info, index) => {
+      return (
+        <Col sm={4} md={4} lg={3} key={index}>
+          <Card info={info} btnText="Give Feeds" />
+        </Col>
+      );
+    });
+
+    let feedsGivenList = <FeedbackReceiveList info={this.state.reciveFeedsData} />;
+    return (
+      <React.Fragment>
+        <Navigationbar showDescription={this.state.showDescription} />
+        <Container fluid={false}>
+          <br />
+          <Tab
+            giveFeeds={this.state.giveFeeds}
+            feedsGiven = {this.state.feedsGiven}
+            showDescription={this.state.showDescription}
+            tabSwitcher = {this.tabSwitcherHandler}
+          />
+          <Row>
+            {this.state.loader ? (
+              <Col>
+                <div className="loader">
+                  <Loader
+                    type="Circles"
+                    color="#00BFFF"
+                    height={80}
+                    width={80}
+                  />
+                </div>
+              </Col>
+            ) : (
+              <React.Fragment>
+                <Col sm={12} md={12} lg={12} xs={12}>
+                  <Row>{this.state.giveFeeds ? cards : ""}</Row>
+                  <Row> {this.state.feedsGiven ? feedsGivenList : ""}</Row>
+                  <Row> {this.state.showDescription? <Description description ={this.state.description} />:""} </Row>
                 </Col>
-            );
-        });
-        let label = (
-            <React.Fragment>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    <img src={Red} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Designation
-                </span>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    &nbsp;
-                    <img src={Green} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Department
-                </span>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    &nbsp;
-                    <img src={Blue} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Branch
-                </span>
-                <span style={{ color: "black", fontSize: "15px", margin: "0 20px" }}>
-                    &nbsp;
-                    <img src={Brown} alt='designation' style={{ width: "10px" }} />
-                    &nbsp;&nbsp;Email
-                </span>
-            </React.Fragment>
-        );
-        let feedsGivenList = <FeedbackReceiveList info={this.state.reciveFeedsData} />;
-        return (
-            <React.Fragment>
-                <Navigationbar />
-                <Container fluid={false}>
-                    <br />
-                    <Tab giveFeeds={this.state.giveFeeds} giveFeedsToggleHandler={this.giveFeedsToggleHandler} feedGivenToggle={this.feedGivenToggle} />
-                    <Row>
-                        {this.state.loader ? (
-                            <Col>
-                                <div className='loader'>
-                                    <Loader type='Circles' color='#00BFFF' height={80} width={80} />
-                                </div>
-                            </Col>
-                        ) : (
-                            <React.Fragment>
-                                <Col sm={12} md={12} lg={12} xs={12}>
-                                    <Row>{this.state.giveFeeds ? cards : feedsGivenList}</Row>
-                                    <Row>
-                                        <Col md={12} xs={12} lg={12}>
-                                            <br />
-                                            <br />
-                                            <hr />
-                                        </Col>
-
-                                        <Col md={12} xs={12} lg={12}>
-                                            {this.state.giveFeeds ? label : ""}
-                                        </Col>
-                                        <Col md={12} xs={12} lg={12}>
-                                            <hr />
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col sm={12} md={12} lg={4}></Col>
-                            </React.Fragment>
-                        )}
-                    </Row>
-                </Container>
-                <Footer />
-            </React.Fragment>
-        );
-    }
+              </React.Fragment>
+            )}
+          </Row>
+        </Container>
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
 export default Dashboard;

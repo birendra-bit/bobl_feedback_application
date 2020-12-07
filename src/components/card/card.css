@@ -2,10 +2,13 @@
     height: 300px;
     color: #004c9c;
     transition: all 200ms ease-in;
-    box-shadow: 6px 6px 21px #cececeb0, -6px -6px 21px #cececeb0;
+    box-shadow: 6px 6px 21px #e4e4e4,
+        -6px -6px 21px #f1f1f1;
     border: 1px solid #cececeb0 !important;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    margin-bottom: 30px !important;
+
 }
 
 /* 
@@ -18,13 +21,15 @@ so that the inside elements can be styled separately.
 
 /* increase the button size when hovering on the card  */
 .user-card:hover {
-    box-shadow: 6px 6px 21px #e4e4e4, -6px -6px 21px #f1f1f1;
+
+    box-shadow: 6px 6px 21px #cececeb0,
+        -6px -6px 21px #cececeb0;
     transition: all 200ms ease-out;
 }
 
 /* increase the button size when hovering on the card  */
 .user-card:hover .view-give-feed-btn {
-    transform: scale(1.05);
+    transform: scale(1.01);
     transition: all 200ms ease-out;
 }
 
@@ -55,6 +60,6 @@ so that the inside elements can be styled separately.
         position: relative !important;
         left: 35px;
         width: 80% !important;
-        bottom: 0;
+        margin-bottom: 20px
     }
 }

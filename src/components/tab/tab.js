@@ -1,19 +1,25 @@
 import React from "react";
 import "./tab.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleDown, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleDown, faPen , faInfo} from "@fortawesome/free-solid-svg-icons";
 
 const tab = (props) => {
+    const { tabSwitcher, showDescription,giveFeeds,feedsGiven} = props
     return (
         <div>
             <div className='d-flex tab'>
-                <span className={props.giveFeeds ? "active" : null} onClick={props.giveFeedsToggleHandler} style={{ background: "#8080805c" }} id='give-span'>
-                    Give Feeds &nbsp;
+                <span className={showDescription ? "active" : null} onClick={()=> tabSwitcher('showDescription')} style={{ background: "#8080805c" }} id='give-span'>
+                        Descriptions &nbsp;
+                        <FontAwesomeIcon icon={faInfo} />
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span className={giveFeeds ? "active" : null} onClick={()=>tabSwitcher('giveFeeds')} style={{ background: "#8080805c" }} id='give-span'>
+                    Give Feedback &nbsp;
                     <FontAwesomeIcon icon={faPen} />
                 </span>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className={props.giveFeeds ? null : "active"} onClick={props.feedGivenToggle} style={{ background: "#8080805c" }} id='view-span'>
-                    Feeds Given By &nbsp;
+                <span className={feedsGiven ? "active" : null } onClick={()=>tabSwitcher('feedsGiven')} style={{ background: "#8080805c" }} id='view-span'>
+                    Feedback Given By &nbsp;
                     <FontAwesomeIcon icon={faArrowAltCircleDown} />
                 </span>
             </div>

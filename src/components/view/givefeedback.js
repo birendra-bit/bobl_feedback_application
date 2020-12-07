@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import ScoreBoard from "../score_board/score_board";
-
+import "./givefeedback.css";
 const GiveFeeds = (props) => {
     let list = (
         <ul type='none' className='p-0'>
@@ -9,9 +9,11 @@ const GiveFeeds = (props) => {
                 return (
                     <li key={i}>
                         <Row style={{ margin: "3px 0" }}>
-                            <Col lg={10}>{x.content}</Col>
-                            <Col lg={2}>
-                                <span style={{ float: "right" }}>
+                            <Col lg={9} md={9} sm={9} xs={12}>
+                                {x.content}
+                            </Col>
+                            <Col lg={3} md={3} sm={3} xs={12}>
+                                <span className='scoreboard-parent-div' style={{ float: "right" }}>
                                     <ScoreBoard qid={x.id} data_info={props.data} className={(x.id, "score")} scoreUpdate={props.scoreUpdate} />
                                 </span>
                             </Col>
@@ -24,26 +26,32 @@ const GiveFeeds = (props) => {
     );
     return (
         <React.Fragment>
-            <Card border='secondary'>
+            <Card className='questionnaire-card'>
                 <Card.Body>
-                    <Card.Title className='title'>
-                        <strong>{props.index + 1}. </strong>
-                        <strong>{props.data.title}</strong>
+                    <Card.Title className='questionnaire-title'>
+                        <h3>{props.header}</h3>
                     </Card.Title>
-                    {list}
+
+                    <div className='competency-category'>
+                        <h5>
+                            {props.index + 1}. {props.data.title}
+                        </h5>
+                    </div>
+
+                    <div className='questionnaire-detail'> {list} </div>
                     {(props.pIndex === 0) & (props.index === 0) ? (
                         ""
                     ) : (
-                        <Button className='btn-primary btn-sm' onClick={props.decrementIndex} style={{ float: "left" }}>
+                        <Button className='btn-secondary btn-sm questionnaire-previous' onClick={props.decrementIndex} style={{ float: "left" }}>
                             Previous
                         </Button>
                     )}
                     {props.data.detail[0].id !== props.laztId ? (
-                        <Button className='btn-primary btn-sm' onClick={() => props.incrementIndex("next")} style={{ float: "right" }}>
+                        <Button className='btn-primary btn-sm questionnaire-next-submit' onClick={() => props.incrementIndex("next")} style={{ float: "right" }}>
                             Next
                         </Button>
                     ) : (
-                        <Button className='btn-primary btn-sm' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
+                        <Button className='btn-danger btn-sm questionnaire-next-submit ' onClick={() => props.incrementIndex("submit")} style={{ float: "right" }}>
                             Submit
                         </Button>
                     )}
