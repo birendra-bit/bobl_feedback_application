@@ -32,7 +32,7 @@ function Score(props) {
                 id={props.qid + "1"}
                 onClick={() => {
                     handleChange(props.qid + "1");
-                    props.scoreUpdate(props.qid, 1);
+                    props.review_or_feed ? props.scoreUpdate(props.qid, 1) : props.reviewScoreUpdate(props.qid, 1);
                 }}
             >
                 1
@@ -42,7 +42,7 @@ function Score(props) {
                 id={props.qid + "2"}
                 onClick={() => {
                     handleChange(props.qid + "2");
-                    props.scoreUpdate(props.qid, 2);
+                    props.review_or_feed ? props.scoreUpdate(props.qid, 2) : props.reviewScoreUpdate(props.qid, 2);
                 }}
             >
                 2
@@ -52,7 +52,7 @@ function Score(props) {
                 id={props.qid + "3"}
                 onClick={() => {
                     handleChange(props.qid + "3");
-                    props.scoreUpdate(props.qid, 3);
+                    props.review_or_feed ? props.scoreUpdate(props.qid, 3) : props.reviewScoreUpdate(props.qid, 3);
                 }}
             >
                 3
@@ -62,7 +62,7 @@ function Score(props) {
                 id={props.qid + "4"}
                 onClick={() => {
                     handleChange(props.qid + "4");
-                    props.scoreUpdate(props.qid, 4);
+                    props.review_or_feed ? props.scoreUpdate(props.qid, 4) : props.reviewScoreUpdate(props.qid, 4);
                 }}
             >
                 4
@@ -72,7 +72,7 @@ function Score(props) {
                 id={props.qid + "5"}
                 onClick={() => {
                     handleChange(props.qid + "5");
-                    props.scoreUpdate(props.qid, 5);
+                    props.review_or_feed ? props.scoreUpdate(props.qid, 5) : props.reviewScoreUpdate(props.qid, 5);
                 }}
             >
                 5

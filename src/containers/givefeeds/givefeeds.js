@@ -103,7 +103,7 @@ class ViewFeeds extends Component {
                   childIndex: prevState.childIndex - 1,
               }));
     };
-    // update score on click
+    // update score on click when the user in on give feedback
     scoreUpdate = (id, score) => {
         let i = this.state.index;
         let j = this.state.childIndex;
@@ -111,6 +111,17 @@ class ViewFeeds extends Component {
             if (x.id === id) {
                 x.score = score;
             }
+        });
+    };
+    reviewScoreUpdate = (id, score) => {
+        this.state.data.map((d) => {
+            return d.competency.map((x) => {
+                return x.detail.map((y) => {
+                    if (y.id === id) {
+                        y.score = score;
+                    }
+                });
+            });
         });
     };
     getQuestions = async () => {
@@ -180,7 +191,7 @@ class ViewFeeds extends Component {
                                                 <View header={this.state.data[this.state.index].corporate_ds} data={this.state.data[this.state.index].competency[this.state.childIndex]} incrementIndex={this.incrementIndexHandler} decrementIndex={this.decrementIndexHandler} laztId={this.state.lastDataId} scoreUpdate={this.scoreUpdate} index={this.state.childIndex} pIndex={this.state.index} />
                                             </div>
                                         ) : !this.state.isAllSubmitted ? (
-                                            <Review data={this.state.data} scoreUpdate={this.scoreUpdate} incrementIndex={this.incrementIndexHandler} />
+                                            <Review data={this.state.data} reviewScoreUpdate={this.reviewScoreUpdate} incrementIndex={this.incrementIndexHandler} />
                                         ) : (
                                             <ViewContent />
                                         )}

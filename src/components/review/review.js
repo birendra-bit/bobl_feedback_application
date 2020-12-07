@@ -17,8 +17,7 @@ class Review extends Component {
         console.log("this is the props: => ", this.props.data);
         return (
             <React.Fragment>
-                <Navigationbar />
-                <Container style={{ background: "#e6e6e6", padding: "30px 50px", marginTop: "30px", borderRadius: "10px" }}>
+                <Container style={{ background: "#f1f1f159", padding: "30px 50px", marginTop: "30px", borderRadius: "10px", boxShadow: "6px 6px 21px #cececeb0, -6px -6px 21px #e2e2e2b0" }}>
                     <h1 style={{ textAlign: "center", color: "#0d6092" }}>
                         Review <FontAwesomeIcon icon={faCopy} />
                     </h1>
@@ -44,8 +43,7 @@ class Review extends Component {
                                                             {x.content}
                                                         </Col>
                                                         <Col lg={3} md={3} sm={3} xs={12}>
-                                                            {/* <ScoreBoard qid={x.id} data_info={y} className={(x.id, "score")} scoreUpdate={props.scoreUpdate} /> */}
-                                                            <ScoreBoard qid={x.id} data_info={y} className={(x.id, "score")} review_or_feed={false} />
+                                                            <ScoreBoard qid={x.id} data_info={y} className={(x.id, "score")} review_or_feed={false} reviewScoreUpdate={this.props.reviewScoreUpdate} />
                                                         </Col>
                                                         <Col lg={{ span: 10, offset: 1 }} md={{ span: 10, offset: 1 }} sm={{ span: 10, offset: 1 }} xs={{ span: 10, offset: 1 }}>
                                                             <hr style={{ width: "100%" }} />
