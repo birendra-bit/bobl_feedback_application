@@ -2,6 +2,8 @@ import React from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import ScoreBoard from "../score_board/score_board";
 import "./givefeedback.css";
+
+
 const GiveFeeds = (props) => {
     let list = (
         <ul type='none' className='p-0'>
