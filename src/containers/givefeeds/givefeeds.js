@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import View from "../../components/view/givefeedback";
 import axios from "axios";
 import Navigationbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import ViewContent from "../../components/view/viewcontent";
 import Review from "../../components/review/review";
+import { getRequest } from "../../api/api";
 
 class ViewFeeds extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class ViewFeeds extends Component {
             isAllSubmitted: false,
             showDescription: false,
             isAllReviewed: false,
+            showModal: false,
         };
     }
     //increment index to display next data
@@ -49,7 +51,9 @@ class ViewFeeds extends Component {
                 });
             });
             if (iscomplete === false) {
-                alert("The questions are not completed");
+                this.setState({
+                    showModal: true,
+                });
             } else {
                 this.setState({
                     isAllReviewed: true,
@@ -74,14 +78,19 @@ class ViewFeeds extends Component {
             this.updateData(data_to_be_posted);
         }
     };
-
+    //hide alret modal
+    hideModalHandler = () => {
+        this.setState({
+            showModal: false,
+        });
+    };
     updateData = async (data_to_be_posted) => {
         console.log("this is the data to be posted: ", data_to_be_posted);
-        // const header = {
-        //     "Content-Type": "application/json",
-        // };
+        const header = {
+            "Content-Type": "application/json",
+        };
         try {
-            await axios.post("/api/resource/Feedback", data_to_be_posted);
+            await axios.post("/api/resource/Feedback", data_to_be_posted, header);
             // Display the success message after all the data is submnimtted
             this.setState({
                 isAllSubmitted: true,
@@ -125,18 +134,14 @@ class ViewFeeds extends Component {
         });
     };
     getQuestions = async () => {
-        try {
-            let res = await axios.get("/api/method/erpnext.feedback_api.get_competency");
-            this.setState({ data: res.data.message, index: 0 });
-            let i = this.state.data.length - 1;
-            let j = this.state.data[i].competency.length - 1;
-            let laztId = this.state.data[i].competency[j].detail[0].id;
-            this.setState({
-                lastDataId: laztId,
-            });
-        } catch (err) {
-            alert("something went wrong", err);
-        }
+        let res = await getRequest("/api/method/erpnext.feedback_api.get_competency");
+        this.setState({ data: res.data.message, index: 0 });
+        let i = this.state.data.length - 1;
+        let j = this.state.data[i].competency.length - 1;
+        let laztId = this.state.data[i].competency[j].detail[0].id;
+        this.setState({
+            lastDataId: laztId,
+        });
     };
     getUserDetail = async () => {
         let url = `/api/method/erpnext.feedback_api.user_detail?user=`;
@@ -203,6 +208,14 @@ class ViewFeeds extends Component {
                         ""
                     )}
                 </Container>
+                <Modal show={this.state.showModal} onHide={this.hideModalHandler} animation={false}>
+                    <Modal.Body>You Must Give Rating To All Fields!</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant='secondary' onClick={this.hideModalHandler}>
+                            Ok
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
                 <Footer />
             </React.Fragment>
         );
