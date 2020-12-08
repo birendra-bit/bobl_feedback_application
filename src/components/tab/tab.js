@@ -6,19 +6,19 @@ import { faArrowAltCircleDown, faPen , faInfo} from "@fortawesome/free-solid-svg
 const tab = (props) => {
     const { tabSwitcher, showDescription,giveFeeds,feedsGiven} = props
     return (
-        <div>
+        <div >
             <div className='d-flex tab'>
-            <span className={giveFeeds ? "active" : null} onClick={()=>tabSwitcher('giveFeeds')} style={{ background: "#8080805c" }} id='give-span'>
+            <span className={giveFeeds ? "active" : null} onClick={()=>tabSwitcher('giveFeeds')} style={{ background: "#8080805c",boxShadow:'3px 3px 15px #cececeb0, -3px -3px 15px' }} id='give-span'>
                     Give Feedback &nbsp;
                     <FontAwesomeIcon icon={faPen} />
                 </span>
                 &nbsp;
-                <span className={feedsGiven ? "active" : null } onClick={()=>tabSwitcher('feedsGiven')} style={{ background: "#8080805c" }} id='view-span'>
+                <span className={feedsGiven ? "active" : null } onClick={()=>tabSwitcher('feedsGiven')} style={{ background: "#8080805c",boxShadow:'3px 3px 15px #cececeb0, -3px -3px 15px' }} id='view-span'>
                     Feedback Given By &nbsp;
                     <FontAwesomeIcon icon={faArrowAltCircleDown} />
                 </span>
                 &nbsp;
-                <span className={showDescription ? "active" : null} onClick={()=> tabSwitcher('showDescription')} style={{ background: "#8080805c" }} id='give-span'>
+                <span className={showDescription ? "active" : null} onClick={()=> tabSwitcher('showDescription')} style={{ background: "#8080805c",boxShadow:'3px 3px 15px #cececeb0, -3px -3px 15px' }} id='give-span'>
                         Descriptions &nbsp;
                         <FontAwesomeIcon icon={faInfo} />
                 </span>
