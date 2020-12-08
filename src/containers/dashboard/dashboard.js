@@ -16,10 +16,10 @@ class Dashboard extends Component {
     this.state = {
       giveFeedsData: [],
       reciveFeedsData: [],
-      giveFeeds: false,
+      giveFeeds: true,
       feedsGiven: false,
       loader: true,
-      showDescription: true,
+      showDescription: false,
       description: []
     };
   }

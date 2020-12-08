@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import { Navbar, Button, Image, Modal, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
@@ -6,13 +6,14 @@ import Logo from "../../assets/images/navbar-logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 
 
 class Navigationbar extends Component {
   constructor(props=[]) {
     super(props);
+    this.wrapper = React.createRef()
     this.state = {
       show: false,
       userDetail: {}
@@ -39,7 +40,7 @@ class Navigationbar extends Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <React.Fragment >
         <Navbar collapseOnSelect expand="lg" className="nav">
           &nbsp; &nbsp;
           <Navbar.Brand className="mr-auto">
@@ -63,7 +64,7 @@ class Navigationbar extends Component {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav ml-auto ">
-              <li className="nav-item mt-2" style={{ marginLeft: "30px" }}>
+              <li className="nav-item">
                 <Link to="/dashboard" className="nav-link">
                   <FontAwesomeIcon icon={faHome} /> &nbsp;
                   <span className="font-weight-bold" style={{ color: "white" }}>
@@ -71,10 +72,9 @@ class Navigationbar extends Component {
                   </span>
                 </Link>
               </li>
-            
-              <li className="nav-item mt-2" style={{ paddingTop: "10px" }}>
+              <li className="nav-item" style={{ paddingTop: "10px" }}>
                 <span
-                  className="text-md font-weight-bold username"
+                  className="text-md font-weight-bold "
                   onClick={this.showModal}
                 >
                   <span style={{ fontSize: "small", color: "#133f65" }}>
@@ -102,7 +102,8 @@ class Navigationbar extends Component {
         <Modal
           show={this.state.show}
           onHide={() => this.setState({ show: false })}
-          animation={false}
+          animation={true}
+          ref={this.wrapper}
         >
           <Modal.Body style={{ padding: "20px" }}>
             <Row>

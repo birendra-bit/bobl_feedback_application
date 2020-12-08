@@ -34,9 +34,9 @@ class FeedbackReceivedList extends Component {
   };
 
   changeEndIndex = () => {
-      this.setState((prevState) => ({
-        endIndex: prevState.data.length - 1 < 10 ? prevState.data.length - 1 : 10
-      }))
+    this.setState((prevState) => ({
+      endIndex: prevState.data.length - 1 < 10 ? prevState.data.length - 1 : 10,
+    }));
   };
   // sort data based on status
   filterDataHandler = (key) => {
@@ -50,7 +50,7 @@ class FeedbackReceivedList extends Component {
     this.setState((prevState) => ({
       data: prevState.info.filter((o) => o.status === key),
       initialIndex: 0,
-      endIndex:10
+      endIndex: 10,
     }));
   };
 
@@ -59,7 +59,7 @@ class FeedbackReceivedList extends Component {
       <Col className="overflow-auto">
         <Table
           info={this.state.data.slice(
-            this.state.initialIndex,this.state.endIndex
+            this.state.initialIndex, this.state.endIndex + 1
           )}
           incrementIndex={this.incrementIndexHandler}
           decrementIndex={this.decrementIndexHandler}

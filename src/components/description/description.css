@@ -1,5 +1,6 @@
 .description{
-    background: #e6e6e6;
+    background: #f1f1f159;
     padding: 30px 50px;
     border-radius: 10px;
+    box-shadow: 3px 3px 15px #cececeb0, -3px -3px 15px #e2e2e2b0
 }

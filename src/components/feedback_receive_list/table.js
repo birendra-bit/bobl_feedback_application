@@ -11,10 +11,18 @@ const table = (props) => {
     filterData,
     initialIndex,
     endIndex,
-    lastIndex
+    lastIndex,
   } = props;
 
-  if (!info.length) return <strong>No Data To Display</strong>;
+  if (!info.length)
+    return (
+      <strong>
+        No Data To Display{" "}
+        <span className="badge badge-dark" onClick={() => filterData("Status")} style={{cursor:'pointer'}}>
+          Go Back
+        </span>
+      </strong>
+    );
 
   let table_head = (
     <thead>
@@ -41,7 +49,7 @@ const table = (props) => {
   let table_body = info.map((info, index) => {
     return (
       <tr key={index} style={{ fontSize: "13px" }}>
-        <td scope="row">{initialIndex + index + 1}</td>
+        <td scope="row">{index + 1}</td>
         <td scope="row">
           <img
             src={
