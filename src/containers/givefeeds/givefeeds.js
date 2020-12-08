@@ -162,7 +162,6 @@ class ViewFeeds extends Component {
         return (
             <React.Fragment>
                 <Navigationbar />
-                <br />
                 <Container>
                     {!this.state.isAllReviewed ? (
                         <React.Fragment>
@@ -209,7 +208,7 @@ class ViewFeeds extends Component {
                     )}
                 </Container>
                 <Modal show={this.state.showModal} onHide={this.hideModalHandler} animation={true}>
-                    <Modal.Body>You Must Give Rating To All Fields!</Modal.Body>
+                    <Modal.Body><h4>You Must Give Rating To All Fields!</h4></Modal.Body>
                     <Modal.Footer>
                         <Button variant='secondary' onClick={this.hideModalHandler}>
                             Ok
