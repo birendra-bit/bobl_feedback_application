@@ -29,6 +29,15 @@
     padding-left: 50px;
 }
 
+#title-explanation {
+    color: gray;
+}
+
+#title-explanation:hover {
+    color: #2aa6de;
+    cursor: pointer;
+}
+
 /* the questions under the specific category */
 .questionnaire-detail {
     padding-left: 50px;

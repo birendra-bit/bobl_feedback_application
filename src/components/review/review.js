@@ -17,9 +17,9 @@ class Review extends Component {
         return (
             <React.Fragment>
                 <Container style={{ background: "#f1f1f159", padding: "30px 50px", marginTop: "30px", borderRadius: "10px", boxShadow: "6px 6px 21px #cececeb0, -6px -6px 21px #e2e2e2b0" }}>
-                    <h1 style={{ textAlign: "center", color: "#0d6092" }}>
+                    <h2 style={{ textAlign: "center", color: "#0d6092" }}>
                         Review <FontAwesomeIcon icon={faCopy} />
-                    </h1>
+                    </h2>
                     <hr />
                     {this.state.data.map((info) => {
                         return (
@@ -37,7 +37,7 @@ class Review extends Component {
                                             </h5>
                                             {y.detail.map((x, index) => {
                                                 return (
-                                                    <Row>
+                                                    <Row key={index}>
                                                         <Col lg={8} md={8} sm={8} xs={12} key={index} style={{ margin: "10px 0 0 40px" }}>
                                                             {x.content}
                                                         </Col>

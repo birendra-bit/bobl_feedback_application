@@ -1,8 +1,9 @@
 import React from "react";
-import { Row, Col, Button, Card } from "react-bootstrap";
+import { Row, Col, Button, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import ScoreBoard from "../score_board/score_board";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import "./givefeedback.css";
-
 
 const GiveFeeds = (props) => {
     let list = (
@@ -36,7 +37,24 @@ const GiveFeeds = (props) => {
 
                     <div className='competency-category'>
                         <h5>
-                            {props.index + 1}. {props.data.title}
+                            {props.index + 1}. {props.data.title} &nbsp;&nbsp;
+                            <OverlayTrigger
+                                key='bottom'
+                                placement='bottom'
+                                overlay={
+                                    <Tooltip id={`tooltip-bottom`}>
+                                        {
+                                            <p style={{ textAlign: "left" }}>
+                                                {props.data.explanation.split("<br/>").map((v, i) => {
+                                                    return <p key={i}>{v}</p>;
+                                                })}
+                                            </p>
+                                        }
+                                    </Tooltip>
+                                }
+                            >
+                                <FontAwesomeIcon icon={faQuestionCircle} id='title-explanation' />
+                            </OverlayTrigger>
                         </h5>
                     </div>
 
