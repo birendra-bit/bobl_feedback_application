@@ -77,19 +77,19 @@ class ViewFeeds extends Component {
 
     updateData = async (data_to_be_posted) => {
         console.log("this is the data to be posted: ", data_to_be_posted);
-        const header = {
-            "Content-Type": "application/json",
-        };
+        // const header = {
+        //     "Content-Type": "application/json",
+        // };
         try {
-            await axios.post("/api/resource/Feedback", data_to_be_posted, header);
+            await axios.post("/api/resource/Feedback", data_to_be_posted);
+            // Display the success message after all the data is submnimtted
+            this.setState({
+                isAllSubmitted: true,
+            });
         } catch (err) {
+            alert(err);
             console.error(err);
         }
-
-        // Display the success message after all the data is submnimtted
-        this.setState({
-            isAllSubmitted: true,
-        });
     };
 
     //decrement index to display previous data
