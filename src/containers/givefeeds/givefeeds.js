@@ -208,7 +208,7 @@ class ViewFeeds extends Component {
                         ""
                     )}
                 </Container>
-                <Modal show={this.state.showModal} onHide={this.hideModalHandler} animation={false}>
+                <Modal show={this.state.showModal} onHide={this.hideModalHandler} animation={true}>
                     <Modal.Body>You Must Give Rating To All Fields!</Modal.Body>
                     <Modal.Footer>
                         <Button variant='secondary' onClick={this.hideModalHandler}>
