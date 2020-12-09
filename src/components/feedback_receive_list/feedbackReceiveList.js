@@ -55,6 +55,8 @@ class FeedbackReceivedList extends Component {
   };
 
   render() {
+    if(this.state.info.length === 0 )
+    return <strong> No Data To Display </strong>
     return (
       <Col className="overflow-auto">
         <Table

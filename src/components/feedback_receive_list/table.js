@@ -17,7 +17,7 @@ const table = (props) => {
   if (!info.length)
     return (
       <strong>
-        No Data To Display{" "}
+        No Data To Display
         <span
           className="badge badge-dark"
           onClick={() => filterData("Status")}

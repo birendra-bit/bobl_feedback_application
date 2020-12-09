@@ -18,6 +18,7 @@ class Dashboard extends Component {
       reciveFeedsData: [],
       giveFeeds: true,
       feedsGiven: false,
+      isThereFeedsGiver: false,
       loader: true,
       showDescription: false,
       description: []
@@ -92,6 +93,7 @@ class Dashboard extends Component {
       if (resp.data.message !== "No Data")
         this.setState({
           reciveFeedsData: resp.data.message,
+          isThereFeedsGiver:true
         });
     } catch (err) {
       console.error(err);
@@ -122,6 +124,7 @@ class Dashboard extends Component {
             giveFeeds={this.state.giveFeeds}
             feedsGiven = {this.state.feedsGiven}
             showDescription={this.state.showDescription}
+            isThereFeedsGiver={this.state.isThereFeedsGiver}
             tabSwitcher = {this.tabSwitcherHandler}
           />
           <Row>
@@ -140,7 +143,7 @@ class Dashboard extends Component {
               <React.Fragment>
                 <Col sm={12} md={12} lg={12} xs={12}>
                   <Row>{this.state.giveFeeds ? cards : ""}</Row>
-                  <Row> {this.state.feedsGiven ? feedsGivenList : ""}</Row>
+                  <Row> {this.state.feedsGiven & this.state.isThereFeedsGiver ? feedsGivenList : ""}</Row>
                   <Row> {this.state.showDescription? <Description description ={this.state.description} />:""} </Row>
                 </Col>
               </React.Fragment>
