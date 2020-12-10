@@ -38,9 +38,9 @@ function Login(props) {
         });
 
         axios
-            .post("http://192.168.70.38/api/method/login", data)
+            .post("https://cors-anywhere.herokuapp.com/http://192.168.70.38/api/method/login", data)
             .then(function (response) {
-                var url = `http://192.168.70.38/api/method/frappe.auth.get_loggedin_user_details`;
+                var url = `https://cors-anywhere.herokuapp.com/http://192.168.70.38/api/method/frappe.auth.get_loggedin_user_details`;
                 axios
                     .get(url)
                     .then((resp) => {
