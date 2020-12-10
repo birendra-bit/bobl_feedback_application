@@ -8,7 +8,7 @@ import Tab from "../../components/tab/tab";
 import axios from "axios";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import  Description from '../../components/description/description'
+import Description from "../../components/description/description";
 
 class Dashboard extends Component {
   constructor(props = []) {
@@ -21,7 +21,8 @@ class Dashboard extends Component {
       isThereFeedsGiver: false,
       loader: true,
       showDescription: false,
-      description: []
+      description: [],
+      feedbackSetting: {},
     };
   }
 
@@ -39,16 +40,15 @@ class Dashboard extends Component {
 
   //tab switcher
   tabSwitcherHandler = (args) => {
-
     let bool_arr = ["giveFeeds", "feedsGiven", "showDescription"];
     bool_arr.map((x) => {
       if (x === args) {
         this.setState({
-          [x]: true
+          [x]: true,
         });
       } else {
         this.setState({
-          [x]: false
+          [x]: false,
         });
       }
     });
@@ -59,8 +59,12 @@ class Dashboard extends Component {
       let res = await axios.get(
         "/api/method/erpnext.feedback_api.get_competency"
       );
+      let setting = await axios.get(
+        '/api/resource/Feedback%20Setting?fields=["*"]&filters=[["status","=","Open"],["docstatus","=","1"]]'
+      );
       this.setState({
         description: res.data.message,
+        feedbackSetting: setting.data.data[0],
       });
     } catch (err) {
       console.error("err ", err);
@@ -93,7 +97,7 @@ class Dashboard extends Component {
       if (resp.data.message !== "No Data")
         this.setState({
           reciveFeedsData: resp.data.message,
-          isThereFeedsGiver:true
+          isThereFeedsGiver: true,
         });
     } catch (err) {
       console.error(err);
@@ -103,8 +107,9 @@ class Dashboard extends Component {
   componentDidMount() {
     this.getGiveFeedsUserData();
     this.getReciveFeedsUserData();
-    this.getDescription()
+    this.getDescription();
   }
+
   render() {
     let cards = this.state.giveFeedsData.map((info, index) => {
       return (
@@ -114,7 +119,9 @@ class Dashboard extends Component {
       );
     });
 
-    let feedsGivenList = <FeedbackReceiveList info={this.state.reciveFeedsData} />;
+    let feedsGivenList = (
+      <FeedbackReceiveList info={this.state.reciveFeedsData} />
+    );
     return (
       <React.Fragment>
         <Navigationbar showDescription={this.state.showDescription} />
@@ -122,10 +129,10 @@ class Dashboard extends Component {
           <br />
           <Tab
             giveFeeds={this.state.giveFeeds}
-            feedsGiven = {this.state.feedsGiven}
+            feedsGiven={this.state.feedsGiven}
             showDescription={this.state.showDescription}
             isThereFeedsGiver={this.state.isThereFeedsGiver}
-            tabSwitcher = {this.tabSwitcherHandler}
+            tabSwitcher={this.tabSwitcherHandler}
           />
           <Row>
             {this.state.loader ? (
@@ -143,8 +150,23 @@ class Dashboard extends Component {
               <React.Fragment>
                 <Col sm={12} md={12} lg={12} xs={12}>
                   <Row>{this.state.giveFeeds ? cards : ""}</Row>
-                  <Row> {this.state.feedsGiven & this.state.isThereFeedsGiver ? feedsGivenList : ""}</Row>
-                  <Row> {this.state.showDescription? <Description description ={this.state.description} />:""} </Row>
+                  <Row>
+                    {" "}
+                    {this.state.feedsGiven & this.state.isThereFeedsGiver
+                      ? feedsGivenList
+                      : ""}
+                  </Row>
+                  <Row>
+                    {" "}
+                    {this.state.showDescription ? (
+                      <Description
+                        description={this.state.description}
+                        feedbackSetting={this.state.feedbackSetting}
+                      />
+                    ) : (
+                      ""
+                    )}{" "}
+                  </Row>
                 </Col>
               </React.Fragment>
             )}

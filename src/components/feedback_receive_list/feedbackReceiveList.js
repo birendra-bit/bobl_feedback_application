@@ -29,7 +29,10 @@ class FeedbackReceivedList extends Component {
   decrementIndexHandler = () => {
     this.setState((prevState) => ({
       initialIndex: prevState.initialIndex - 10,
-      endIndex: prevState.endIndex - 10,
+      endIndex:
+        prevState.lastIndex === prevState.endIndex
+          ? prevState.endIndex - (prevState.endIndex - prevState.initialIndex)
+          : prevState.endIndex - 10,
     }));
   };
 
@@ -55,13 +58,14 @@ class FeedbackReceivedList extends Component {
   };
 
   render() {
-    if(this.state.info.length === 0 )
-    return <strong> No Data To Display </strong>
+    if (this.state.info.length === 0)
+      return <strong> No Data To Display </strong>;
     return (
       <Col className="overflow-auto">
         <Table
           info={this.state.data.slice(
-            this.state.initialIndex, this.state.endIndex + 1
+            this.state.initialIndex === 0 ? 0 : this.state.initialIndex + 1,
+            this.state.endIndex + 1
           )}
           incrementIndex={this.incrementIndexHandler}
           decrementIndex={this.decrementIndexHandler}

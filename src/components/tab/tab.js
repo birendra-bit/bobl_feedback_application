@@ -14,6 +14,7 @@ const tab = (props) => {
     giveFeeds,
     isThereFeedsGiver,
     feedsGiven,
+    feedbackSetting
   } = props;
   return (
     <div>
@@ -32,7 +33,8 @@ const tab = (props) => {
         </span>
         &nbsp;
         {isThereFeedsGiver ? (
-          <span
+            <React.Fragment>
+              <span
             className={feedsGiven ? "active" : null}
             onClick={() => tabSwitcher("feedsGiven")}
             style={{
@@ -41,10 +43,11 @@ const tab = (props) => {
             }}
             id="view-span"
           >
-            Feedback Given By &nbsp;
-            <FontAwesomeIcon icon={faArrowAltCircleDown} />
+            Feedback Given By
             &nbsp;
-          </span>
+            <FontAwesomeIcon icon={faArrowAltCircleDown} />
+          </span>&nbsp;
+            </React.Fragment>
         ) : (
           ""
         )}
