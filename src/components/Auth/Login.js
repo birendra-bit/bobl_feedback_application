@@ -38,11 +38,11 @@ function Login(props) {
     });
 
     axios
-      .post("http://192.168.70.38/api/method/login", data,headers: {"Access-Control-Allow-Origin": "*"})
+      .post("http://192.168.70.38/api/method/login", data,{headers: {"Access-Control-Allow-Origin": "*"}})
       .then(function (response) {
-        var url = `http://192.168.70.38/api/method/frappe.auth.get_loggedin_user_details`,headers: {"Access-Control-Allow-Origin": "*"};
+        var url = `http://192.168.70.38/api/method/frappe.auth.get_loggedin_user_details`;
         axios
-          .get(url)
+          .get(url,{headers: {"Access-Control-Allow-Origin": "*"}})
           .then((resp) => {
             setState((prevState) => ({
               ...prevState,
