@@ -13,7 +13,7 @@ const viewContent = () => (
             <Col className='' md={4} lg={4} sm={4} xs={12}>
                 <Card className='m-auto feedback-given-success-message'>
                     <Card.Body>
-                        <Card.Title className='on-success'>Your FeedBack Subbmission is Successful</Card.Title>
+                        <Card.Title className='on-success'>Your Feedback Submission is Successful</Card.Title>
                     </Card.Body>
                     <br />
                     <Link to='/dashboard'>
