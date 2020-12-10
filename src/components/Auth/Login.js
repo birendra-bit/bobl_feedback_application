@@ -38,9 +38,9 @@ function Login(props) {
         });
 
         axios
-            .post("/api/method/login", data, { headers: { "Access-Control-Allow-Origin": "*" } })
+            .post("http://192.168.70.38/api/method/login", data, { headers: { "Access-Control-Allow-Origin": "*",'Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS','Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token' } })
             .then(function (response) {
-                var url = `/api/method/frappe.auth.get_loggedin_user_details`;
+                var url = `http://192.168.70.38/api/method/frappe.auth.get_loggedin_user_details`;
                 axios
                     .get(url, { headers: { "Access-Control-Allow-Origin": "*" } })
                     .then((resp) => {
