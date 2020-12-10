@@ -151,13 +151,11 @@ class Dashboard extends Component {
                 <Col sm={12} md={12} lg={12} xs={12}>
                   <Row>{this.state.giveFeeds ? cards : ""}</Row>
                   <Row>
-                    {" "}
                     {this.state.feedsGiven & this.state.isThereFeedsGiver
                       ? feedsGivenList
                       : ""}
                   </Row>
                   <Row>
-                    {" "}
                     {this.state.showDescription ? (
                       <Description
                         description={this.state.description}
@@ -165,7 +163,7 @@ class Dashboard extends Component {
                       />
                     ) : (
                       ""
-                    )}{" "}
+                    )}
                   </Row>
                 </Col>
               </React.Fragment>

@@ -40,18 +40,18 @@ const Description = (props) => {
           className="d-flex"
           style={{ fontSize: "15px", fontWeight: "bolder", color: "#5600ff" }}
         >
-          <p>Title: {feedbackSetting.title}. &nbsp;&nbsp;</p>
+          <p>Title: <span style={{color:'grey'}}>{feedbackSetting.title}.</span> &nbsp;&nbsp;</p>
           <p>
-            From:
-            <Moment format="D MMMM YYYY">{feedbackSetting.start_date}</Moment>
+            Active From: 
+            <Moment format="D MMMM YYYY" style={{color:'grey'}} >{feedbackSetting.start_date}</Moment>
           </p>
           &nbsp;&nbsp;
           <p>
-            To:
-            <Moment format="D MMMM YYYY">{feedbackSetting.end_date}</Moment>
+            To: 
+            <Moment format="D MMMM YYYY" style={{color:'grey'}}>{feedbackSetting.end_date}</Moment>
           </p>
           &nbsp;&nbsp;
-          <p>Status:{feedbackSetting.status}</p>
+          <p>Status:{feedbackSetting.status === 'Open'?<span style={{color:'green'}}>active</span>:'closed'}</p>
         </span>
         {des}
       </div>
