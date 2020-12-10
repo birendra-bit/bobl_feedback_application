@@ -1,7 +1,6 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
-    let cors = require("cors");
     app.use(
         "/api",
         createProxyMiddleware({
@@ -9,6 +8,4 @@ module.exports = function (app) {
             changeOrigin: true,
         })
     );
-    app.listen(80);
-    app.use(cors());
 };
