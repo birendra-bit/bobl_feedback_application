@@ -9,4 +9,5 @@ module.exports = function (app) {
             changeOrigin: true,
         })
     );
+    console.log("inside the setup proxy");
 };
